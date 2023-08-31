@@ -1,6 +1,31 @@
 # Projeto Integrador 2º Semetre SenacSP
 Repositório criado para organização e criação do Projeto Integrador do 2º Semestre <br> do curso de Análise e Desenvolvimento de Sistemas no Centro Universitário Senac SP
 
+<h3>Integrantes: </h3>
+<ul>
+  <li>Backend - Java
+    <ul>
+      <li>Gabriel Freitas</li>
+      <li>Marco Mafra</li>
+    </ul>
+  </li>
+  <br>
+  <li>Backend - Banco de Dados
+    <ul>
+      <li>Tadeu Moura</li>
+      <li>Antonio Joaquim</li>
+    </ul>
+  </li>
+   <br>
+  <li>Interface - Java
+    <ul>
+      <li>Everton Luiz (P.O.)</li>
+      <li>Lucas Almeida</li>
+      <li>Caio Figueiredo</li> 
+    </ul>
+  </li>
+</ul>
+
 <br>
 
 <h2>Para os integrantes do Grupo: </h2>
