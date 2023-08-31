@@ -22,19 +22,19 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
 <hr>
 <h4>Atenção:</h4>
 <p>
-  <b>Antes de realizar alterações no arquivo, deve-se confirmar se você está na sua branch e se ela está atualizada com a branch 01_desenvolvido</b>
+  <strong>Antes de realizar alterações no arquivo, deve-se confirmar se você está na sua branch e se ela está atualizada com a branch 01_desenvolvido</strong>
 </p>
 <br>
 
 <p>Cada integrante tem sua própria branch onde deverá desenvolver seu código e realizar os testes</p>
-<p>A branch 01_desenvolvido é a branch onde ficará o projeto funcionando e <b>já testado</b></p>
+<p>A branch 01_desenvolvido é a branch onde ficará o projeto funcionando e <strong>já testado</strong></p>
 <p>Cada item do "Project" será referente a uma alteração no c[odigo que deverá ser realizada na sua própria branch</p>
 <p>Após realizado a alteração/craiação de código, testar na sua branch se está tudo funcionando</p>
 <p>Após realizados os testes e confirmado o funcionamento do projeto, deverá ser publicado na branch 01_desenvolvido</p>
 <h3>Como dar push na branch 01_desenvolvido:</h3>
 
 
-<b>Github Desktop:</b>
+<strong>Github Desktop:</strong>
 <p> 1° Passo - Subir suas alterações para sua branch no git</p>
 <p>Caso não tenha alterações, pule para o passo 2</p>
 <ul>
