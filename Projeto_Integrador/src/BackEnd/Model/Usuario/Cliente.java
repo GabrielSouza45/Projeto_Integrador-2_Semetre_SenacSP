@@ -1,4 +1,4 @@
-package BackEnd.Model;
+package BackEnd.Model.Usuario;
 
 public class Cliente {
 
@@ -7,13 +7,14 @@ public class Cliente {
     private int inativo;
 
     // Atributos da Entidade
+    private Usuario user;
     private String nome;
     private String documento;
     private Endereco endereco;
     private String telefone;
 
 
-    public Cliente(){
+    public Cliente() {
 
     }
 
@@ -21,7 +22,7 @@ public class Cliente {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -31,6 +32,14 @@ public class Cliente {
 
     public void setInativo(int inativo) {
         this.inativo = inativo;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
     public String getNome() {
