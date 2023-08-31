@@ -10,7 +10,6 @@ public class Cliente {
     private Usuario user;
     private String nome;
     private String documento;
-    private Endereco endereco;
     private String telefone;
 
 
@@ -56,14 +55,6 @@ public class Cliente {
 
     public void setDocumento(String documento) {
         this.documento = documento;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     public String getTelefone() {

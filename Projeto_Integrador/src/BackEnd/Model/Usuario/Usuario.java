@@ -10,8 +10,6 @@ public class Usuario {
     private String nome;
     private String documento;
     private String telefone;
-    private String email;
-    private Cargo cargo;
     private String login;
     private String senha;
 
@@ -55,22 +53,6 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
     }
 
     public String getLogin() {
