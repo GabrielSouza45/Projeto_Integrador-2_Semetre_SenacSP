@@ -7,10 +7,47 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
 
 <h3>Sobre o 'Projects':</h3>
 <p>Lá ficarão os items que devem ser realizados pelos integrantes</p>
-<p>Cada integrante terá a liberdade de escolher a sua task</p>
+<p>As task deverão ser criadas pelos líderes do grupo (Everton ou Gabriel)</p>
+<p>As task serão atribuidas para cada integrante pelos líderes do grupo</p>
 <p>Após selecionar sua task, mova ela para a aba "Em Desenvolvimento"</p>
 <p>Após finalizar sua task, mova ela para a aba "Finalizado"</p>
-<h4>Para selecionar sua task: </h4>
+
+<h4>Sobre as colunas: </h4>
+<ul>
+  <li>A Fazer
+    <p>Coluna destinada as task com pouca ou nenhuma prioridade <br> como as task de melhorias ou requisitos não funcionais que não foram exigidos no projeto</p>
+  </li>
+  <li>Priorizado - Grupo
+    <p>Coluna destinada as task com muita ou total prioridade <br> como as task com prazo de entrega próximos, bugs ou problemas que precisam de máxima atenção</p>
+    <p>Cada grupo tem sua própria coluna de priorizados, para melhorar a organização das tasks</p>
+  </li>
+  <li>Em Desenvolvimento
+    <p>Coluna destinada as task que já tem um dev alocado e este está desenvolvendo a solução esperada</p>
+  </li>
+  <li>Finalizado
+    <p>Coluna destinada as task que já foram finalizadas e o código testado e atualizado na branch 01_desenvolvido </p>
+  </li>
+</ul>
+
+
+<h4>Para criar uma task: (Everton ou Gabriel)</h4>
+<ul>
+  <li>Na coluna "A fazer", clique no botão "Add item"</li>
+  <li>Clique no sinal de + (mais)</li>
+  <li>Clique em "Create new issue"</li>
+  <li>Selecione o repositório do projeto integrador 2º Semestre</li>
+  <li>Em "Templates and forms*", clique no botão 'Choose'</li>
+  <li>Adicione um título seguindo o padrão : 
+    <ul>
+      <li>Banco de Dados - Título do card</li>
+      <li>BackEnd - Título do card</li>
+      <li>Design - Título do card</li>
+    </ul>
+  </li>
+  <li>Clique em "Create"</li>
+</ul>
+
+<h4>Para atribuir uma task: (Everton ou Gabriel)</h4>
 <ul>
   <li>Clique sobre a task desejada</li>
   <li>Clique em "Assignees"</li>
@@ -31,8 +68,10 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
 <p>Cada item do "Project" será referente a uma alteração no c[odigo que deverá ser realizada na sua própria branch</p>
 <p>Após realizado a alteração/craiação de código, testar na sua branch se está tudo funcionando</p>
 <p>Após realizados os testes e confirmado o funcionamento do projeto, deverá ser publicado na branch 01_desenvolvido</p>
-<h3>Como dar push na branch 01_desenvolvido:</h3>
+<br>
 
+<h3>Como dar push na branch 01_desenvolvido:</h3>
+<hr>
 
 <strong>Github Desktop:</strong>
 <p> 1° Passo - Subir suas alterações para sua branch no git</p>
