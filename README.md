@@ -6,14 +6,14 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
   <li>Backend - Java
     <ul>
       <li>Gabriel Freitas</li>
-      <li>Marco Mafra</li>
+      <li>Antonio Joaquim</li>
     </ul>
   </li>
   <br>
   <li>Backend - Banco de Dados
     <ul>
       <li>Tadeu Moura</li>
-      <li>Antonio Joaquim</li>
+      <li>Marco Mafra</li>      
     </ul>
   </li>
    <br>
