@@ -90,7 +90,7 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
 
 <p>Cada integrante tem sua própria branch onde deverá desenvolver seu código e realizar os testes</p>
 <p>A branch 01_desenvolvido é a branch onde ficará o projeto funcionando e <strong>já testado</strong></p>
-<p>Cada item do "Project" será referente a uma alteração no c[odigo que deverá ser realizada na sua própria branch</p>
+<p>Cada item do "Project" será referente a uma alteração no código que deverá ser realizada na sua própria branch</p>
 <p>Após realizado a alteração/craiação de código, testar na sua branch se está tudo funcionando</p>
 <p>Após realizados os testes e confirmado o funcionamento do projeto, deverá ser publicado na branch 01_desenvolvido</p>
 <br>
