@@ -4,6 +4,7 @@
 
 package com.mycompany.hakuzanlojageek;
 
+import com.mycompany.hakuzanlojageek.view.TelaCadastro;
 import com.mycompany.hakuzanlojageek.view.TelaLogin;
 
 /**
@@ -12,10 +13,11 @@ import com.mycompany.hakuzanlojageek.view.TelaLogin;
  */
 public class HakuzanLojaGeek {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TelaLogin tlg = new TelaLogin();
         
-        tlg.setVisible(true);
+        TelaCadastro tlc = new TelaCadastro();
+         tlg.setVisible(true);
         
     }
 }

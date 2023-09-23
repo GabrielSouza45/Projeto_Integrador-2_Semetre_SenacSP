@@ -39,7 +39,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(768, 416));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(237, 237, 237));
@@ -98,6 +97,11 @@ public class TelaLogin extends javax.swing.JFrame {
         btnCadastroAbrir.setBorder(null);
         btnCadastroAbrir.setFocusable(false);
         btnCadastroAbrir.setOpaque(true);
+        btnCadastroAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastroAbrirMouseClicked(evt);
+            }
+        });
         btnCadastroAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastroAbrirActionPerformed(evt);
@@ -125,6 +129,13 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnCadastroAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroAbrirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastroAbrirActionPerformed
+
+    private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroAbrirMouseClicked
+      TelaCadastro tlg = new TelaCadastro();
+      setVisible(false);
+      tlg.setVisible(true);
+      
+    }//GEN-LAST:event_btnCadastroAbrirMouseClicked
 
     /**
      * @param args the command line arguments
