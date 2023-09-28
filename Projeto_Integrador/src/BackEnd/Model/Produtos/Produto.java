@@ -9,8 +9,16 @@ public class Produto {
     // Atributos da Entidade
     private String produto;
     private double valor;
-    private Fornecedor fornecedor;
     private Categoria categoria;
+    private double valorCompra;
+
+    public double getValorCompra() {
+        return valorCompra;
+    }
+
+    public void setValorCompra(double valorCompra) {
+        this.valorCompra = valorCompra;
+    }
 
     public Produto() {
     }
@@ -45,14 +53,6 @@ public class Produto {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
     }
 
     public Categoria getCategoria() {

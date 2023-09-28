@@ -2,6 +2,7 @@ package BackEnd.Model.Pedidos;
 
 import BackEnd.Model.Pagamento.FormaPagamento;
 import BackEnd.Model.Usuario.Cliente;
+import BackEnd.Model.Usuario.Usuario;
 
 public class Pedido {
     // Atributos Padrão
@@ -9,9 +10,52 @@ public class Pedido {
     private int inativo;
 
     // Atributos da Entidade
-    private double saldo;
-    private Cliente cliente;
     private FormaPagamento pagamento;
+    private Usuario usuario;
+    private ItemPedido itemPedido;
+    private String data;
+    private String Status;
+    private double valorTotal;
+
+    public ItemPedido getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(ItemPedido itemPedido) {
+        this.itemPedido = itemPedido;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Pedido() {
     }
@@ -30,22 +74,6 @@ public class Pedido {
 
     public void setInativo(int inativo) {
         this.inativo = inativo;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public FormaPagamento getPagamento() {
