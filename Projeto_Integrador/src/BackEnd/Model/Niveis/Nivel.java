@@ -1,21 +1,18 @@
-package BackEnd.Model.Usuario;
-
-public class Cargo {
+package BackEnd.Model.Niveis;
+public class Nivel {
 
     // Atributos Padrão
     private Long id;
     private int inativo;
 
     // Atributos da Entidade
-    private String cargo;
-
-    public Cargo(){}
+    private String descNiveis;
 
     public Long getId() {
         return id;
     }
 
-    private void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -27,11 +24,11 @@ public class Cargo {
         this.inativo = inativo;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getDescNiveis() {
+        return descNiveis;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setDescNiveis(String descNiveis) {
+        this.descNiveis = descNiveis;
     }
 }

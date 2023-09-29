@@ -1,5 +1,7 @@
 package BackEnd.Model.Usuario;
 
+import BackEnd.Model.Niveis.Nivel;
+
 public class Usuario {
 
     // Atributos Padrão
@@ -11,9 +13,17 @@ public class Usuario {
     private String documento;
     private String telefone;
     private String email;
-    private Cargo cargo;
     private String login;
     private String senha;
+    private Nivel nivel;
+
+    public Nivel getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
+    }
 
     public Usuario(){}
 
@@ -63,14 +73,6 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
     }
 
     public String getLogin() {
