@@ -12,18 +12,9 @@ public class Pedido {
     // Atributos da Entidade
     private FormaPagamento pagamento;
     private Usuario usuario;
-    private ItemPedido itemPedido;
     private String data;
     private String Status;
     private double valorTotal;
-
-    public ItemPedido getItemPedido() {
-        return itemPedido;
-    }
-
-    public void setItemPedido(ItemPedido itemPedido) {
-        this.itemPedido = itemPedido;
-    }
 
     public String getData() {
         return data;
