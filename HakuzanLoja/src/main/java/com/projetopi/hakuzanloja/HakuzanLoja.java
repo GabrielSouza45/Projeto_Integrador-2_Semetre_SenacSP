@@ -4,10 +4,6 @@
 
 package com.projetopi.hakuzanloja;
 
-import com.projetopi.hakuzanloja.dao.UsuarioDao;
-import com.projetopi.hakuzanloja.model.usuario.Cliente;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 
 
 
@@ -18,9 +14,6 @@ import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 public class HakuzanLoja {
 
     public static void main(String[] args) {
-        
-        UsuarioDao user = new UsuarioDao();
-        user.criarTabela();
         
         
         

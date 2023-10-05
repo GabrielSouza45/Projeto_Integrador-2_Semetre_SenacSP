@@ -4,7 +4,7 @@
  */
 package com.projetopi.hakuzanloja.view.telalogin;
 
-import com.projetopi.hakuzanloja.dao.UsuarioDao;
+import com.projetopi.hakuzanloja.controler.UsuarioDao;
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
 
 
@@ -41,7 +41,6 @@ public class TelaLogin extends javax.swing.JFrame {
         btnValidaLogin = new javax.swing.JButton();
         btnCadastroAbrir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -118,19 +117,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3.setText("Não tem");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, 20));
 
-        jButton1.setText("TESTEDB");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 768, 416));
 
         setSize(new java.awt.Dimension(768, 416));
@@ -144,17 +130,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        
-       
-      
-        
-    }//GEN-LAST:event_jButton1KeyPressed
 
     private void btnCadastroAbrirActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
@@ -184,7 +159,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroAbrir;
     private javax.swing.JButton btnFecharTela;
     private javax.swing.JButton btnValidaLogin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

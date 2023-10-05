@@ -73,6 +73,12 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
+     public void setClienteUsuario(Usuario usuario){
+        this.user = usuario;
+        this.nome = usuario.getNome();
+        this.documento = usuario.getDocumento();      
+    }
 
 
 }

@@ -1,6 +1,6 @@
-package BackEnd.Model.Produtos;
+package com.projetopi.hakuzanloja.model.pedidos.produtos;
 
-import com.projetopi.hakuzanloja.model.pedidos.produtos.Categoria;
+
 
 public class Produto {
 
