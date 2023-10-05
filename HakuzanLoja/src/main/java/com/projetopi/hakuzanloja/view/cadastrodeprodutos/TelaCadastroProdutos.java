@@ -5,7 +5,7 @@
 package com.projetopi.hakuzanloja.view.cadastrodeprodutos;
 
 
-import com.projetopi.hakuzanloja.model.pedidos.produtos.Produto;
+import com.projetopi.hakuzanloja.model.produtos.Produto;
 
 /**
  *
