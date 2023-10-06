@@ -1,6 +1,7 @@
 package com.projetopi.hakuzanloja.model.pedidos;
 
-import BackEnd.Model.Produtos.Produto;
+
+import com.projetopi.hakuzanloja.model.produto.Produto;
 
 public class ItemPedido {
 
