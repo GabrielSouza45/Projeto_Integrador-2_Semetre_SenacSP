@@ -5,11 +5,9 @@
 package com.projetopi.hakuzanloja.view.cadastrodeprodutos;
 
 
-<<<<<<< HEAD
-import com.projetopi.hakuzanloja.model.produtos.Produto;
-=======
+
 import com.projetopi.hakuzanloja.model.produto.Produto;
->>>>>>> everton
+
 
 /**
  *

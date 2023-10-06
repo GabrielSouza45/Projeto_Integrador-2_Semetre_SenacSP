@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-package BackEnd.Model.Pedidos;
 
-import BackEnd.Model.Pagamento.FormaPagamento;
-import BackEnd.Model.Usuario.Cliente;
-import BackEnd.Model.Usuario.Usuario;
-=======
 package com.projetopi.hakuzanloja.model.pedidos;
 
 
 import com.projetopi.hakuzanloja.model.pagamento.FormaPagamento;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
->>>>>>> everton
+
 
 public class Pedido {
     // Atributos Padrão
