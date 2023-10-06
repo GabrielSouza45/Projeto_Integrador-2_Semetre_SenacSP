@@ -23,7 +23,8 @@ public class FormaDePagamentoDao {
     public void criarTabela(){
         String sql = "CREATE TABLE TB_FORMAPAGAMENTO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
-                + "FK_USUARIO INT,DS_CARTAO VARCHAR(50),"
+                + "FK_USUARIO INT," +
+                "  DS_CARTAO VARCHAR(50),"
                 + "DS_PIX VARCHAR(100),BOLETO VARCHAR(200),"
                 + "PRIMARY KEY(PK_ID),"
                 + "FOREIGN KEY (FK_USUARIO) REFERENCES TB_USUARIO(PK_ID));";
