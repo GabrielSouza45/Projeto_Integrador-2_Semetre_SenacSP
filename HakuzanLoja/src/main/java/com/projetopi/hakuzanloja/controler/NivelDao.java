@@ -12,14 +12,25 @@ import java.sql.SQLException;
  * @author everton.lcsousa
  */
 public class NivelDao {
-    
+
+
+
+
+
+
+
+
+
+
+    /*Criação de tabela para caso o db atual dê problema*/
     public void criarTabela(){
         String sql = "CREATE TABLE TB_NIVEL("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
-                + "DS_NOME VARCHAR(30) NOT NULL PRIMARY KEY(PK_ID));";
-        
+                + "DS_NOME VARCHAR(30) NOT NULL," +
+                " PRIMARY KEY(PK_ID));";
+
         PreparedStatement ps = null;
-        
+
         try{
             ps = ConectarDao.getConexao().prepareStatement(sql);
             ps.execute();
@@ -27,12 +38,12 @@ public class NivelDao {
             ps.close();
         }catch(SQLException erro){
         erro.printStackTrace();}
-    
+
 }
      public void insertInicial(){
         
         String sql = "INSERT INTO TB_NIVEL (DS_NOME)"
-                + "VALUES ('Nível 1');";
+                +    "VALUES ('Nível 1');";
         
         PreparedStatement ps = null;
         try{

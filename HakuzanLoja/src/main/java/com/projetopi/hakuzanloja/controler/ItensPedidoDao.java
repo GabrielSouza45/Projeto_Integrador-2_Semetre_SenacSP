@@ -12,6 +12,15 @@ import java.sql.SQLException;
  * @author everton.lcsousa
  */
 public class ItensPedidoDao {
+
+
+
+
+
+
+
+
+    /*Criação de tabela para caso o db atual dê problema*/
     public void criarTabela(){
         String sql = "CREATE TABLE TB_ITENSPEDIDO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"

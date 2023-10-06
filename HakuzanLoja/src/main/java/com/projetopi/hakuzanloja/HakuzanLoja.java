@@ -5,7 +5,7 @@
 package com.projetopi.hakuzanloja;
 
 
-
+import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 
 /**
  *
@@ -14,6 +14,8 @@ package com.projetopi.hakuzanloja;
 public class HakuzanLoja {
 
     public static void main(String[] args) {
+        TelaLogin tlg = new TelaLogin();
+        tlg.setVisible(true);
         
         
         

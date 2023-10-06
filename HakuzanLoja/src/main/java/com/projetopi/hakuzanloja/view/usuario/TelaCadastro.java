@@ -4,7 +4,6 @@
  */
 package com.projetopi.hakuzanloja.view.usuario;
 
-import com.projetopi.hakuzanloja.model.usuario.Cliente;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
 
 
@@ -252,9 +251,6 @@ public class TelaCadastro extends javax.swing.JFrame {
        usuario.setEmail(txtEmail.getText());
        usuario.setLogin(txtLogin.getText());
        usuario.setSenha(txtPassword.getText());
-       
-       Cliente cliente = new Cliente();
-       cliente.setClienteUsuario(usuario);
         
     }//GEN-LAST:event_btnCadastraUserActionPerformed
 

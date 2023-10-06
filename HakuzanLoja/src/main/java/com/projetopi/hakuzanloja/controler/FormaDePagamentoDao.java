@@ -12,7 +12,14 @@ import java.sql.SQLException;
  * @author everton.lcsousa
  */
 public class FormaDePagamentoDao {
-    
+
+
+
+
+
+
+
+    /*Criação de tabela para caso o db atual dê problema*/
     public void criarTabela(){
         String sql = "CREATE TABLE TB_FORMAPAGAMENTO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"

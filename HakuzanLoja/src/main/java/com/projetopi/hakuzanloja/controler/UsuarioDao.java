@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 
 public class UsuarioDao{
-
+    /*Criação de tabela para caso o db atual dê problema*/
     public void criarTabela(){
         String sql = "CREATE TABLE TB_USUARIO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -45,7 +45,7 @@ public class UsuarioDao{
     }
     
     public void insertInicial(){
-        
+
         String sql = "INSERT INTO TB_USUARIO (DS_LOGIN, DS_SENHA, NR_TELEFONE, DS_CEP, DS_UF, DS_CIDADE, DS_BAIRRO, DS_LOGRADOURO, NR_LOGRADOURO, DS_NOME, DS_EMAIL, NR_CPFCNPJ, FK_NIVEL)"
                 + "VALUES ('admin', '123', '1234567890', '12345-678', 'SP', 'São Paulo', 'Bairro', 'Rua Teste', '123', 'Administrador', 'admin@example.com', '12345678900', 1);";
         
