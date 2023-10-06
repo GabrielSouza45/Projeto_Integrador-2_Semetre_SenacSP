@@ -1,5 +1,5 @@
 
-
+package com.projetopi.hakuzanloja.model.produto;
 public class Produto {
 
     // Atributos Padrão

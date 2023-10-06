@@ -1,8 +1,6 @@
 
 package com.projetopi.hakuzanloja.model.pedidos;
-import com.projetopi.hakuzanloja.model.*;
-
-
+import com.projetopi.hakuzanloja.model.produto.Produto;
 
 
 public class ItemPedido {
