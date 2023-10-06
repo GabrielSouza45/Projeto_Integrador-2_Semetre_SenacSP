@@ -176,6 +176,19 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="javax.swing.JToggleButton" name="btnCriarTodasAsTabelas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Criar todas as tabelas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCriarTodasAsTabelasMouseClicked"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="610" y="330" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

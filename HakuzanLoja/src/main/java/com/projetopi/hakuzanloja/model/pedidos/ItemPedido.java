@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 package BackEnd.Model.Pedidos;
 
 import BackEnd.Model.Produtos.Produto;
+=======
+package com.projetopi.hakuzanloja.model.pedidos;
+
+
+import com.projetopi.hakuzanloja.model.produto.Produto;
+>>>>>>> everton
 
 public class ItemPedido {
 
