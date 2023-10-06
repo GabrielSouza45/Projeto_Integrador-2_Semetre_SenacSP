@@ -30,7 +30,8 @@ public class UsuarioDao{
                 + "DS_NOME VARCHAR(80) NOT NULL,"
                 + "DS_EMAIL VARCHAR(80),"
                 + "NR_CPFCNPJ VARCHAR(20),"
-                + "FK_NIVEL INT NOT NULL,PRIMARY KEY(PK_ID));";
+                + "FK_NIVEL INT NOT NULL,PRIMARY KEY(PK_ID),"
+                + "FOREIGN KEY (FK_NIVEL) REFERENCES TB_USUARIO(PK_ID));";
         
         PreparedStatement ps = null;
         
@@ -41,5 +42,21 @@ public class UsuarioDao{
             ps.close();
         }catch(SQLException erro){
         erro.printStackTrace();}
+    }
+    
+    public void insertInicial(){
+        
+        String sql = "INSERT INTO TB_USUARIO (DS_LOGIN, DS_SENHA, NR_TELEFONE, DS_CEP, DS_UF, DS_CIDADE, DS_BAIRRO, DS_LOGRADOURO, NR_LOGRADOURO, DS_NOME, DS_EMAIL, NR_CPFCNPJ, FK_NIVEL)"
+                + "VALUES ('admin', '123', '1234567890', '12345-678', 'SP', 'São Paulo', 'Bairro', 'Rua Teste', '123', 'Administrador', 'admin@example.com', '12345678900', 1);";
+        
+        PreparedStatement ps = null;
+        try{
+            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps.execute();
+            System.out.println("Insert sucesso!");
+            ps.close();
+        }catch(SQLException erro){
+        erro.printStackTrace();}
+    
     }
 }
