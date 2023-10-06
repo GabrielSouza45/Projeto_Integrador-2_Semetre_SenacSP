@@ -5,7 +5,7 @@ Repositório criado para organização e criação do Projeto Integrador do 2º 
 <ul>
   <li>Backend - Java
     <ul>
-      <li>Gabriel Freitas</li>
+      <li>Gabriel Freitas (P.O)</li>
       <li>Marco Mafra</li>
     </ul>
   </li>
