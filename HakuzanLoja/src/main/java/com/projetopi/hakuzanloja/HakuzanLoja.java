@@ -7,10 +7,6 @@ package com.projetopi.hakuzanloja;
 
 import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 
-/**
- *
- * @author snubd
- */
 public class HakuzanLoja {
 
     public static void main(String[] args) {

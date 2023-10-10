@@ -5,16 +5,21 @@
 package com.projetopi.hakuzanloja.view.telalogin;
 
 
-import com.projetopi.hakuzanloja.controler.*;
-
+import com.mysql.cj.protocol.Resultset;
+import com.projetopi.hakuzanloja.controler.pedido.FormaDePagamentoDao;
+import com.projetopi.hakuzanloja.controler.pedido.ItensPedidoDao;
+import com.projetopi.hakuzanloja.controler.pedido.PedidoDao;
+import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
+import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
+import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
+import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
 
+import javax.swing.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
-/**
- *
- * @author everton.lcsousa
- */
 public class TelaLogin extends javax.swing.JFrame {
 
     /**
@@ -37,9 +42,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnFecharTela = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         btnValidaLogin = new javax.swing.JButton();
         btnCadastroAbrir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -81,22 +86,32 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel1.setText("Login");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 40, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 270, -1));
+        jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 270, -1));
 
         jLabel2.setText("Senha");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 260, -1));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 260, -1));
 
         btnValidaLogin.setText("Entrar");
         btnValidaLogin.setBorder(null);
         btnValidaLogin.setFocusable(false);
         btnValidaLogin.setOpaque(true);
+        btnValidaLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnValidaLoginMouseClicked(evt);
+            }
+        });
+        btnValidaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidaLoginActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnValidaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 80, 30));
 
         btnCadastroAbrir.setBackground(new java.awt.Color(237, 237, 237));
@@ -138,9 +153,9 @@ public class TelaLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btnCriarTodasAsTabelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarTodasAsTabelasMouseClicked
        FormaDePagamentoDao pgdao = new FormaDePagamentoDao();
@@ -160,6 +175,40 @@ public class TelaLogin extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_btnCriarTodasAsTabelasMouseClicked
+
+    private void btnValidaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidaLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnValidaLoginActionPerformed
+
+    private void btnValidaLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidaLoginMouseClicked
+        
+
+        String login = txtLogin.getText();
+        String senha = String.valueOf(txtSenha.getPassword());
+
+        UsuarioDao u = new UsuarioDao();
+        try {
+
+            ResultSet reslt = u.validarLogin(login, senha);
+            if (reslt.next()){
+
+                // COLOCAR TELA QUE IRA SER ABERTA
+                JOptionPane.showMessageDialog(null, "Logado com sucesso");
+
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Usuário ou senha inválidos",
+                        "Erro de operação",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_btnValidaLoginMouseClicked
 
     private void btnCadastroAbrirActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
@@ -195,7 +244,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
