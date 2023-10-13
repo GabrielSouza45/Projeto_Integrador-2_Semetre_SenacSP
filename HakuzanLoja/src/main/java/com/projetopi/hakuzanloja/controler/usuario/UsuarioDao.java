@@ -77,9 +77,32 @@ public class UsuarioDao extends ConectarDao{
         }
     }
 
-//    public void incluir(Usuario user) {
-//
-//        String sql = "INSERT INTO TB_USUARIO VALUES ()"
-//
-//    }
+    public void incluir(Usuario user) {
+
+        String sql = "INSERT INTO TB_USUARIO (DS_LOGIN, DS_SENHA, NR_TELEFONE, DS_CEP, DS_UF, DS_CIDADE, DS_BAIRRO, DS_LOGRADOURO, NR_LOGRADOURO, DS_NOME, DS_EMAIL, NR_CPFCNPJ, FK_NIVEL)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        try{
+            PreparedStatement ps = getConexao().prepareStatement(sql);
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getSenha());
+            ps.setString(3, user.getTelefone());
+            ps.setString(4, user.getCep());
+            ps.setString(5, user.getUf());
+            ps.setString(6, user.getCidade());
+            ps.setString(7, user.getBairro());
+            ps.setString(8, user.getLogradouro());
+            ps.setString(9, user.getNumero());
+            ps.setString(10, user.getNome());
+            ps.setString(11, user.getEmail());
+            ps.setString(12, user.getDocumento());
+            ps.setLong(13, user.getNivel().getId());
+            ps.execute();
+            ps.close();
+            JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar usuário. " + err.getMessage());
+        }
+
+    }
 }
