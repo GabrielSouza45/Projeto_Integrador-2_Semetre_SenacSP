@@ -33,18 +33,16 @@ public class TelaInicial extends javax.swing.JFrame {
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         btnCadastroProduto = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnCriarTodasTabelas = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(765, 416));
-        setPreferredSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(765, 416));
 
-        btnCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/projetopi/hakuzanloja/view/icons/menu-hamburguer (2).png"))); // NOI18N
         btnCadastroProduto.setBorder(null);
         btnCadastroProduto.setFocusPainted(false);
         btnCadastroProduto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,10 +56,10 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Criar todas as tabelas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCriarTodasTabelas.setText("Criar todas as tabelas");
+        btnCriarTodasTabelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCriarTodasTabelasActionPerformed(evt);
             }
         });
 
@@ -75,7 +73,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(615, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCriarTodasTabelas)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +82,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(btnCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCriarTodasTabelas)
                 .addContainerGap())
         );
 
@@ -116,9 +114,9 @@ public class TelaInicial extends javax.swing.JFrame {
        tlc.setVisible(true);
     }//GEN-LAST:event_btnCadastroProdutoMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCriarTodasTabelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTodasTabelasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCriarTodasTabelasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +155,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCriarTodasTabelas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
