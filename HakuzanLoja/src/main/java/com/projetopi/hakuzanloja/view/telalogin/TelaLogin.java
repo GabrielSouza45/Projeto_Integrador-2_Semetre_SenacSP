@@ -13,6 +13,7 @@ import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
 import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
 
 import javax.swing.*;
@@ -150,7 +151,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
@@ -181,7 +182,10 @@ public class TelaLogin extends javax.swing.JFrame {
             if (reslt.next()){
 
                 // COLOCAR TELA QUE IRA SER ABERTA
+                TelaInicial telaIni = new TelaInicial();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
+                this.setVisible(false);
+                telaIni.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(
