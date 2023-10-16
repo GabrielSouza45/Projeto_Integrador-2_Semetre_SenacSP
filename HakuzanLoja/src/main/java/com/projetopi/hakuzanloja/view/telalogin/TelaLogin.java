@@ -194,6 +194,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
                 // COLOCAR TELA QUE IRA SER ABERTA
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
+                TelaCadastro cad = new TelaCadastro();
+                cad.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(

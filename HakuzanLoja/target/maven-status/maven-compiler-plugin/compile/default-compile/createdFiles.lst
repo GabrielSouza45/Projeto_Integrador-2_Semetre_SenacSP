@@ -1,6 +1,5 @@
 com\projetopi\hakuzanloja\view\usuario\TelaCadastro.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$2.class
-BackEnd\Model\Produtos\Produto.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$7.class
 com\projetopi\hakuzanloja\view\cadastrodeprodutos\TelaCadastroProdutos.class
 com\projetopi\hakuzanloja\view\usuario\TelaCadastro$3.class
@@ -8,18 +7,14 @@ com\projetopi\hakuzanloja\view\usuario\TelaCadastro$5.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$4.class
 com\projetopi\hakuzanloja\model\usuario\Usuario.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$6.class
-com\projetopi\hakuzanloja\dao\ConectarDao.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin.class
 com\projetopi\hakuzanloja\model\usuario\Endereco.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$1.class
 com\projetopi\hakuzanloja\view\usuario\TelaCadastro$2.class
 com\projetopi\hakuzanloja\model\pagamento\FormaPagamento.class
 com\projetopi\hakuzanloja\view\telalogin\TelaLogin$3.class
-com\projetopi\hakuzanloja\model\pedidos\produtos\Categoria.class
 com\projetopi\hakuzanloja\HakuzanLoja.class
-com\projetopi\hakuzanloja\model\usuario\Cliente.class
 com\projetopi\hakuzanloja\view\cadastrodeprodutos\TelaCadastroProdutos$1.class
-com\projetopi\hakuzanloja\dao\UsuarioDao.class
 com\projetopi\hakuzanloja\model\niveis\Nivel.class
 com\projetopi\hakuzanloja\view\usuario\TelaCadastro$4.class
 com\projetopi\hakuzanloja\view\usuario\TelaCadastro$6.class

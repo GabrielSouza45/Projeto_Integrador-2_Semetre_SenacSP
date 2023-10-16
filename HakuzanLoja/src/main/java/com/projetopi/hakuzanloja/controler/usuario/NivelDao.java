@@ -6,10 +6,12 @@ package com.projetopi.hakuzanloja.controler.usuario;
 
 import com.projetopi.hakuzanloja.controler.ConectarDao;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class NivelDao {
+public class NivelDao extends ConectarDao{
 
 
     /*Criação de tabela para caso o db atual dê problema*/
@@ -22,7 +24,7 @@ public class NivelDao {
         PreparedStatement ps = null;
 
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Banco Criado");
             ps.close();
@@ -39,7 +41,7 @@ public class NivelDao {
 
         PreparedStatement ps = null;
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Inset");
             ps.close();
@@ -47,5 +49,21 @@ public class NivelDao {
             erro.printStackTrace();
         }
 
+    }
+
+    public ResultSet getNiveis() {
+        String sql = "SELECT * FROM TB_NIVEL";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            return ps.executeQuery();
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
     }
 }

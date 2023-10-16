@@ -95,7 +95,7 @@ public class UsuarioDao extends ConectarDao{
             ps.setString(10, user.getNome());
             ps.setString(11, user.getEmail());
             ps.setString(12, user.getDocumento());
-            ps.setLong(13, user.getNivel().getId());
+            ps.setLong(13, user.getIdNivel());
             ps.execute();
             ps.close();
             JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!");

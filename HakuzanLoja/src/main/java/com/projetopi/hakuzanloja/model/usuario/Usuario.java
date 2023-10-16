@@ -5,7 +5,7 @@ import com.projetopi.hakuzanloja.model.niveis.Nivel;
 public class Usuario {
 
     // Atributos Padrão
-    private Long id;
+    private java.lang.Long id;
     private int inativo;
 
     // Atributos da Entidade
@@ -15,7 +15,7 @@ public class Usuario {
     private String email;
     private String login;
     private String senha;
-    private Nivel nivel;
+    private Long idNivel;
     private String cep;
     private String uf;
     private String cidade;
@@ -25,21 +25,21 @@ public class Usuario {
 
 
 
-    public Nivel getNivel() {
-        return nivel;
+    public Long getIdNivel() {
+        return idNivel;
     }
 
-    public void setNivel(Nivel nivel) {
-        this.nivel = nivel;
+    public void setIdNivel(Long idNivel) {
+        this.idNivel = idNivel;
     }
 
     public Usuario(){}
 
-    public Long getId() {
+    public java.lang.Long getId() {
         return id;
     }
 
-    private void setId(Long id) {
+    private void setId(java.lang.Long id) {
         this.id = id;
     }
 
