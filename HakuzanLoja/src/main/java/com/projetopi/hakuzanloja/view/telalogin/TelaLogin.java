@@ -143,19 +143,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void btnCriarTodasAsTabelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarTodasAsTabelasMouseClicked
-       FormaDePagamentoDao pgdao = new FormaDePagamentoDao();
-       CategoriaDao ctdao = new CategoriaDao();
-       PedidoDao pddao = new PedidoDao();
-       ProdutoDao ptdao = new ProdutoDao();
-       NivelDao nvDao =  new NivelDao();
-       ItensPedidoDao peddao = new ItensPedidoDao();
-       
-       pgdao.criarTabela();
-       ctdao.criarTabela();
-       ptdao.criarTabela();
-       nvDao.criarTabela();
-       peddao.criarTabela();
-       pddao.criarTabela();
+      
        
        
        
@@ -167,10 +155,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
-      TelaCadastro tlg = new TelaCadastro();
-
-      setVisible(false);
-      tlg.setVisible(true);
+      
       
     }
 
