@@ -13,7 +13,8 @@ import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
 import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
+import com.projetopi.hakuzanloja.view.TelaInicial;
+import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -48,7 +49,6 @@ public class TelaLogin extends javax.swing.JFrame {
         btnValidaLogin = new javax.swing.JButton();
         btnCadastroAbrir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnCriarTodasAsTabelas = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -135,14 +135,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3.setText("Não tem");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, 20));
 
-        btnCriarTodasAsTabelas.setText("Criar todas as tabelas");
-        btnCriarTodasAsTabelas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCriarTodasAsTabelasMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnCriarTodasAsTabelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 768, 416));
 
         setSize(new java.awt.Dimension(768, 416));
@@ -150,31 +142,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
-
-    private void btnCriarTodasAsTabelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarTodasAsTabelasMouseClicked
-       FormaDePagamentoDao pgdao = new FormaDePagamentoDao();
-       CategoriaDao ctdao = new CategoriaDao();
-       PedidoDao pddao = new PedidoDao();
-       ProdutoDao ptdao = new ProdutoDao();
-       NivelDao nvDao =  new NivelDao();
-       ItensPedidoDao peddao = new ItensPedidoDao();
-       
-       pgdao.criarTabela();
-       ctdao.criarTabela();
-       ptdao.criarTabela();
-       nvDao.criarTabela();
-       peddao.criarTabela();
-       pddao.criarTabela();
-       
-       
-       
-    }//GEN-LAST:event_btnCriarTodasAsTabelasMouseClicked
 
     private void btnValidaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidaLoginActionPerformed
         // TODO add your handling code here:
@@ -193,9 +166,10 @@ public class TelaLogin extends javax.swing.JFrame {
             if (reslt.next()){
 
                 // COLOCAR TELA QUE IRA SER ABERTA
+                TelaInicial telaIni = new TelaInicial();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
-                TelaCadastro cad = new TelaCadastro();
-                cad.setVisible(true);
+                this.setVisible(false);
+                telaIni.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(
@@ -218,10 +192,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
-      TelaCadastro tlg = new TelaCadastro();
-
-      setVisible(false);
-      tlg.setVisible(true);
+        TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
+        dispose();
+        tlc.setVisible(true);
+        
       
     }
 
@@ -238,7 +212,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroAbrir;
-    private javax.swing.JToggleButton btnCriarTodasAsTabelas;
     private javax.swing.JButton btnFecharTela;
     private javax.swing.JButton btnValidaLogin;
     private javax.swing.JLabel jLabel1;

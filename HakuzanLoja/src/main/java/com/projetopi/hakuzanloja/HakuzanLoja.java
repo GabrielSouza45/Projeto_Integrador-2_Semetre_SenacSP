@@ -14,7 +14,5 @@ public class HakuzanLoja {
         tlg.setVisible(true);
         
         
-        
-        
     }
 }
