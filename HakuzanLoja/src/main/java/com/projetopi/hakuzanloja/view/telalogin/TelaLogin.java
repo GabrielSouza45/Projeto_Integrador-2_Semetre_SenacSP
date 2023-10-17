@@ -193,7 +193,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
         TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
-        setVisible(false);
+        dispose();
         tlc.setVisible(true);
         
       

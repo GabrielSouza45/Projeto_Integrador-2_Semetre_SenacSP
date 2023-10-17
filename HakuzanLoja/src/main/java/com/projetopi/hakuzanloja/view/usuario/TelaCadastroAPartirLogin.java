@@ -308,7 +308,7 @@ public class TelaCadastroAPartirLogin extends javax.swing.JFrame {
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
         TelaLogin tll = new TelaLogin();
-        setVisible(false);
+        dispose();
         tll.setVisible(true);
         
     }//GEN-LAST:event_btnFecharTelaActionPerformed
