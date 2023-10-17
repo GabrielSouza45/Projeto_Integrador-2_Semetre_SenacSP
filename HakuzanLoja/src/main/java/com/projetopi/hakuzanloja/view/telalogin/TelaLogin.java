@@ -14,7 +14,7 @@ import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
 import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
 import com.projetopi.hakuzanloja.view.TelaInicial;
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
+import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -192,7 +192,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
-      
+        TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
+        setVisible(false);
+        tlc.setVisible(true);
+        
       
     }
 

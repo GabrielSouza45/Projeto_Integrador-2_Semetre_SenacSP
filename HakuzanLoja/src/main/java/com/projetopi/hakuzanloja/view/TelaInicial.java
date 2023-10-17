@@ -4,7 +4,7 @@
  */
 package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastro;
+import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
 
 /**
  *
@@ -109,7 +109,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroProdutoActionPerformed
 
     private void btnCadastroProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroProdutoMouseClicked
-       TelaCadastro tlc = new TelaCadastro();
+       TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
        this.setVisible(false);
        tlc.setVisible(true);
     }//GEN-LAST:event_btnCadastroProdutoMouseClicked
