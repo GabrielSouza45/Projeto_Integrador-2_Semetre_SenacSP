@@ -35,7 +35,7 @@ public class UsuarioDao extends ConectarDao{
         PreparedStatement ps = null;
 
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Banco Criado");
             ps.close();
@@ -51,7 +51,7 @@ public class UsuarioDao extends ConectarDao{
 
         PreparedStatement ps = null;
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Insert sucesso!");
             ps.close();
