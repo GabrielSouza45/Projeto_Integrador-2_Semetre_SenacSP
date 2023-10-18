@@ -1,4 +1,4 @@
-# Projeto Integrador 2º Semetre SenacSP
+# Projeto Integrador 2º Semetre SenacSP - Loja Hakuzan
 Repositório criado para organização e criação do Projeto Integrador do 2º Semestre <br> do curso de Análise e Desenvolvimento de Sistemas no Centro Universitário Senac SP
 
 <h3>Integrantes: </h3>
