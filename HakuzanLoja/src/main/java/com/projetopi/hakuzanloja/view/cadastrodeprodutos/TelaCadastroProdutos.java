@@ -7,6 +7,7 @@ package com.projetopi.hakuzanloja.view.cadastrodeprodutos;
 
 
 import com.projetopi.hakuzanloja.model.produto.Produto;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 
 
 /**
@@ -170,7 +171,9 @@ public class TelaCadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        dispose();        // TODO add your handling code here:
+         TelaInicial telaIni = new TelaInicial();
+           setVisible(false);
+           telaIni.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void txtValorCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorCompraActionPerformed
