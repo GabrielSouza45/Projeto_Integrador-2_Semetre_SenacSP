@@ -5,13 +5,18 @@
 package com.projetopi.hakuzanloja.controler.usuario;
 
 import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
+import com.projetopi.hakuzanloja.model.usuario.Usuario;
+import com.sun.source.tree.TryTree;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class NivelDao extends ConectarDao{
+public class NivelDao extends ConectarDao {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
@@ -51,7 +56,7 @@ public class NivelDao extends ConectarDao{
 
     }
 
-    public ResultSet getNiveis() {
+    public List<Nivel> listarNiveis() {
         String sql = "SELECT * FROM TB_NIVEL";
 
         try {
@@ -59,11 +64,144 @@ public class NivelDao extends ConectarDao{
             PreparedStatement ps = (PreparedStatement)
                     getConexao().prepareStatement(sql);
 
-            return ps.executeQuery();
+            ResultSet res = ps.executeQuery();
 
-        }catch (SQLException err) {
+            List<Nivel> niveis = new ArrayList<>();
+
+            while (res.next()) {
+                Nivel nivel = new Nivel();
+                nivel.setId(res.getLong("PK_ID"));
+                nivel.setDescNiveis(res.getString("DS_NOME"));
+
+                niveis.add(nivel);
+            }
+
+            return niveis;
+
+        } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, err.getMessage());
             return null;
+        }
+    }
+
+    public Nivel buscarNivelPorId(Long id) {
+        String sql = "SELECT * FROM TB_NIVEL WHERE PK_ID = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, id);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Nivel nivel = new Nivel();
+                nivel.setId(res.getLong("PK_ID"));
+                nivel.setDescNiveis(res.getString("DS_NOME"));
+                return nivel;
+            } else {
+                JOptionPane.showMessageDialog(null, "Nível não localizado!");
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Nível. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public void incluirNivel(Nivel nivel) {
+
+        Nivel nivelExists = this.verificarSeNivelExiste(nivel.getDescNiveis());
+        if (nivelExists != null) {
+            JOptionPane.showMessageDialog(null, "Nível já cadastrado!");
+            return;
+        }
+
+        String sql = "INSERT INTO TB_NIVEL (DS_NOME)"
+                + "VALUES (?);";
+
+        try (PreparedStatement ps = (PreparedStatement)
+                getConexao().prepareStatement(sql)) {
+
+            ps.setString(1, nivel.getDescNiveis());
+
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Nível adicionado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar nivel. \n" + err.getMessage());
+        }
+    }
+
+    private Nivel verificarSeNivelExiste(String desc) {
+        String sql = "SELECT * FROM TB_NIVEL WHERE DS_NOME LIKE (?)";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            String descricao = "%" + desc + "%";
+
+            ps.setString(1, descricao);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Nivel nivel = new Nivel();
+                nivel.setId(res.getLong("PK_ID"));
+                nivel.setDescNiveis(res.getString("DS_NOME"));
+                return nivel;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao verificar existencia do Nível. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public void excluirNivel(Nivel nivel) {
+
+        List<Usuario> users = new UsuarioDao().buscarUsuarioPorNivel(nivel);
+        if (!users.isEmpty()) {
+            int opcao = JOptionPane.showOptionDialog(
+                    null,
+                    "Existem usuários utilizando este nível, deseja continuar?",
+                    "Risco de quebra de Banco!",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    new String[]{"Sim", "Não"},
+                    "Não"
+            );
+
+            if (opcao == 1) {
+                return;
+            }
+        }
+
+        String sql = "DELETE FROM TB_NIVEL WHERE PK_ID = ?";
+
+        try (PreparedStatement ps = (PreparedStatement) getConexao().prepareStatement(sql)) {
+
+            ps.setLong(1, nivel.getId());
+
+            int rowCount = ps.executeUpdate();
+
+            if (rowCount > 0) {
+                JOptionPane.showMessageDialog(null, "Nível excluído com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum nível encontrado com o ID fornecido.");
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Nível. \n" +  err.getMessage());
         }
     }
 }

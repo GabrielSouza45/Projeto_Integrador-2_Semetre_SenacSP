@@ -291,7 +291,7 @@ public class TelaCadastroAPartirLogin extends javax.swing.JFrame {
 
     private void btnCadastraUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraUserActionPerformed
        Usuario usuario = new Usuario();
-      // Nivel nivel = combo box nivel
+       Nivel cliente = new Nivel();
        Endereco enderecoCliente = new Endereco();
        
        usuario.setNome(txtNome.getText());
@@ -300,15 +300,9 @@ public class TelaCadastroAPartirLogin extends javax.swing.JFrame {
        usuario.setEmail(txtEmail.getText());
        usuario.setLogin(txtLogin.getText());
        usuario.setSenha(txtPassword.getText());
-      // usuario.setNivel(nivel);
-       usuario.setCep(txtCEP.getText());
-//       usuario.setUf(txtUf.getText());
-//        usuario.setCidade(txtCidade.getText());
-
-
-
-       //nivel.setDescNiveis("Cliente");
-
+       cliente.setDescNiveis("Cliente");
+       usuario.setNivel(cliente);
+       
         
     }//GEN-LAST:event_btnCadastraUserActionPerformed
 

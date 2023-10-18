@@ -5,7 +5,7 @@ import com.projetopi.hakuzanloja.model.niveis.Nivel;
 public class Usuario {
 
     // Atributos Padrão
-    private java.lang.Long id;
+    private Long id;
 
     // Atributos da Entidade
     private String nome;
@@ -34,11 +34,11 @@ public class Usuario {
 
     public Usuario(){}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return id;
     }
 
-    private void setId(java.lang.Long id) {
+    public void setId(java.lang.Long id) {
         this.id = id;
     }
 
