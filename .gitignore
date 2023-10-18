@@ -2,3 +2,7 @@
 /Projeto_Integrador/target/
 /bin/origin/01_desenvolvido
 HakuzanLoja/target
+*.class
+*.class
+*.jar
+*.lst
