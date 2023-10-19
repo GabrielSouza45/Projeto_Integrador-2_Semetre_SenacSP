@@ -5,11 +5,14 @@
 package com.projetopi.hakuzanloja.controler.pedido;
 
 import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.model.pedidos.Pedido;
 import com.projetopi.hakuzanloja.model.produto.Produto;
 
 import javax.swing.*;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class PedidoDao extends ConectarDao{
 
@@ -37,26 +40,28 @@ public class PedidoDao extends ConectarDao{
         }
     }
 
-
-    public void cadastrarProduto(Produto produto) {
+    public void cadastrarPedido(Pedido pedido) {
 
         String sql = "INSERT INTO TB_PEDIDO (DT_PEDIDO, VL_TOTAL , FK_USUARIO)"
-                + "VALUES (?, ?, ?, ?, ?);";
+                + "VALUES (?, ?, ?);";
         try {
             PreparedStatement ps = getConexao().prepareStatement(sql);
-            ps.setString(1, produto.getProduto());
-            ps.setString(2, produto.getDescricao());
-            ps.setDouble(1, produto.getValorCompra());
-            ps.setDouble(1, produto.getValor());
-            ps.setLong(1, produto.getCategoria().getId());
+            ps.setDate(1, (Date) pedido.getData());
+            ps.setDouble(2, pedido.getValorTotal());
+            ps.setLong(3, pedido.getUsuario().getId());
+
             ps.execute();
             ps.close();
 
             JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!");
 
         } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar Produto. " + err.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar Produto. \n" + err.getMessage());
         }
     }
+
+
+
+
 
 }

@@ -5,12 +5,17 @@
 package com.projetopi.hakuzanloja.controler.produto;
 
 import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
 import com.projetopi.hakuzanloja.model.produto.Categoria;
 import com.projetopi.hakuzanloja.model.produto.Produto;
+import com.projetopi.hakuzanloja.model.usuario.Usuario;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CategoriaDao extends ConectarDao{
 
@@ -53,6 +58,12 @@ public class CategoriaDao extends ConectarDao{
 
     public void cadastrarCategoria(Categoria categoria){
 
+        Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
+        if (cat != null) {
+            JOptionPane.showMessageDialog(null, "Categoria já cadastrada!");
+            return;
+        }
+
         String sql =   "INSERT INTO TB_CATEGORIA (DS_TIPO)"
                 + "VALUES (?)";
         try {
@@ -68,4 +79,97 @@ public class CategoriaDao extends ConectarDao{
         }
     }
 
+    public void editarCategoria(Categoria categoria) {
+
+        Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
+        if (cat != null) {
+            JOptionPane.showMessageDialog(null, "Categoria já cadastrada!");
+            return;
+        }
+
+        String sql = "UPDATE TB_CATEGORIA SET DS_TIPO = ? WHERE PK_ID = ?";
+
+        try (PreparedStatement ps = (PreparedStatement)
+                getConexao().prepareStatement(sql)) {
+
+            ps.setString(1, categoria.getCategoria());
+            ps.setLong(2, categoria.getId());
+
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Categoria editado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar categoria. \n" + err.getMessage());
+        }
+    }
+
+    private Categoria verificarSeCategoriaExiste(String tipo) {
+        String sql = "SELECT * FROM TB_CATEGORIA WHERE DS_TIPO LIKE (?)";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            String item = "%" + tipo + "%";
+
+            ps.setString(1, item);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Categoria cat = new Categoria();
+                cat.setId(res.getLong("PK_ID"));
+                cat.setCategoria(res.getString("DS_TIPO"));
+                return cat;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao verificar existencia da categoria. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+
+    public void excluirCategoria(Categoria categoria) {
+
+        List<Produto> produtos = new ProdutoDao().buscarProdutosPorCategoria(categoria);
+        if (!produtos.isEmpty()) {
+            int opcao = JOptionPane.showOptionDialog(
+                    null,
+                    "Existem produtos utilizando esta categoria, deseja continuar?",
+                    "Risco de quebra de Banco!",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    new String[]{"Sim", "Não"},
+                    "Não"
+            );
+
+            if (opcao == 1) {
+                return;
+            }
+        }
+
+        String sql = "DELETE FROM TB_CATEGORIA WHERE PK_ID = ?";
+
+        try (PreparedStatement ps = (PreparedStatement) getConexao().prepareStatement(sql)) {
+
+            ps.setLong(1, categoria.getId());
+
+            int rowCount = ps.executeUpdate();
+
+            if (rowCount > 0) {
+                JOptionPane.showMessageDialog(null, "Categoria excluída com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma categoria encontrado com o ID fornecido.");
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Categoria. \n" +  err.getMessage());
+        }
+    }
 }

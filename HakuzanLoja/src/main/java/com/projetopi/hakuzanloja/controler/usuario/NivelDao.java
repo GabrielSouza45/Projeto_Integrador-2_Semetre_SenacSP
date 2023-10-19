@@ -42,7 +42,7 @@ public class NivelDao extends ConectarDao {
     public void insertInicial() {
 
         String sql = "INSERT INTO TB_NIVEL (DS_NOME)"
-                + "VALUES ('Nível 1');";
+                + "VALUES ('Admin');";
 
         PreparedStatement ps = null;
         try {
@@ -134,6 +134,31 @@ public class NivelDao extends ConectarDao {
 
         } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar nivel. \n" + err.getMessage());
+        }
+    }
+
+    public void editarNivel(Nivel nivel) {
+
+        Nivel nivelExists = this.verificarSeNivelExiste(nivel.getDescNiveis());
+        if (nivelExists != null) {
+            JOptionPane.showMessageDialog(null, "Nível já cadastrado!");
+            return;
+        }
+
+        String sql = "UPDATE TB_NIVEL SET DS_NOME = ? WHERE PK_ID = ?";
+
+        try (PreparedStatement ps = (PreparedStatement)
+                getConexao().prepareStatement(sql)) {
+
+            ps.setString(1, nivel.getDescNiveis());
+            ps.setLong(2, nivel.getId());
+
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Nível editado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar nivel. \n" + err.getMessage());
         }
     }
 
