@@ -260,13 +260,13 @@ public class UsuarioDao extends ConectarDao{
         }
     }
 
-    public void deletarUsuario(Long id){
+    public void deletarUsuario(Usuario user){
 
         String sql = "DELETE FROM TB_USUARIO WHERE PK_ID = ?";
 
         try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
 
-            ps.setLong(1, id);
+            ps.setLong(1, user.getId());
             int rowCount = ps.executeUpdate();
 
             if (rowCount > 0) {
