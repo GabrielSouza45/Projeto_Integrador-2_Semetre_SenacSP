@@ -82,6 +82,12 @@ public class UsuarioDao extends ConectarDao{
 
     public void incluir(Usuario user) {
 
+        Usuario usuario = this.verificarExistenciaUsuarioPorEmailouLogin(user);
+        if (usuario != null){
+            JOptionPane.showMessageDialog(null, "Email ou Login já cadastrados.");
+            return;
+        }
+
         String sql = "INSERT INTO TB_USUARIO (DS_LOGIN, DS_SENHA, NR_TELEFONE, DS_CEP, DS_UF, DS_CIDADE, DS_BAIRRO, DS_LOGRADOURO, NR_LOGRADOURO, DS_NOME, DS_EMAIL, NR_CPFCNPJ, FK_NIVEL)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try{
@@ -107,6 +113,77 @@ public class UsuarioDao extends ConectarDao{
             JOptionPane.showMessageDialog(null, "Erro ao adicionar usuário. " + err.getMessage());
         }
 
+    }
+
+    public void editarUsuario(Usuario usuario) {
+
+        Usuario user = this.verificarExistenciaUsuarioPorEmailouLogin(usuario);
+        if (user != null){
+            JOptionPane.showMessageDialog(null, "Email ou Login já cadastrados.");
+            return;
+        }
+
+        String sql = "UPDATE TB_USUARIO SET DS_LOGIN = ?, DS_SENHA = ?, NR_TELEFONE = ?, " +
+                "DS_CEP = ?, DS_UF = ?, DS_CIDADE = ?, DS_BAIRRO = ?, DS_LOGRADOURO = ?, " +
+                "NR_LOGRADOURO = ?, DS_NOME = ?, DS_EMAIL = ?, NR_CPFCNPJ = ?, FK_NIVEL = ? " +
+                "WHERE PK_ID = ?";
+
+        try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
+
+            ps.setString(1, usuario.getLogin());
+            ps.setString(2, usuario.getSenha());
+            ps.setString(3, usuario.getTelefone());
+            ps.setString(4, usuario.getCep());
+            ps.setString(5, usuario.getUf());
+            ps.setString(6, usuario.getCidade());
+            ps.setString(7, usuario.getBairro());
+            ps.setString(8, usuario.getLogradouro());
+            ps.setString(9, usuario.getNumero());
+            ps.setString(10, usuario.getNome());
+            ps.setString(11, usuario.getEmail());
+            ps.setString(12, usuario.getDocumento());
+            ps.setLong(13, usuario.getNivel().getId());
+            ps.setLong(14, usuario.getId());
+
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar usuário. \n" + err.getMessage());
+        }
+    }
+
+
+    private Usuario verificarExistenciaUsuarioPorEmailouLogin(Usuario user){
+        String sql = "SELECT * FROM TB_USUARIO " +
+                "WHERE DS_LOGIN LIKE (?) " +
+                "OR DS_EMAIL LIKE (?) ";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            String login = "%" + user.getLogin() + "%";
+            String email = "%" + user.getEmail() + "%";
+            ps.setString(1, login);
+            ps.setString(2, email);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(res.getLong("PK_ID"));
+                usuario.setNome(res.getString("DS_NOME"));
+                return usuario;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao verificar existencia do Nível. \n" + err.getMessage());
+            return null;
+        }
     }
 
     public Usuario buscarUsuarioPorEmail(String email){
@@ -226,37 +303,6 @@ public class UsuarioDao extends ConectarDao{
         }catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
             return null;
-        }
-    }
-
-    public void editarUsuario(Usuario usuario) {
-        String sql = "UPDATE TB_USUARIO SET DS_LOGIN = ?, DS_SENHA = ?, NR_TELEFONE = ?, " +
-                "DS_CEP = ?, DS_UF = ?, DS_CIDADE = ?, DS_BAIRRO = ?, DS_LOGRADOURO = ?, " +
-                "NR_LOGRADOURO = ?, DS_NOME = ?, DS_EMAIL = ?, NR_CPFCNPJ = ?, FK_NIVEL = ? " +
-                "WHERE PK_ID = ?";
-
-        try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
-
-            ps.setString(1, usuario.getLogin());
-            ps.setString(2, usuario.getSenha());
-            ps.setString(3, usuario.getTelefone());
-            ps.setString(4, usuario.getCep());
-            ps.setString(5, usuario.getUf());
-            ps.setString(6, usuario.getCidade());
-            ps.setString(7, usuario.getBairro());
-            ps.setString(8, usuario.getLogradouro());
-            ps.setString(9, usuario.getNumero());
-            ps.setString(10, usuario.getNome());
-            ps.setString(11, usuario.getEmail());
-            ps.setString(12, usuario.getDocumento());
-            ps.setLong(13, usuario.getNivel().getId());
-            ps.setLong(14, usuario.getId());
-
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
-
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar usuário. \n" + err.getMessage());
         }
     }
 
