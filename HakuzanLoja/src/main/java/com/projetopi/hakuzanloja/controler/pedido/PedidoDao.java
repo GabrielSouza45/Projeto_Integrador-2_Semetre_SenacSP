@@ -5,11 +5,13 @@
 package com.projetopi.hakuzanloja.controler.pedido;
 
 import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.model.produto.Produto;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class PedidoDao {
+public class PedidoDao extends ConectarDao{
 
 
     /*Criação de tabela para caso o db atual dê problema*/
@@ -26,12 +28,34 @@ public class PedidoDao {
         PreparedStatement ps = null;
 
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Banco Criado");
             ps.close();
         } catch (SQLException erro) {
             erro.printStackTrace();
+        }
+    }
+
+
+    public void cadastrarProduto(Produto produto) {
+
+        String sql = "INSERT INTO TB_PEDIDO (DT_PEDIDO, VL_TOTAL , FK_USUARIO)"
+                + "VALUES (?, ?, ?, ?, ?);";
+        try {
+            PreparedStatement ps = getConexao().prepareStatement(sql);
+            ps.setString(1, produto.getProduto());
+            ps.setString(2, produto.getDescricao());
+            ps.setDouble(1, produto.getValorCompra());
+            ps.setDouble(1, produto.getValor());
+            ps.setLong(1, produto.getCategoria().getId());
+            ps.execute();
+            ps.close();
+
+            JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar Produto. " + err.getMessage());
         }
     }
 

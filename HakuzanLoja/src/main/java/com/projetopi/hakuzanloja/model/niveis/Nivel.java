@@ -4,7 +4,6 @@ public class Nivel {
 
     // Atributos Padrão
     private Long id;
-    private int inativo;
 
     // Atributos da Entidade
     private String descNiveis;
@@ -15,14 +14,6 @@ public class Nivel {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getInativo() {
-        return inativo;
-    }
-
-    public void setInativo(int inativo) {
-        this.inativo = inativo;
     }
 
     public String getDescNiveis() {
