@@ -122,8 +122,10 @@ public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
 
         Usuario user = this.verificarExistenciaUsuarioPorEmailouLogin(usuario);
         if (user != null){
-            JOptionPane.showMessageDialog(null, "Email ou Login já cadastrados.");
-            return;
+            if (!usuario.getId().equals(user.getId())){
+                JOptionPane.showMessageDialog(null, "Email ou Login já cadastrados.");
+                return;
+            }
         }
 
         String sql = "UPDATE TB_USUARIO SET DS_LOGIN = ?, DS_SENHA = ?, NR_TELEFONE = ?, " +
