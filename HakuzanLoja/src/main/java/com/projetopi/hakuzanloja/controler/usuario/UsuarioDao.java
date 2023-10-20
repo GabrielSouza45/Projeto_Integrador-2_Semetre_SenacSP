@@ -5,8 +5,8 @@
 package com.projetopi.hakuzanloja.controler.usuario;
 
 
-import controler.ConectarDao;
-import model.Nivel;
+import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
 
 import javax.swing.*;

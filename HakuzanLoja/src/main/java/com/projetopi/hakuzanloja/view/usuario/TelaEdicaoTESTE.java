@@ -6,10 +6,10 @@ package com.projetopi.hakuzanloja.view.usuario;
 
 import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import model.Nivel;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
 import com.projetopi.hakuzanloja.model.usuario.Endereco;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import view.TelaInicial;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 
 import javax.swing.*;

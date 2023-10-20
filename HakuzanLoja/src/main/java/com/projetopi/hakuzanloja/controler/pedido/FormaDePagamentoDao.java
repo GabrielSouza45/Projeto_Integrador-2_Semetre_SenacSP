@@ -4,7 +4,7 @@
  */
 package com.projetopi.hakuzanloja.controler.pedido;
 
-import controler.ConectarDao;
+import com.projetopi.hakuzanloja.controler.ConectarDao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

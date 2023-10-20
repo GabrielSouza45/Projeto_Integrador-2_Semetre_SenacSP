@@ -7,7 +7,7 @@ package com.projetopi.hakuzanloja.view.cadastrodeprodutos;
 
 
 import com.projetopi.hakuzanloja.model.produto.Produto;
-import view.TelaInicial;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 
 
 /**

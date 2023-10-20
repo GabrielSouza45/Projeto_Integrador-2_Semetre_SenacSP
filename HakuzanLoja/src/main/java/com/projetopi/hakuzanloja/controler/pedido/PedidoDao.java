@@ -4,7 +4,7 @@
  */
 package com.projetopi.hakuzanloja.controler.pedido;
 
-import controler.ConectarDao;
+import com.projetopi.hakuzanloja.controler.ConectarDao;
 import com.projetopi.hakuzanloja.model.pedidos.Pedido;
 import com.projetopi.hakuzanloja.model.produto.Produto;
 

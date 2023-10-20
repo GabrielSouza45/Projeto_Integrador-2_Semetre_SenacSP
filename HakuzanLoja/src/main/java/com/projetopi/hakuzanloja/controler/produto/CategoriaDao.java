@@ -4,9 +4,9 @@
  */
 package com.projetopi.hakuzanloja.controler.produto;
 
-import controler.ConectarDao;
+import com.projetopi.hakuzanloja.controler.ConectarDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import model.Nivel;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
 import com.projetopi.hakuzanloja.model.produto.Categoria;
 import com.projetopi.hakuzanloja.model.produto.Produto;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;

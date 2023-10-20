@@ -13,7 +13,7 @@ import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
 import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import view.TelaInicial;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
 
 import javax.swing.*;

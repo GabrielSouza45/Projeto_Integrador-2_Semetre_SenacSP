@@ -4,10 +4,10 @@
  */
 package com.projetopi.hakuzanloja.view.usuario;
 
-import model.Nivel;
+import com.projetopi.hakuzanloja.model.niveis.Nivel;
 import com.projetopi.hakuzanloja.model.usuario.Endereco;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import view.TelaInicial;
+import com.projetopi.hakuzanloja.view.TelaInicial;
 import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
 
 
