@@ -4,8 +4,8 @@
  */
 package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.controler.NivelDao;
-import com.projetopi.hakuzanloja.controler.UsuarioDao;
+import com.projetopi.hakuzanloja.controller.NivelDao;
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
 
@@ -31,7 +31,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
 
     private void carregaComboNivel() {
         cbxNiveis.removeAllItems(); // inicia combo vazio para evitar repetições
-        List<Nivel> niveis = new NivelDao().listarNiveis();
+        List<Nivel> niveis = new NivelDao().listarTodos();
         for (Nivel nivel : niveis) {
             cbxNiveis.addItem(nivel);
         }
@@ -490,7 +490,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
 //        Deletar Nivel selecionado na comboBox: {
             Nivel nivel = (Nivel) cbxNiveis.getSelectedItem();
             NivelDao dao = new NivelDao();
-            dao.excluirNivel(nivel);
+            dao.excluir(nivel);
             carregaComboNivel();
 //        }
 

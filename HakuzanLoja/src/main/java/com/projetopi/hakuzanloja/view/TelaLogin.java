@@ -5,7 +5,7 @@
 package com.projetopi.hakuzanloja.view;
 
 
-import com.projetopi.hakuzanloja.controler.UsuarioDao;
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
 
 import javax.swing.*;
 import java.sql.ResultSet;

@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler;
+package com.projetopi.hakuzanloja.controller;
 
 import java.sql.*;
-
-import javax.swing.JOptionPane;
 
 public class ConectarDao {
     private final static String url = "jdbc:mysql://root:h5pkT1OsE1LU224ALtoV@containers-us-west-91.railway.app:7667/railway";

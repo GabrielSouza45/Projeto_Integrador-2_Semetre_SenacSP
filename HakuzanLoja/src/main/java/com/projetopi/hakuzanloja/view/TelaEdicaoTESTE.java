@@ -4,8 +4,8 @@
  */
 package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.controler.NivelDao;
-import com.projetopi.hakuzanloja.controler.UsuarioDao;
+import com.projetopi.hakuzanloja.controller.NivelDao;
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
 
@@ -520,7 +520,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
 //        Deletar Nivel selecionado na comboBox: {
             Nivel nivel = (Nivel) cbxNiveis.getSelectedItem();
             NivelDao dao = new NivelDao();
-            dao.excluirNivel(nivel);
+            dao.excluir(nivel);
             carregaComboNivel();
 //        }
 
