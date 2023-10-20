@@ -32,17 +32,31 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
-        jPanel1 = new javax.swing.JPanel();
-        btnCadastroProduto = new javax.swing.JButton();
         btnCriarTodasTabelas = new javax.swing.JButton();
+        btnCadastroProduto = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnuArquivo = new javax.swing.JMenu();
+        mnuArquivoClientes = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuArquivoUsuarios = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnuArquivoTrocarUsuario = new javax.swing.JMenuItem();
+        mnuArquivoSair = new javax.swing.JMenuItem();
+        mnuMovimento = new javax.swing.JMenu();
+        mnuMovimentoRelatorio = new javax.swing.JMenuItem();
+        mnuAjuda = new javax.swing.JMenu();
+        mnuAjudaSobre = new javax.swing.JMenuItem();
+        mnuAjudaAjuda = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(765, 416));
-        setResizable(false);
-
-        jPanel1.setMinimumSize(new java.awt.Dimension(765, 416));
+        btnCriarTodasTabelas.setText("Criar todas as tabelas");
+        btnCriarTodasTabelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarTodasTabelasActionPerformed(evt);
+            }
+        });
 
         btnCadastroProduto.setBorder(null);
         btnCadastroProduto.setFocusPainted(false);
@@ -57,52 +71,115 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        btnCriarTodasTabelas.setText("Criar todas as tabelas");
-        btnCriarTodasTabelas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarTodasTabelasActionPerformed(evt);
-            }
-        });
+        jPanel1.setMinimumSize(new java.awt.Dimension(765, 416));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(615, Short.MAX_VALUE)
-                .addComponent(btnCriarTodasTabelas)
-                .addContainerGap())
+            .addGap(0, 765, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(btnCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
-                .addComponent(btnCriarTodasTabelas)
-                .addContainerGap())
+            .addGap(0, 416, Short.MAX_VALUE)
         );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home Administrador ");
+        setMinimumSize(new java.awt.Dimension(765, 416));
+        setResizable(false);
+
+        mnuArquivo.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
+        mnuArquivo.setText("Arquivo");
+
+        mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoClientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
+        mnuArquivoClientes.setText("Clientes");
+        mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivoClientesActionPerformed(evt);
+            }
+        });
+        mnuArquivo.add(mnuArquivoClientes);
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
+        jMenuItem2.setText("Produtos");
+        mnuArquivo.add(jMenuItem2);
+
+        mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoUsuarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
+        mnuArquivoUsuarios.setText("Uusuarios");
+        mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuArquivoUsuariosMouseClicked(evt);
+            }
+        });
+        mnuArquivoUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivoUsuariosActionPerformed(evt);
+            }
+        });
+        mnuArquivo.add(mnuArquivoUsuarios);
+        mnuArquivo.add(jSeparator1);
+
+        mnuArquivoTrocarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoTrocarUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
+        mnuArquivoTrocarUsuario.setText("Trocar Usuario");
+        mnuArquivo.add(mnuArquivoTrocarUsuario);
+
+        mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
+        mnuArquivoSair.setText("Sair");
+        mnuArquivo.add(mnuArquivoSair);
+
+        jMenuBar1.add(mnuArquivo);
+
+        mnuMovimento.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
+        mnuMovimento.setText("Movimento");
+
+        mnuMovimentoRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuMovimentoRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
+        mnuMovimentoRelatorio.setText("Relatorio de Vendas");
+        mnuMovimento.add(mnuMovimentoRelatorio);
+
+        jMenuBar1.add(mnuMovimento);
+
+        mnuAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
+        mnuAjuda.setText("Ajuda");
+
+        mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuAjudaSobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
+        mnuAjudaSobre.setText("Sobre");
+        mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAjudaSobreActionPerformed(evt);
+            }
+        });
+        mnuAjuda.add(mnuAjudaSobre);
+
+        mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
+        mnuAjudaAjuda.setText("Ajuda");
+        mnuAjuda.add(mnuAjudaAjuda);
+
+        jMenuBar1.add(mnuAjuda);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 765, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 352, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroProdutoActionPerformed
@@ -122,6 +199,27 @@ public class TelaInicial extends javax.swing.JFrame {
     private void btnCriarTodasTabelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTodasTabelasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCriarTodasTabelasActionPerformed
+
+    private void mnuArquivoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuArquivoClientesActionPerformed
+
+    private void mnuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaSobreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAjudaSobreActionPerformed
+
+    private void mnuArquivoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMouseClicked
+        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        this.setVisible(false);
+        tlL.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_mnuArquivoUsuariosMouseClicked
+
+    private void mnuArquivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosActionPerformed
+        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        dispose();
+        tlL.setVisible(true);
+    }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,8 +260,21 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu mnuAjuda;
+    private javax.swing.JMenuItem mnuAjudaAjuda;
+    private javax.swing.JMenuItem mnuAjudaSobre;
+    private javax.swing.JMenu mnuArquivo;
+    private javax.swing.JMenuItem mnuArquivoClientes;
+    private javax.swing.JMenuItem mnuArquivoSair;
+    private javax.swing.JMenuItem mnuArquivoTrocarUsuario;
+    private javax.swing.JMenuItem mnuArquivoUsuarios;
+    private javax.swing.JMenu mnuMovimento;
+    private javax.swing.JMenuItem mnuMovimentoRelatorio;
     // End of variables declaration//GEN-END:variables
 }

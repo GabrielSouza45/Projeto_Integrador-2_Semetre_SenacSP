@@ -5,33 +5,35 @@ package com.projetopi.hakuzanloja.model.pedidos;
 import com.projetopi.hakuzanloja.model.pagamento.FormaPagamento;
 import com.projetopi.hakuzanloja.model.usuario.Usuario;
 
+import java.util.Date;
+
 
 public class Pedido {
     // Atributos Padrão
     private Long id;
-    private int inativo;
 
     // Atributos da Entidade
     private FormaPagamento pagamento;
     private Usuario usuario;
-    private String data;
-    private String Status;
+    private ItemPedido itemPedido;
+    private Date data;
     private double valorTotal;
 
-    public String getData() {
+    public ItemPedido getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(ItemPedido itemPedido) {
+        this.itemPedido = itemPedido;
+    }
+
+    public Date getData() {
+
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
     }
 
     public double getValorTotal() {
@@ -59,14 +61,6 @@ public class Pedido {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getInativo() {
-        return inativo;
-    }
-
-    public void setInativo(int inativo) {
-        this.inativo = inativo;
     }
 
     public FormaPagamento getPagamento() {
