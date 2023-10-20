@@ -15,6 +15,13 @@ public class Pedido {
     // Atributos da Entidade
     private FormaPagamento pagamento;
     private Usuario usuario;
+<<<<<<< HEAD
+    private String data;
+    private String Status;
+    private double valorTotal;
+
+    public String getData() {
+=======
     private ItemPedido itemPedido;
     private Date data;
     private double valorTotal;
@@ -28,7 +35,7 @@ public class Pedido {
     }
 
     public Date getData() {
-
+>>>>>>> origin/01_desenvolvido
         return data;
     }
 
