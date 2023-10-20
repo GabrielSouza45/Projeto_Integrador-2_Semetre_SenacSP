@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.produto;
+package com.projetopi.hakuzanloja.controler;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
-import com.projetopi.hakuzanloja.model.produto.Categoria;
-import com.projetopi.hakuzanloja.model.produto.Produto;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
+import com.projetopi.hakuzanloja.model.Categoria;
+import com.projetopi.hakuzanloja.model.Produto;
+import com.projetopi.hakuzanloja.model.Usuario;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;

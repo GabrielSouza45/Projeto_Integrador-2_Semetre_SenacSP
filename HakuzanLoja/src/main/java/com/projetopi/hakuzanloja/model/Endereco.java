@@ -1,4 +1,4 @@
-package com.projetopi.hakuzanloja.model.usuario;
+package com.projetopi.hakuzanloja.model;
 
 public class Endereco {
 

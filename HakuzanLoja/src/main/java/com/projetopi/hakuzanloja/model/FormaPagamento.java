@@ -1,8 +1,6 @@
 
 
-package com.projetopi.hakuzanloja.model.pagamento;
-
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
+package com.projetopi.hakuzanloja.model;
 
 public class FormaPagamento {
     // Atributos Padrão

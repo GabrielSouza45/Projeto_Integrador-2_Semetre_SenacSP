@@ -1,9 +1,6 @@
 
-package com.projetopi.hakuzanloja.model.pedidos;
+package com.projetopi.hakuzanloja.model;
 
-
-import com.projetopi.hakuzanloja.model.pagamento.FormaPagamento;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
 
 import java.util.Date;
 

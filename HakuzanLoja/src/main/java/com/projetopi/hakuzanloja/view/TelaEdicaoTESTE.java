@@ -2,19 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.usuario;
+package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
-import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import com.projetopi.hakuzanloja.model.niveis.Nivel;
-import com.projetopi.hakuzanloja.model.usuario.Endereco;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import com.projetopi.hakuzanloja.view.TelaInicial;
-import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
+import com.projetopi.hakuzanloja.controler.NivelDao;
+import com.projetopi.hakuzanloja.controler.UsuarioDao;
+import com.projetopi.hakuzanloja.model.Nivel;
+import com.projetopi.hakuzanloja.model.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 

@@ -1,4 +1,4 @@
-package com.projetopi.hakuzanloja.model.niveis;
+package com.projetopi.hakuzanloja.model;
 
 public class Nivel {
 

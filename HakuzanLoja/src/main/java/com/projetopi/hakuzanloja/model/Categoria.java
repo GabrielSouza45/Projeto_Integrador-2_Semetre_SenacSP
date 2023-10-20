@@ -1,5 +1,5 @@
 
-package com.projetopi.hakuzanloja.model.produto;
+package com.projetopi.hakuzanloja.model;
 
 public class Categoria {
 
