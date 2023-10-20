@@ -5,12 +5,12 @@
 package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.ItemPedido;
-import com.projetopi.hakuzanloja.repository.Crud;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ItensPedidoDao extends ConectarDao implements Crud<ItemPedido> {
+public class ItensPedidoDao extends ConectarDao implements CrudDao<ItemPedido> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/

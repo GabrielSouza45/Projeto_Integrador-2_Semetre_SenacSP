@@ -21,7 +21,7 @@ import java.util.List;
 public class TelaEdicaoTESTE extends javax.swing.JFrame {
 
     private Usuario usuarioEditar;
-    private List<Nivel> niveis = new NivelDao().listarNiveis();
+    private List<Nivel> niveis = new NivelDao().listarTodos();
 
     /**
      * Creates new form TelaCadastro
@@ -507,7 +507,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         }
 
         UsuarioDao dao = new UsuarioDao();
-        dao.incluir(usuario);
+        dao.cadastrar(usuario);
 
     }//GEN-LAST:event_btnCadastraUserMouseClicked
 
@@ -543,7 +543,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
 
         UsuarioDao dao = new UsuarioDao();
-        List<Usuario> users = dao.listarTodosUsuarios();
+        List<Usuario> users = dao.listarTodos();
 
         for (Usuario us : users){ // Botar numa tabela
             System.out.println(us.getId()+"\n " + us.getNome()+"\n " + us.getEmail()+"\n " + (us.getNivel() != null ? us.getNivel().getDescNiveis() : ""));
@@ -602,7 +602,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         }
 
         UsuarioDao dao = new UsuarioDao();
-        dao.editarUsuario(this.usuarioEditar);
+        dao.editar(this.usuarioEditar);
 
         limparCampos(this.getContentPane());
 

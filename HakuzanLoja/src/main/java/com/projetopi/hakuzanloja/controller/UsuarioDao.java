@@ -7,6 +7,7 @@ package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.*;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UsuarioDao extends ConectarDao{
+public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_USUARIO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -79,7 +81,8 @@ public class UsuarioDao extends ConectarDao{
         }
     }
 
-    public void incluir(Usuario user) {
+    @Override
+    public void cadastrar(Usuario user) {
 
         Usuario usuario = this.verificarExistenciaUsuarioPorEmailouLogin(user);
         if (usuario != null){
@@ -114,7 +117,8 @@ public class UsuarioDao extends ConectarDao{
 
     }
 
-    public void editarUsuario(Usuario usuario) {
+    @Override
+    public void editar(Usuario usuario) {
 
         Usuario user = this.verificarExistenciaUsuarioPorEmailouLogin(usuario);
         if (user != null){
@@ -264,7 +268,7 @@ public class UsuarioDao extends ConectarDao{
         }
     }
 
-    public List<Usuario> listarTodosUsuarios(){
+    public List<Usuario> listarTodos(){
         String sql = "SELECT * FROM TB_USUARIO ORDER BY DS_NOME ASC";
 
         try {
@@ -305,7 +309,8 @@ public class UsuarioDao extends ConectarDao{
         }
     }
 
-    public void deletarUsuario(Usuario user){
+    @Override
+    public void excluir(Usuario user){
 
         String sql = "DELETE FROM TB_USUARIO WHERE PK_ID = ?";
 

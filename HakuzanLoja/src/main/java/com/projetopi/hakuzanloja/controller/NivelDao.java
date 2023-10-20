@@ -6,7 +6,7 @@ package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
-import com.projetopi.hakuzanloja.repository.Crud;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NivelDao extends ConectarDao implements Crud<Nivel> {
+public class NivelDao extends ConectarDao implements CrudDao<Nivel> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/

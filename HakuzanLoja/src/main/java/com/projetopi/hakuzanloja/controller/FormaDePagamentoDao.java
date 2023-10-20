@@ -5,12 +5,12 @@
 package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.FormaPagamento;
-import com.projetopi.hakuzanloja.repository.Crud;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FormaDePagamentoDao implements Crud<FormaPagamento> {
+public class FormaDePagamentoDao implements CrudDao<FormaPagamento> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
