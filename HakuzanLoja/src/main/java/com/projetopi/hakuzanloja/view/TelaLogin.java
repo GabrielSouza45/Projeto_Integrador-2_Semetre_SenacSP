@@ -2,19 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.telalogin;
+package com.projetopi.hakuzanloja.view;
 
 
-import com.mysql.cj.protocol.Resultset;
-import com.projetopi.hakuzanloja.controler.pedido.FormaDePagamentoDao;
-import com.projetopi.hakuzanloja.controler.pedido.ItensPedidoDao;
-import com.projetopi.hakuzanloja.controler.pedido.PedidoDao;
-import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
-import com.projetopi.hakuzanloja.controler.produto.CategoriaDao;
-import com.projetopi.hakuzanloja.controler.produto.ProdutoDao;
-import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import com.projetopi.hakuzanloja.view.TelaInicial;
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
+import com.projetopi.hakuzanloja.controler.UsuarioDao;
 
 import javax.swing.*;
 import java.sql.ResultSet;
