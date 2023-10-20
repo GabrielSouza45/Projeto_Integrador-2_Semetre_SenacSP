@@ -36,18 +36,18 @@ public class TelaInicial extends javax.swing.JFrame {
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnuArquivo = new javax.swing.JMenu();
+        mnuArquivoClientes = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mnuArquivoUsuarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mnuArquivoTrocarUsuario = new javax.swing.JMenuItem();
+        mnuArquivoSair = new javax.swing.JMenuItem();
+        mnuMovimento = new javax.swing.JMenu();
+        mnuMovimentoRelatorio = new javax.swing.JMenuItem();
+        mnuAjuda = new javax.swing.JMenu();
+        mnuAjudaSobre = new javax.swing.JMenuItem();
+        mnuAjudaAjuda = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -89,71 +89,81 @@ public class TelaInicial extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
-        jMenu2.setText("Arquivo");
+        mnuArquivo.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
+        mnuArquivo.setText("Arquivo");
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
-        jMenuItem1.setText("Clientes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoClientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
+        mnuArquivoClientes.setText("Clientes");
+        mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuArquivoClientesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        mnuArquivo.add(mnuArquivoClientes);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
         jMenuItem2.setText("Produtos");
-        jMenu2.add(jMenuItem2);
+        mnuArquivo.add(jMenuItem2);
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
-        jMenuItem3.setText("Uusuarios");
-        jMenu2.add(jMenuItem3);
-        jMenu2.add(jSeparator1);
-
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
-        jMenuItem4.setText("Trocar Usuario");
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
-        jMenuItem5.setText("Sair");
-        jMenu2.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
-        jMenu3.setText("Movimento");
-
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
-        jMenuItem6.setText("Relatorio de Vendas");
-        jMenu3.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
-        jMenu4.setText("Ajuda");
-
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
-        jMenuItem7.setText("Sobre");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+        mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoUsuarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
+        mnuArquivoUsuarios.setText("Uusuarios");
+        mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuArquivoUsuariosMouseClicked(evt);
             }
         });
-        jMenu4.add(jMenuItem7);
+        mnuArquivoUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivoUsuariosActionPerformed(evt);
+            }
+        });
+        mnuArquivo.add(mnuArquivoUsuarios);
+        mnuArquivo.add(jSeparator1);
 
-        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Documents\\GitHub\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
-        jMenuItem8.setText("Ajuda");
-        jMenu4.add(jMenuItem8);
+        mnuArquivoTrocarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoTrocarUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
+        mnuArquivoTrocarUsuario.setText("Trocar Usuario");
+        mnuArquivo.add(mnuArquivoTrocarUsuario);
 
-        jMenuBar1.add(jMenu4);
+        mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuArquivoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
+        mnuArquivoSair.setText("Sair");
+        mnuArquivo.add(mnuArquivoSair);
+
+        jMenuBar1.add(mnuArquivo);
+
+        mnuMovimento.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
+        mnuMovimento.setText("Movimento");
+
+        mnuMovimentoRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuMovimentoRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
+        mnuMovimentoRelatorio.setText("Relatorio de Vendas");
+        mnuMovimento.add(mnuMovimentoRelatorio);
+
+        jMenuBar1.add(mnuMovimento);
+
+        mnuAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
+        mnuAjuda.setText("Ajuda");
+
+        mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuAjudaSobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
+        mnuAjudaSobre.setText("Sobre");
+        mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAjudaSobreActionPerformed(evt);
+            }
+        });
+        mnuAjuda.add(mnuAjudaSobre);
+
+        mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
+        mnuAjudaAjuda.setText("Ajuda");
+        mnuAjuda.add(mnuAjudaAjuda);
+
+        jMenuBar1.add(mnuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -165,7 +175,7 @@ public class TelaInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addGap(0, 352, Short.MAX_VALUE)
         );
 
         pack();
@@ -190,13 +200,26 @@ public class TelaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCriarTodasTabelasActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuArquivoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuArquivoClientesActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void mnuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaSobreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_mnuAjudaSobreActionPerformed
+
+    private void mnuArquivoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMouseClicked
+        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        this.setVisible(false);
+        tlL.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_mnuArquivoUsuariosMouseClicked
+
+    private void mnuArquivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosActionPerformed
+        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        dispose();
+        tlL.setVisible(true);
+    }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,21 +260,21 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu mnuAjuda;
+    private javax.swing.JMenuItem mnuAjudaAjuda;
+    private javax.swing.JMenuItem mnuAjudaSobre;
+    private javax.swing.JMenu mnuArquivo;
+    private javax.swing.JMenuItem mnuArquivoClientes;
+    private javax.swing.JMenuItem mnuArquivoSair;
+    private javax.swing.JMenuItem mnuArquivoTrocarUsuario;
+    private javax.swing.JMenuItem mnuArquivoUsuarios;
+    private javax.swing.JMenu mnuMovimento;
+    private javax.swing.JMenuItem mnuMovimentoRelatorio;
     // End of variables declaration//GEN-END:variables
 }

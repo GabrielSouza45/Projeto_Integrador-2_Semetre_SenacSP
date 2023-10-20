@@ -433,9 +433,9 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastraUserActionPerformed
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        TelaLogin tll = new TelaLogin();
+        TelaInicial tLinicio = new TelaInicial();
         dispose();
-        tll.setVisible(true);
+        tLinicio.setVisible(true);
         
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
