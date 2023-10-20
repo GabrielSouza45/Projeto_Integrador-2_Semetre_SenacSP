@@ -4,13 +4,16 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.EnderecoAPI;
 import com.projetopi.hakuzanloja.controller.NivelDao;
 import com.projetopi.hakuzanloja.controller.UsuarioDao;
+import com.projetopi.hakuzanloja.model.Endereco;
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -191,6 +194,25 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Cidade");
+
+        txtCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                try {
+                    txtCEPFocusLost(evt);
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        txtCEP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                try {
+                    txtCEPMouseExited(evt);
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("CEP");
@@ -458,7 +480,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         }
 
         UsuarioDao dao = new UsuarioDao();
-        dao.incluir(usuario);
+        dao.cadastrar(usuario);
         limparCampos(this.getContentPane());
 
 
@@ -513,7 +535,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
 
         UsuarioDao dao = new UsuarioDao();
-        List<Usuario> users = dao.listarTodosUsuarios();
+        List<Usuario> users = dao.listarTodos();
 
         for (Usuario us : users){ // Botar numa tabela
             System.out.println(us.getId()+"\n " + us.getNome()+"\n " + us.getEmail()+"\n " + (us.getNivel() != null ? us.getNivel().getDescNiveis() : ""));
@@ -534,6 +556,22 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         TelaEdicaoTESTE edit = new TelaEdicaoTESTE();
         edit.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void txtCEPMouseExited(java.awt.event.MouseEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_txtCEPMouseExited
+
+    }//GEN-LAST:event_txtCEPMouseExited
+
+    private void txtCEPFocusLost(java.awt.event.FocusEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_txtCEPFocusLost
+        EnderecoAPI enderecoAPI = new EnderecoAPI();
+        Endereco endereco = enderecoAPI.buscaCep(txtCEP.getText());
+
+        if (endereco != null) {
+            txtBairro.setText(endereco.getBairro() != null ? endereco.getBairro() : "");
+            txtRuaBairro.setText(endereco.getLogradouro() != null ? endereco.getLogradouro() : "");
+            txtEstado.setText(endereco.getUf() != null ? endereco.getUf() : "");
+            txtCidade.setText(endereco.getLocalidade() != null ? endereco.getLocalidade() : "");
+        }
+    }//GEN-LAST:event_txtCEPFocusLost
 
     private void btnCadastraUserMousePressed(java.awt.event.MouseEvent evt) {                                             
 
