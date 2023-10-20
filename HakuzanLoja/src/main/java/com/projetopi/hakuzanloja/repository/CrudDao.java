@@ -1,8 +1,6 @@
 package com.projetopi.hakuzanloja.repository;
 
-import com.projetopi.hakuzanloja.model.FormaPagamento;
-
-public interface Crud<T> {
+public interface CrudDao<T> {
 
     public void criarTabela();
     //public List<T> listarTodos();
