@@ -1,5 +1,6 @@
-package com.projetopi.hakuzanloja.model.usuario;
+package model;
 
+import com.projetopi.hakuzanloja.model.usuario.*;
 import model.Nivel;
 
 public class Usuario {

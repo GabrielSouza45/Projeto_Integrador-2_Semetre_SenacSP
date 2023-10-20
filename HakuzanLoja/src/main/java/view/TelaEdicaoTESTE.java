@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.usuario;
+package view;
 
+import com.projetopi.hakuzanloja.view.usuario.*;
 import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
 import model.Nivel;
@@ -22,21 +23,41 @@ import java.util.List;
  *
  * @author snubd
  */
-public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
+public class TelaEdicaoTESTE extends javax.swing.JFrame {
+
+    private Usuario usuarioEditar;
+    private List<Nivel> niveis = new NivelDao().listarNiveis();
 
     /**
      * Creates new form TelaCadastro
      */
-    public TelaCadastroAPartirLoginTESTES() {
+    public TelaEdicaoTESTE() {
 
         initComponents();
         carregaComboNivel();
     }
 
+    private void limparCampos(Container container) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof JTextField) {
+                JTextField field = (JTextField) component;
+                field.setText(""); // Limpa o conteúdo do JTextField
+            } else if (component instanceof JComboBox) {
+                JComboBox<?> comboBox = (JComboBox<?>) component;
+                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
+            } else if (component instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) component;
+                checkBox.setSelected(false); // Desmarca a caixa de seleção
+            } else if (component instanceof Container) {
+                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
+            }
+        }
+    }
+
     private void carregaComboNivel() {
         cbxNiveis.removeAllItems(); // inicia combo vazio para evitar repetições
-        List<Nivel> niveis = new NivelDao().listarNiveis();
-        for (Nivel nivel : niveis) {
+
+        for (Nivel nivel : this.niveis) {
             cbxNiveis.addItem(nivel);
         }
 
@@ -99,6 +120,8 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtDescNivel = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtEmailBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -214,6 +237,11 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         });
 
         btnBuscarEmail.setText("buscarPorEmail");
+        btnBuscarEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarEmailMouseClicked(evt);
+            }
+        });
 
         btnExcluir.setText("excluir");
 
@@ -252,6 +280,16 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         txtDescNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescNivelActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Buscar User");
+
+        txtEmailBuscar.setText("email");
+        txtEmailBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailBuscarMouseClicked(evt);
             }
         });
 
@@ -314,36 +352,44 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(402, 402, 402))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtBairro)
-                                    .addComponent(txtRuaBairro)
-                                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtEmailBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtBairro)
+                                            .addComponent(txtRuaBairro)
+                                            .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstado))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtEstado))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtNumero))))
+                                        .addGap(12, 12, 12))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNumero))))
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(180, 180, 180)))
+                                        .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(180, 180, 180)))))
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))))
         );
@@ -398,9 +444,13 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
                         .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10)))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtEmailBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastraUser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -433,9 +483,9 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastraUserActionPerformed
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        TelaInicial tLinicio = new TelaInicial();
+        TelaLogin tll = new TelaLogin();
         dispose();
-        tLinicio.setVisible(true);
+        tll.setVisible(true);
         
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
@@ -463,27 +513,8 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
 
         UsuarioDao dao = new UsuarioDao();
         dao.incluir(usuario);
-        limparCampos(this.getContentPane());
-
 
     }//GEN-LAST:event_btnCadastraUserMouseClicked
-
-    private void limparCampos(Container container) {
-        for (Component component : container.getComponents()) {
-            if (component instanceof JTextField) {
-                JTextField field = (JTextField) component;
-                field.setText(""); // Limpa o conteúdo do JTextField
-            } else if (component instanceof JComboBox) {
-                JComboBox<?> comboBox = (JComboBox<?>) component;
-                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
-            } else if (component instanceof JCheckBox) {
-                JCheckBox checkBox = (JCheckBox) component;
-                checkBox.setSelected(false); // Desmarca a caixa de seleção
-            } else if (component instanceof Container) {
-                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
-            }
-        }
-    }
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
@@ -533,10 +564,53 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescNivelMouseClicked
 
+    private void txtEmailBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailBuscarMouseClicked
+
+    private void btnBuscarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmailMouseClicked
+
+        this.usuarioEditar = new UsuarioDao().buscarUsuarioPorEmail(txtEmailBuscar.getText());
+        txtLogin.setText(usuarioEditar.getLogin());
+        txtPassword.setText(usuarioEditar.getSenha());
+        txtNome.setText(usuarioEditar.getNome());
+        txtTelefone.setText(usuarioEditar.getTelefone());
+        txtEmail.setText(usuarioEditar.getEmail());
+        txtCPF.setText(usuarioEditar.getDocumento());
+        txtRuaBairro.setText(usuarioEditar.getLogradouro());
+        txtBairro.setText(usuarioEditar.getBairro());
+        txtCidade.setText(usuarioEditar.getCidade());
+        txtCEP.setText(usuarioEditar.getCep());
+        txtNumero.setText(usuarioEditar.getNumero());
+        txtEstado.setText(usuarioEditar.getUf());
+
+    }//GEN-LAST:event_btnBuscarEmailMouseClicked
+
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        this.setVisible(false);
-        TelaEdicaoTESTE edit = new TelaEdicaoTESTE();
-        edit.setVisible(true);        // TODO add your handling code here:
+
+        usuarioEditar.setNome(txtNome.getText());
+        usuarioEditar.setDocumento(txtCPF.getText());
+        usuarioEditar.setTelefone(txtTelefone.getText());
+        usuarioEditar.setEmail(txtEmail.getText());
+        usuarioEditar.setLogin(txtLogin.getText());
+        usuarioEditar.setSenha(txtPassword.getText());
+        usuarioEditar.setLogradouro(txtRuaBairro.getText());
+        usuarioEditar.setBairro(txtBairro.getText());
+        usuarioEditar.setCidade(txtCidade.getText());
+        usuarioEditar.setCep(txtCEP.getText());
+        usuarioEditar.setUf(txtEstado.getText());
+        usuarioEditar.setNumero(txtNumero.getText());
+        try {
+            usuarioEditar.setNivel( (Nivel) cbxNiveis.getSelectedItem());
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(null, "Erro ao definir nivel ao usuarioEditar. \n" + err.getMessage());
+        }
+
+        UsuarioDao dao = new UsuarioDao();
+        dao.editarUsuario(this.usuarioEditar);
+
+        limparCampos(this.getContentPane());
+
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnCadastraUserMousePressed(java.awt.event.MouseEvent evt) {                                             
@@ -563,14 +637,26 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -579,7 +665,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroAPartirLoginTESTES().setVisible(true);
+                new TelaEdicaoTESTE().setVisible(true);
             }
         });
     }
@@ -600,6 +686,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -616,6 +703,7 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtDescNivel;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmailBuscar;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;

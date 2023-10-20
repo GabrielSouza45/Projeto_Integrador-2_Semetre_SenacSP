@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view;
+package view;
 
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
 import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLoginTESTES;
@@ -89,11 +89,9 @@ public class TelaInicial extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        mnuArquivo.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
         mnuArquivo.setText("Arquivo");
 
         mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoClientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
         mnuArquivoClientes.setText("Clientes");
         mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +101,10 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuArquivo.add(mnuArquivoClientes);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
         jMenuItem2.setText("Produtos");
         mnuArquivo.add(jMenuItem2);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoUsuarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
         mnuArquivoUsuarios.setText("Uusuarios");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,32 +120,26 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuArquivo.add(jSeparator1);
 
         mnuArquivoTrocarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoTrocarUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
         mnuArquivoTrocarUsuario.setText("Trocar Usuario");
         mnuArquivo.add(mnuArquivoTrocarUsuario);
 
         mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
         mnuArquivoSair.setText("Sair");
         mnuArquivo.add(mnuArquivoSair);
 
         jMenuBar1.add(mnuArquivo);
 
-        mnuMovimento.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
         mnuMovimento.setText("Movimento");
 
         mnuMovimentoRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuMovimentoRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
         mnuMovimentoRelatorio.setText("Relatorio de Vendas");
         mnuMovimento.add(mnuMovimentoRelatorio);
 
         jMenuBar1.add(mnuMovimento);
 
-        mnuAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
         mnuAjuda.setText("Ajuda");
 
         mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaSobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
         mnuAjudaSobre.setText("Sobre");
         mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +149,6 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuAjuda.add(mnuAjudaSobre);
 
         mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
         mnuAjudaAjuda.setText("Ajuda");
         mnuAjuda.add(mnuAjudaAjuda);
 

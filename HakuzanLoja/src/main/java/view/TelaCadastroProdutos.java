@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.cadastrodeprodutos;
+package view;
 
 
 
+import com.projetopi.hakuzanloja.view.cadastrodeprodutos.*;
 import com.projetopi.hakuzanloja.model.produto.Produto;
 import view.TelaInicial;
 
@@ -219,6 +220,7 @@ public class TelaCadastroProdutos extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

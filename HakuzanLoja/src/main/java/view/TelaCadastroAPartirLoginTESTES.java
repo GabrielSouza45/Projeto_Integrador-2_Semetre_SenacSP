@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.usuario;
+package view;
 
+import com.projetopi.hakuzanloja.view.usuario.*;
 import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
 import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
 import model.Nivel;
@@ -571,6 +572,10 @@ public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

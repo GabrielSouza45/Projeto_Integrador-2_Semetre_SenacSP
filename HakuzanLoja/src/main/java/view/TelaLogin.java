@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.telalogin;
+package view;
 
 
+import com.projetopi.hakuzanloja.view.telalogin.*;
 import com.mysql.cj.protocol.Resultset;
 import com.projetopi.hakuzanloja.controler.pedido.FormaDePagamentoDao;
 import com.projetopi.hakuzanloja.controler.pedido.ItensPedidoDao;

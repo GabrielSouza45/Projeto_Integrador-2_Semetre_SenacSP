@@ -70,9 +70,6 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuArquivo">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\file.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
           <SubComponents>
@@ -80,9 +77,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\user.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
               </Properties>
@@ -95,9 +89,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\products.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Produtos"/>
               </Properties>
             </MenuItem>
@@ -105,9 +96,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\users.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Uusuarios"/>
               </Properties>
@@ -123,9 +111,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\Change.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Trocar Usuario"/>
               </Properties>
             </MenuItem>
@@ -134,9 +119,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\out.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
             </MenuItem>
@@ -144,9 +126,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuMovimento">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\bag.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Movimento"/>
           </Properties>
           <SubComponents>
@@ -155,9 +134,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\Report.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Relatorio de Vendas"/>
               </Properties>
             </MenuItem>
@@ -165,9 +141,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuAjuda">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\help.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ajuda"/>
           </Properties>
           <SubComponents>
@@ -175,9 +148,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\About.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
@@ -189,9 +159,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\everton.lcsousa\Desktop\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\icons\Help2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
               </Properties>
