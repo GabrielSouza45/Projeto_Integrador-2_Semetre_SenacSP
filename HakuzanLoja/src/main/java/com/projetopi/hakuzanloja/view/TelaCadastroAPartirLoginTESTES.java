@@ -2,19 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.projetopi.hakuzanloja.view.usuario;
+package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.controler.usuario.NivelDao;
-import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import com.projetopi.hakuzanloja.model.niveis.Nivel;
-import com.projetopi.hakuzanloja.model.usuario.Endereco;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import com.projetopi.hakuzanloja.view.TelaInicial;
-import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
+import com.projetopi.hakuzanloja.controller.EnderecoAPI;
+import com.projetopi.hakuzanloja.controller.NivelDao;
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
+import com.projetopi.hakuzanloja.model.Endereco;
+import com.projetopi.hakuzanloja.model.Nivel;
+import com.projetopi.hakuzanloja.model.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -22,41 +21,21 @@ import java.util.List;
  *
  * @author snubd
  */
-public class TelaEdicaoTESTE extends javax.swing.JFrame {
-
-    private Usuario usuarioEditar;
-    private List<Nivel> niveis = new NivelDao().listarNiveis();
+public class TelaCadastroAPartirLoginTESTES extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaCadastro
      */
-    public TelaEdicaoTESTE() {
+    public TelaCadastroAPartirLoginTESTES() {
 
         initComponents();
         carregaComboNivel();
     }
 
-    private void limparCampos(Container container) {
-        for (Component component : container.getComponents()) {
-            if (component instanceof JTextField) {
-                JTextField field = (JTextField) component;
-                field.setText(""); // Limpa o conteúdo do JTextField
-            } else if (component instanceof JComboBox) {
-                JComboBox<?> comboBox = (JComboBox<?>) component;
-                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
-            } else if (component instanceof JCheckBox) {
-                JCheckBox checkBox = (JCheckBox) component;
-                checkBox.setSelected(false); // Desmarca a caixa de seleção
-            } else if (component instanceof Container) {
-                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
-            }
-        }
-    }
-
     private void carregaComboNivel() {
         cbxNiveis.removeAllItems(); // inicia combo vazio para evitar repetições
-
-        for (Nivel nivel : this.niveis) {
+        List<Nivel> niveis = new NivelDao().listarTodos();
+        for (Nivel nivel : niveis) {
             cbxNiveis.addItem(nivel);
         }
 
@@ -119,8 +98,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtDescNivel = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        txtEmailBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -218,6 +195,25 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Cidade");
 
+        txtCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                try {
+                    txtCEPFocusLost(evt);
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        txtCEP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                try {
+                    txtCEPMouseExited(evt);
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("CEP");
 
@@ -236,11 +232,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         });
 
         btnBuscarEmail.setText("buscarPorEmail");
-        btnBuscarEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarEmailMouseClicked(evt);
-            }
-        });
 
         btnExcluir.setText("excluir");
 
@@ -279,16 +270,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         txtDescNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescNivelActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Buscar User");
-
-        txtEmailBuscar.setText("email");
-        txtEmailBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtEmailBuscarMouseClicked(evt);
             }
         });
 
@@ -351,44 +332,36 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(402, 402, 402))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEmailBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtBairro)
-                                            .addComponent(txtRuaBairro)
-                                            .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtBairro)
+                                    .addComponent(txtRuaBairro)
+                                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtEstado))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtNumero))))
-                                        .addGap(12, 12, 12))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(180, 180, 180)))))
+                                        .addComponent(txtEstado))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNumero))))
+                                .addGap(12, 12, 12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(180, 180, 180)))
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))))
         );
@@ -443,13 +416,9 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
                         .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10)))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtEmailBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDescNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastraUser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,9 +451,9 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastraUserActionPerformed
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        TelaLogin tll = new TelaLogin();
+        TelaInicial tLinicio = new TelaInicial();
         dispose();
-        tll.setVisible(true);
+        tLinicio.setVisible(true);
         
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
@@ -511,9 +480,28 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         }
 
         UsuarioDao dao = new UsuarioDao();
-        dao.incluir(usuario);
+        dao.cadastrar(usuario);
+        limparCampos(this.getContentPane());
+
 
     }//GEN-LAST:event_btnCadastraUserMouseClicked
+
+    private void limparCampos(Container container) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof JTextField) {
+                JTextField field = (JTextField) component;
+                field.setText(""); // Limpa o conteúdo do JTextField
+            } else if (component instanceof JComboBox) {
+                JComboBox<?> comboBox = (JComboBox<?>) component;
+                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
+            } else if (component instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) component;
+                checkBox.setSelected(false); // Desmarca a caixa de seleção
+            } else if (component instanceof Container) {
+                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
+            }
+        }
+    }
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
@@ -524,7 +512,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
 //        Deletar Nivel selecionado na comboBox: {
             Nivel nivel = (Nivel) cbxNiveis.getSelectedItem();
             NivelDao dao = new NivelDao();
-            dao.excluirNivel(nivel);
+            dao.excluir(nivel);
             carregaComboNivel();
 //        }
 
@@ -547,7 +535,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
 
         UsuarioDao dao = new UsuarioDao();
-        List<Usuario> users = dao.listarTodosUsuarios();
+        List<Usuario> users = dao.listarTodos();
 
         for (Usuario us : users){ // Botar numa tabela
             System.out.println(us.getId()+"\n " + us.getNome()+"\n " + us.getEmail()+"\n " + (us.getNivel() != null ? us.getNivel().getDescNiveis() : ""));
@@ -563,54 +551,27 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescNivelMouseClicked
 
-    private void txtEmailBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailBuscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailBuscarMouseClicked
-
-    private void btnBuscarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmailMouseClicked
-
-        this.usuarioEditar = new UsuarioDao().buscarUsuarioPorEmail(txtEmailBuscar.getText());
-        txtLogin.setText(usuarioEditar.getLogin());
-        txtPassword.setText(usuarioEditar.getSenha());
-        txtNome.setText(usuarioEditar.getNome());
-        txtTelefone.setText(usuarioEditar.getTelefone());
-        txtEmail.setText(usuarioEditar.getEmail());
-        txtCPF.setText(usuarioEditar.getDocumento());
-        txtRuaBairro.setText(usuarioEditar.getLogradouro());
-        txtBairro.setText(usuarioEditar.getBairro());
-        txtCidade.setText(usuarioEditar.getCidade());
-        txtCEP.setText(usuarioEditar.getCep());
-        txtNumero.setText(usuarioEditar.getNumero());
-        txtEstado.setText(usuarioEditar.getUf());
-
-    }//GEN-LAST:event_btnBuscarEmailMouseClicked
-
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-
-        usuarioEditar.setNome(txtNome.getText());
-        usuarioEditar.setDocumento(txtCPF.getText());
-        usuarioEditar.setTelefone(txtTelefone.getText());
-        usuarioEditar.setEmail(txtEmail.getText());
-        usuarioEditar.setLogin(txtLogin.getText());
-        usuarioEditar.setSenha(txtPassword.getText());
-        usuarioEditar.setLogradouro(txtRuaBairro.getText());
-        usuarioEditar.setBairro(txtBairro.getText());
-        usuarioEditar.setCidade(txtCidade.getText());
-        usuarioEditar.setCep(txtCEP.getText());
-        usuarioEditar.setUf(txtEstado.getText());
-        usuarioEditar.setNumero(txtNumero.getText());
-        try {
-            usuarioEditar.setNivel( (Nivel) cbxNiveis.getSelectedItem());
-        } catch (Exception err) {
-            JOptionPane.showMessageDialog(null, "Erro ao definir nivel ao usuarioEditar. \n" + err.getMessage());
-        }
-
-        UsuarioDao dao = new UsuarioDao();
-        dao.editarUsuario(this.usuarioEditar);
-
-        limparCampos(this.getContentPane());
-
+        this.setVisible(false);
+        TelaEdicaoTESTE edit = new TelaEdicaoTESTE();
+        edit.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void txtCEPMouseExited(java.awt.event.MouseEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_txtCEPMouseExited
+
+    }//GEN-LAST:event_txtCEPMouseExited
+
+    private void txtCEPFocusLost(java.awt.event.FocusEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_txtCEPFocusLost
+        EnderecoAPI enderecoAPI = new EnderecoAPI();
+        Endereco endereco = enderecoAPI.buscaCep(txtCEP.getText());
+
+        if (endereco != null) {
+            txtBairro.setText(endereco.getBairro() != null ? endereco.getBairro() : "");
+            txtRuaBairro.setText(endereco.getLogradouro() != null ? endereco.getLogradouro() : "");
+            txtEstado.setText(endereco.getUf() != null ? endereco.getUf() : "");
+            txtCidade.setText(endereco.getLocalidade() != null ? endereco.getLocalidade() : "");
+        }
+    }//GEN-LAST:event_txtCEPFocusLost
 
     private void btnCadastraUserMousePressed(java.awt.event.MouseEvent evt) {                                             
 
@@ -636,18 +597,14 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaEdicaoTESTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroAPartirLoginTESTES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -656,7 +613,7 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaEdicaoTESTE().setVisible(true);
+                new TelaCadastroAPartirLoginTESTES().setVisible(true);
             }
         });
     }
@@ -677,7 +634,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -694,7 +650,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtDescNivel;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEmailBuscar;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;

@@ -1,38 +1,16 @@
-package com.projetopi.hakuzanloja.model.usuario;
+package com.projetopi.hakuzanloja.model;
 
 public class Endereco {
 
-    // Atributos Padrão
-    private Long id;
-    private int inativo;
-
-    // Atributos da Entidade
+    private String cep;
     private String logradouro;
     private String bairro;
     private String numero;
     private String localidade; // cidade
     private String uf;
-    private String cep;
-    private String complemento;
 
     public Endereco(){
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    private void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getInativo() {
-        return inativo;
-    }
-
-    public void setInativo(int inativo) {
-        this.inativo = inativo;
     }
 
     public String getLogradouro() {
@@ -83,11 +61,16 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    @Override
+    public String toString() {
+        return String.format("""
+               Cep = %s,
+                Rua = %s,
+                Número = %s
+                Bairro = %s,
+                Cidade = %s,
+                Estado = %s
+                """,
+                cep, logradouro, numero, bairro, localidade, uf);
     }
 }

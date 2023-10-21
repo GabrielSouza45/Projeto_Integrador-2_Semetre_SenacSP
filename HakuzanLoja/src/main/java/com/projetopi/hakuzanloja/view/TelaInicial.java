@@ -4,9 +4,6 @@
  */
 package com.projetopi.hakuzanloja.view;
 
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLogin;
-import com.projetopi.hakuzanloja.view.usuario.TelaCadastroAPartirLoginTESTES;
-
 /**
  *
  * @author snubd

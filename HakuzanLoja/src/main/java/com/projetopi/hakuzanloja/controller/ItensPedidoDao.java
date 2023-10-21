@@ -2,17 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.pedido;
+package com.projetopi.hakuzanloja.controller;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
+import com.projetopi.hakuzanloja.model.ItemPedido;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ItensPedidoDao {
+public class ItensPedidoDao extends ConectarDao implements CrudDao<ItemPedido> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_ITENSPEDIDO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -34,6 +36,21 @@ public class ItensPedidoDao {
         } catch (SQLException erro) {
             erro.printStackTrace();
         }
+    }
+
+    @Override
+    public void cadastrar(ItemPedido itemPedido) {
+
+    }
+
+    @Override
+    public void editar(ItemPedido itemPedido) {
+
+    }
+
+    @Override
+    public void excluir(ItemPedido itemPedido) {
+
     }
 
 

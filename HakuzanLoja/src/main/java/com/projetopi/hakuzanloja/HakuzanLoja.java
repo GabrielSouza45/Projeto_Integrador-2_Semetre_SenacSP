@@ -5,7 +5,7 @@
 package com.projetopi.hakuzanloja;
 
 
-import com.projetopi.hakuzanloja.view.telalogin.TelaLogin;
+import com.projetopi.hakuzanloja.view.TelaLogin;
 
 public class HakuzanLoja {
 

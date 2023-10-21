@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.produto;
+package com.projetopi.hakuzanloja.controller;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
-import com.projetopi.hakuzanloja.model.produto.Categoria;
-import com.projetopi.hakuzanloja.model.produto.Produto;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
+import com.projetopi.hakuzanloja.model.Categoria;
+import com.projetopi.hakuzanloja.model.Produto;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -16,9 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoDao extends ConectarDao{
+public class ProdutoDao extends ConectarDao implements CrudDao<Produto> {
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_PRODUTO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -59,7 +59,8 @@ public class ProdutoDao extends ConectarDao{
 
     }
 
-    public void cadastrarProduto(Produto produto){
+    @Override
+    public void cadastrar(Produto produto){
 
         String sql =  "INSERT INTO TB_PRODUTO (DS_NOME, DS_DESCRICAO, VL_COMPRA, VL_VENDA, FK_CATEGORIA)"
                 + "VALUES (?, ?, ?, ?, ?);";
@@ -80,7 +81,8 @@ public class ProdutoDao extends ConectarDao{
         }
     }
 
-    public void editarProduto(Produto produto) {
+    @Override
+    public void editar(Produto produto) {
 
         String sql = "UPDATE TB_PRODUTO SET DS_NOME = ?, DS_DESCRICAO = ?, VL_COMPRA = ?, VL_VENDA = ?, FK_CATEGORIA = ? " +
                 " WHERE PK_ID = ?";
@@ -135,13 +137,14 @@ public class ProdutoDao extends ConectarDao{
         }
     }
 
-    public void deletarProduto(Usuario user){
+    @Override
+    public void excluir(Produto prod){
 
         String sql = "DELETE FROM TB_PRODUTO WHERE PK_ID = ?";
 
         try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
 
-            ps.setLong(1, user.getId());
+            ps.setLong(1, prod.getId());
             int rowCount = ps.executeUpdate();
 
             if (rowCount > 0) {

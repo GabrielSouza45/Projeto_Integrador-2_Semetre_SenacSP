@@ -1,5 +1,8 @@
 
-package com.projetopi.hakuzanloja.model.produto;
+package com.projetopi.hakuzanloja.model;
+
+import com.projetopi.hakuzanloja.model.Categoria;
+
 public class Produto {
 
     // Atributos Padrão

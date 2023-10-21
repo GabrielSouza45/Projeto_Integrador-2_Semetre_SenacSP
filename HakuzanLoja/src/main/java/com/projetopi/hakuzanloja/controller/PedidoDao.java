@@ -2,22 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.pedido;
+package com.projetopi.hakuzanloja.controller;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
-import com.projetopi.hakuzanloja.model.pedidos.Pedido;
-import com.projetopi.hakuzanloja.model.produto.Produto;
+import com.projetopi.hakuzanloja.model.Pedido;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
-public class PedidoDao extends ConectarDao{
+public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_PEDIDO("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -40,7 +39,8 @@ public class PedidoDao extends ConectarDao{
         }
     }
 
-    public void cadastrarPedido(Pedido pedido) {
+    @Override
+    public void cadastrar(Pedido pedido) {
 
         String sql = "INSERT INTO TB_PEDIDO (DT_PEDIDO, VL_TOTAL , FK_USUARIO)"
                 + "VALUES (?, ?, ?);";
@@ -60,8 +60,15 @@ public class PedidoDao extends ConectarDao{
         }
     }
 
+    @Override
+    public void editar(Pedido objeto) {
 
+    }
 
+    @Override
+    public void excluir(Pedido objeto) {
+
+    }
 
 
 }

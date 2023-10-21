@@ -2,14 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.produto;
+package com.projetopi.hakuzanloja.controller;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
-import com.projetopi.hakuzanloja.controler.usuario.UsuarioDao;
-import com.projetopi.hakuzanloja.model.niveis.Nivel;
-import com.projetopi.hakuzanloja.model.produto.Categoria;
-import com.projetopi.hakuzanloja.model.produto.Produto;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
+import com.projetopi.hakuzanloja.model.Categoria;
+import com.projetopi.hakuzanloja.model.Produto;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -17,10 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CategoriaDao extends ConectarDao{
+public class CategoriaDao extends ConectarDao implements CrudDao<Categoria> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_CATEGORIA("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -56,7 +54,8 @@ public class CategoriaDao extends ConectarDao{
 
     }
 
-    public void cadastrarCategoria(Categoria categoria){
+    @Override
+    public void cadastrar(Categoria categoria){
 
         Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
         if (cat != null) {
@@ -79,7 +78,8 @@ public class CategoriaDao extends ConectarDao{
         }
     }
 
-    public void editarCategoria(Categoria categoria) {
+    @Override
+    public void editar(Categoria categoria) {
 
         Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
         if (cat != null) {
@@ -133,8 +133,8 @@ public class CategoriaDao extends ConectarDao{
         }
     }
 
-
-    public void excluirCategoria(Categoria categoria) {
+    @Override
+    public void excluir(Categoria categoria) {
 
         List<Produto> produtos = new ProdutoDao().buscarProdutosPorCategoria(categoria);
         if (!produtos.isEmpty()) {

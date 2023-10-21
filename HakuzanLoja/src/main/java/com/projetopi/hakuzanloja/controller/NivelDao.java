@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler.usuario;
+package com.projetopi.hakuzanloja.controller;
 
-import com.projetopi.hakuzanloja.controler.ConectarDao;
-import com.projetopi.hakuzanloja.model.niveis.Nivel;
-import com.projetopi.hakuzanloja.model.usuario.Usuario;
-import com.sun.source.tree.TryTree;
+import com.projetopi.hakuzanloja.model.Nivel;
+import com.projetopi.hakuzanloja.model.Usuario;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -16,10 +15,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NivelDao extends ConectarDao {
+public class NivelDao extends ConectarDao implements CrudDao<Nivel> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_NIVEL("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -56,7 +56,8 @@ public class NivelDao extends ConectarDao {
 
     }
 
-    public List<Nivel> listarNiveis() {
+    //@Override
+    public List<Nivel> listarTodos() {
         String sql = "SELECT * FROM TB_NIVEL";
 
         try {
@@ -112,7 +113,8 @@ public class NivelDao extends ConectarDao {
         }
     }
 
-    public void incluirNivel(Nivel nivel) {
+    @Override
+    public void cadastrar(Nivel nivel) {
 
         Nivel nivelExists = this.verificarSeNivelExiste(nivel.getDescNiveis());
         if (nivelExists != null) {
@@ -137,7 +139,8 @@ public class NivelDao extends ConectarDao {
         }
     }
 
-    public void editarNivel(Nivel nivel) {
+    @Override
+    public void editar(Nivel nivel) {
 
         Nivel nivelExists = this.verificarSeNivelExiste(nivel.getDescNiveis());
         if (nivelExists != null) {
@@ -191,7 +194,8 @@ public class NivelDao extends ConectarDao {
         }
     }
 
-    public void excluirNivel(Nivel nivel) {
+    @Override
+    public void excluir(Nivel nivel) {
 
         List<Usuario> users = new UsuarioDao().buscarUsuarioPorNivel(nivel);
         if (!users.isEmpty()) {
