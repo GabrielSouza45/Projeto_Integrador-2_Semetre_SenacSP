@@ -32,10 +32,11 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         btnCriarTodasTabelas = new javax.swing.JButton();
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoClientes = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuProduto = new javax.swing.JMenuItem();
         mnuArquivoUsuarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuArquivoTrocarUsuario = new javax.swing.JMenuItem();
@@ -83,8 +84,16 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home Administrador ");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         mnuArquivo.setText("Arquivo");
 
@@ -97,15 +106,23 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         });
         mnuArquivo.add(mnuArquivoClientes);
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setText("Produtos");
-        mnuArquivo.add(jMenuItem2);
+        menuProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menuProduto.setText("Produtos");
+        menuProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuProdutoMousePressed(evt);
+            }
+        });
+        mnuArquivo.add(menuProduto);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mnuArquivoUsuarios.setText("Uusuarios");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnuArquivoUsuariosMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuArquivoUsuariosMousePressed(evt);
             }
         });
         mnuArquivoUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -157,14 +174,18 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 690, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 329, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(779, 382));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,17 +216,29 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuAjudaSobreActionPerformed
 
     private void mnuArquivoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMouseClicked
-        TelaAutoCadastroCliente tlL = new TelaAutoCadastroCliente();
-        this.setVisible(false);
-        tlL.setVisible(true);
+       
 // TODO add your handling code here:
     }//GEN-LAST:event_mnuArquivoUsuariosMouseClicked
 
     private void mnuArquivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosActionPerformed
-        TelaAutoCadastroCliente tlL = new TelaAutoCadastroCliente();
+        TelaEdicaoTESTE tet = new TelaEdicaoTESTE();
         dispose();
-        tlL.setVisible(true);
+        tet.setVisible(true);
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
+
+    private void menuProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMousePressed
+        TelaCadastroProdutos tle = new TelaCadastroProdutos();
+        dispose();
+        tle.setVisible(true);
+    }//GEN-LAST:event_menuProdutoMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuArquivoUsuariosMousePressed
 
     /**
      * @param args the command line arguments
@@ -246,13 +279,14 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem menuProduto;
     private javax.swing.JMenu mnuAjuda;
     private javax.swing.JMenuItem mnuAjudaAjuda;
     private javax.swing.JMenuItem mnuAjudaSobre;

@@ -35,6 +35,7 @@ com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$8.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$10.class
 com\projetopi\hakuzanloja\view\TelaCadastroAPartirLogin$1.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$8.class
+com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$10.class
 com\projetopi\hakuzanloja\controller\EnderecoAPI.class
 com\projetopi\hakuzanloja\controller\UsuarioDao.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$5.class
@@ -46,6 +47,7 @@ com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$6.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$14.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$11.class
 com\projetopi\hakuzanloja\view\TelaCadastroProdutos$3.class
+com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$9.class
 com\projetopi\hakuzanloja\controller\FormaDePagamentoDao.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$6.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$2.class

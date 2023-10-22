@@ -331,7 +331,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnCadastraUser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
@@ -371,8 +371,9 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
     private void btnCadastraUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastraUserMouseClicked
         
         ArrayList<String> verificacaoNull = new ArrayList<>();
-        
         Usuario usuario = new Usuario();
+        UsuarioDao dao = new UsuarioDao();
+        
         verificacaoNull.add(txtNome.getText());
         verificacaoNull.add(txtCPF.getText());
         verificacaoNull.add(txtTelefone.getText());
@@ -393,7 +394,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 break;
                 
             }
-            else{
+            else if(!index.equals("")){
             usuario.setNome(txtNome.getText());
             usuario.setDocumento(txtCPF.getText());
             usuario.setTelefone(txtTelefone.getText());
@@ -407,16 +408,17 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
             usuario.setUf(txtEstado.getText());
             usuario.setNumero(txtNumero.getText());
             usuario.setNivel(setNivelCliente());
-                System.out.println("Deu errado");
-            //limparCampos(this.getContentPane());
+           
+            limparCampos(this.getContentPane());
+            dao.cadastrar(usuario);
             break;
             }
         }
         
         
 
-       // UsuarioDao dao = new UsuarioDao();
-       // dao.cadastrar(usuario);
+       
+       
       
 
     }//GEN-LAST:event_btnCadastraUserMouseClicked
