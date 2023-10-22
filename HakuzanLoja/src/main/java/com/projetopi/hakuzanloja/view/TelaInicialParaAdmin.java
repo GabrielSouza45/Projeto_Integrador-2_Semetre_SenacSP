@@ -8,12 +8,12 @@ package com.projetopi.hakuzanloja.view;
  *
  * @author snubd
  */
-public class TelaInicial extends javax.swing.JFrame {
+public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
-    public TelaInicial() {
+    public TelaInicialParaAdmin() {
         initComponents();
     }
 
@@ -86,11 +86,9 @@ public class TelaInicial extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        mnuArquivo.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
         mnuArquivo.setText("Arquivo");
 
         mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoClientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
         mnuArquivoClientes.setText("Clientes");
         mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +98,10 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuArquivo.add(mnuArquivoClientes);
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
         jMenuItem2.setText("Produtos");
         mnuArquivo.add(jMenuItem2);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoUsuarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
         mnuArquivoUsuarios.setText("Uusuarios");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,32 +117,26 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuArquivo.add(jSeparator1);
 
         mnuArquivoTrocarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoTrocarUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
         mnuArquivoTrocarUsuario.setText("Trocar Usuario");
         mnuArquivo.add(mnuArquivoTrocarUsuario);
 
         mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
         mnuArquivoSair.setText("Sair");
         mnuArquivo.add(mnuArquivoSair);
 
         jMenuBar1.add(mnuArquivo);
 
-        mnuMovimento.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
         mnuMovimento.setText("Movimento");
 
         mnuMovimentoRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuMovimentoRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
         mnuMovimentoRelatorio.setText("Relatorio de Vendas");
         mnuMovimento.add(mnuMovimentoRelatorio);
 
         jMenuBar1.add(mnuMovimento);
 
-        mnuAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
         mnuAjuda.setText("Ajuda");
 
         mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaSobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
         mnuAjudaSobre.setText("Sobre");
         mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +146,6 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuAjuda.add(mnuAjudaSobre);
 
         mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
         mnuAjudaAjuda.setText("Ajuda");
         mnuAjuda.add(mnuAjudaAjuda);
 
@@ -188,7 +177,7 @@ public class TelaInicial extends javax.swing.JFrame {
 //       this.setVisible(false);
 //       tlc.setVisible(true);
 
-        TelaCadastroAPartirLoginTESTES tlc = new TelaCadastroAPartirLoginTESTES();
+        TelaAutoCadastroCliente tlc = new TelaAutoCadastroCliente();
         this.setVisible(false);
         tlc.setVisible(true);
     }//GEN-LAST:event_btnCadastroProdutoMouseClicked
@@ -206,14 +195,14 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuAjudaSobreActionPerformed
 
     private void mnuArquivoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMouseClicked
-        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        TelaAutoCadastroCliente tlL = new TelaAutoCadastroCliente();
         this.setVisible(false);
         tlL.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_mnuArquivoUsuariosMouseClicked
 
     private void mnuArquivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosActionPerformed
-        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        TelaAutoCadastroCliente tlL = new TelaAutoCadastroCliente();
         dispose();
         tlL.setVisible(true);
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
@@ -235,20 +224,21 @@ public class TelaInicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicial().setVisible(true);
+                new TelaInicialParaAdmin().setVisible(true);
             }
         });
     }

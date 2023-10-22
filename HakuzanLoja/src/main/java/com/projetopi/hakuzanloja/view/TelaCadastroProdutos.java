@@ -170,7 +170,7 @@ public class TelaCadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-         TelaInicial telaIni = new TelaInicial();
+         TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
            setVisible(false);
            telaIni.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked

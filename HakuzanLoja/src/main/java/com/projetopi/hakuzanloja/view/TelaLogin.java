@@ -115,6 +115,9 @@ public class TelaLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCadastroAbrirMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCadastroAbrirMousePressed(evt);
+            }
         });
         btnCadastroAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +160,7 @@ public class TelaLogin extends javax.swing.JFrame {
             if (reslt.next()){
 
                 // COLOCAR TELA QUE IRA SER ABERTA
-                TelaInicial telaIni = new TelaInicial();
+                TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
                 this.setVisible(false);
                 telaIni.setVisible(true);
@@ -177,15 +180,19 @@ public class TelaLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnValidaLoginMouseClicked
 
+    private void btnCadastroAbrirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroAbrirMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastroAbrirMousePressed
+
     private void btnCadastroAbrirActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }
 
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
-        TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
+        TelaAutoCadastroCliente tacc = new TelaAutoCadastroCliente();
         dispose();
-        tlc.setVisible(true);
+        tacc.setVisible(true);
         
       
     }
