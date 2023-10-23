@@ -227,9 +227,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
 
     private void menuProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMousePressed
-        TelaCadastroProdutos tle = new TelaCadastroProdutos();
-        dispose();
-        tle.setVisible(true);
+
     }//GEN-LAST:event_menuProdutoMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

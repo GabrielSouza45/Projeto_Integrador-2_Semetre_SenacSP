@@ -10,9 +10,7 @@ import com.projetopi.hakuzanloja.view.*;
 public class HakuzanLoja {
 
     public static void main(String[] args) {
-        TelaCadastroProdutos tcp = new TelaCadastroProdutos();
-        
-        tcp.setVisible(true);
-        
+       TelaLogin tll = new TelaLogin();
+       tll.setVisible(true);
     }
 }
