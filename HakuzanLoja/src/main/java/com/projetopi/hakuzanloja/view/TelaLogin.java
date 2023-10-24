@@ -67,21 +67,27 @@ public class TelaLogin extends javax.swing.JFrame {
         btnFecharTela.setText("X");
         btnFecharTela.setBorder(null);
         btnFecharTela.setDefaultCapable(false);
+        btnFecharTela.setFocusPainted(false);
         btnFecharTela.setFocusable(false);
         btnFecharTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharTelaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnFecharTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 0, 30, 30));
+        jPanel1.add(btnFecharTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 30, 30));
 
         jLabel1.setText("Login");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 40, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, 30));
+
+        txtLogin.setBackground(new java.awt.Color(237, 237, 237));
+        txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 270, -1));
 
         jLabel2.setText("Senha");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
 
+        txtSenha.setBackground(new java.awt.Color(237, 237, 237));
+        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -89,10 +95,12 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 260, -1));
 
+        btnValidaLogin.setBackground(new java.awt.Color(245, 245, 245));
         btnValidaLogin.setText("Entrar");
         btnValidaLogin.setBorder(null);
+        btnValidaLogin.setDefaultCapable(false);
+        btnValidaLogin.setFocusPainted(false);
         btnValidaLogin.setFocusable(false);
-        btnValidaLogin.setOpaque(true);
         btnValidaLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnValidaLoginMouseClicked(evt);
@@ -115,6 +123,9 @@ public class TelaLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCadastroAbrirMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCadastroAbrirMousePressed(evt);
+            }
         });
         btnCadastroAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +144,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTelaActionPerformed
-        dispose();
+       System.exit(0);
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
@@ -157,7 +168,7 @@ public class TelaLogin extends javax.swing.JFrame {
             if (reslt.next()){
 
                 // COLOCAR TELA QUE IRA SER ABERTA
-                TelaInicial telaIni = new TelaInicial();
+                TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
                 this.setVisible(false);
                 telaIni.setVisible(true);
@@ -177,15 +188,19 @@ public class TelaLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnValidaLoginMouseClicked
 
+    private void btnCadastroAbrirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroAbrirMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastroAbrirMousePressed
+
     private void btnCadastroAbrirActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }
 
     private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {
 
-        TelaCadastroAPartirLogin tlc = new TelaCadastroAPartirLogin();
+        TelaAutoCadastroCliente tacc = new TelaAutoCadastroCliente();
         dispose();
-        tlc.setVisible(true);
+        tacc.setVisible(true);
         
       
     }
