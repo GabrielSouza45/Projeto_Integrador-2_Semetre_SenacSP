@@ -5,10 +5,17 @@
 package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.FormaPagamento;
+import com.projetopi.hakuzanloja.model.Usuario;
 import com.projetopi.hakuzanloja.repository.CrudDao;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.projetopi.hakuzanloja.controller.ConectarDao.getConexao;
 
 public class FormaDePagamentoDao implements CrudDao<FormaPagamento> {
 
@@ -27,7 +34,7 @@ public class FormaDePagamentoDao implements CrudDao<FormaPagamento> {
         PreparedStatement ps = null;
 
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Banco Criado");
             ps.close();
@@ -43,7 +50,7 @@ public class FormaDePagamentoDao implements CrudDao<FormaPagamento> {
 
         PreparedStatement ps = null;
         try {
-            ps = ConectarDao.getConexao().prepareStatement(sql);
+            ps = getConexao().prepareStatement(sql);
             ps.execute();
             System.out.println("Inset");
             ps.close();
@@ -76,5 +83,100 @@ public class FormaDePagamentoDao implements CrudDao<FormaPagamento> {
 
     }
 
+    public List<FormaPagamento> buscarPorUsuario(Usuario usuario){
+        String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE FK_USUARIO = ?";
 
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, usuario.getId());
+
+            ResultSet res = ps.executeQuery();
+
+            List<FormaPagamento> formaPagamentos = new ArrayList<>();
+
+            while(res.next()){
+                FormaPagamento formaPagamento = new FormaPagamento();
+                formaPagamento.setId(res.getLong("PK_ID"));
+                formaPagamento.setCartao(res.getString("DS_CARTAO"));
+                formaPagamento.setBoleto(res.getString("DS_BOLETO"));
+                formaPagamento.setPix(res.getString("DS_PIX"));
+                formaPagamento.setUsuario(usuario);
+
+                formaPagamentos.add(formaPagamento);
+            }
+
+            return formaPagamentos;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Usuario. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<FormaPagamento> buscarPorId(FormaPagamento formaPagamento) {
+        String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE PK_ID = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, formaPagamento.getId());
+
+            ResultSet res = ps.executeQuery();
+
+            List<FormaPagamento> formaPagamentos = new ArrayList<>();
+
+            while (res.next()) {
+                FormaPagamento formaPagamento1 = new FormaPagamento();
+                formaPagamento1.setId(res.getLong("PK_ID"));
+                formaPagamento1.setCartao(res.getString("DS_CARTAO"));
+                formaPagamento1.setBoleto(res.getString("DS_BOLETO"));
+                formaPagamento1.setPix(res.getString("DS_PIX"));
+                formaPagamento1.setUsuario((Usuario) new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+
+                formaPagamentos.add(formaPagamento1);
+            }
+
+            return formaPagamentos;
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Usuario. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<FormaPagamento> formaPagamentos(){
+        String sql = "SELECT * FROM TB_FORMAPAGAMENTO";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            List<FormaPagamento> formaPagamentos = new ArrayList<>();
+
+            while(res.next()){
+                FormaPagamento formaPagamento = new FormaPagamento();
+                formaPagamento.setId(res.getLong("PK_ID"));
+                formaPagamento.setCartao(res.getString("DS_CARTAO"));
+                formaPagamento.setBoleto(res.getString("DS_BOLETO"));
+                formaPagamento.setPix(((ResultSet) res).getString("DS_PIX"));
+                formaPagamento.setUsuario((Usuario) new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+
+                formaPagamentos.add(formaPagamento);
+            }
+
+            return formaPagamentos;
+
+        }catch (SQLException err){
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
+    }
 }

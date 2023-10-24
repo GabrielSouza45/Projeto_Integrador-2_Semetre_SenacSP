@@ -332,4 +332,256 @@ public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
         }
 
     }
+
+    public List<Usuario> buscarUsuarioPorId(Long id){
+        String sql = "SELECT * FROM TB_USUARIO WHERE PK_ID = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, id);
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Id. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario> buscarUsuarioPorDocumento(Usuario usuario){
+        String sql = "SELECT * FROM TB_USUARIO WHERE NR_CPFCNPJ = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, usuario.getDocumento());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario> buscarUsuarioPorCep(Usuario usuario){
+        String sql = "SELECT * FROM TB_USUARIO WHERE DS_CEP = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, usuario.getCep());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario> buscarUsuarioPorUf(Usuario usuario){
+        String sql = "SELECT * FROM TB_USUARIO WHERE DS_UF = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, usuario.getUf());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario> buscarUsuarioPorCidade(Usuario usuario){
+        String sql = "SELECT * FROM TB_USUARIO WHERE DS_CIDADE = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, usuario.getCidade());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario> buscarUsuarioPorNome(Usuario usuario){
+        String sql = "SELECT * FROM TB_USUARIO WHERE DS_NOME = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, usuario.getNome());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Usuario> users = new ArrayList<>();
+
+            while(res.next()){
+                Usuario user = new Usuario();
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail (res.getString("DS_EMAIL"));
+                user.setLogin (res.getString("DS_LOGIN"));
+                user.setSenha (res.getString("DS_SENHA"));
+                user.setTelefone (res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf (res.getString("DS_UF"));
+                user.setCidade (res.getString("DS_CIDADE"));
+                user.setBairro (res.getString("DS_BAIRRO"));
+                user.setLogradouro (res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento (res.getString("NR_CPFCNPJ"));
+                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+
+                users.add(user);
+            }
+
+            return users;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());
+            return null;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaDao extends ConectarDao implements CrudDao<Categoria> {
@@ -170,6 +171,90 @@ public class CategoriaDao extends ConectarDao implements CrudDao<Categoria> {
 
         } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir Categoria. \n" +  err.getMessage());
+        }
+    }
+
+    public List<Categoria> listarCategoria() {
+        String sql = "SELECT * FROM TB_CATEGORIA";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            List<Categoria> categorias = new ArrayList<>();
+
+            while (res.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(res.getLong("PK_ID"));
+                categoria.setCategoria(res.getString("DS_TIPO"));
+
+                categorias.add(categoria);
+            }
+
+            return categorias;
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
+    }
+
+    public Categoria buscarCategoriaPorId(Long id) {
+        String sql = "SELECT * FROM TB_CATEGORIA WHERE PK_ID = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, id);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(res.getLong("PK_ID"));
+                categoria.setCategoria(res.getString("DS_TIPO"));
+                return categoria;
+            } else {
+                JOptionPane.showMessageDialog(null, "Categoria não localizada!");
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar a Categoria. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public Categoria buscaCategoriaPorCategoria (String categoria){
+        String sql = "SELECT * FROM TB_CATEGORIA WHERE DS_TIPO = ?";
+
+        try {
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, categoria);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()){
+                Categoria categorias = new Categoria();
+                categorias.setCategoria(res.getString("DS_TIPO"));
+                categorias.setId(res.getLong("PK_ID"));
+                return categorias;
+            }else {
+                JOptionPane.showMessageDialog(null, "Categoria não localizada!");
+                return null;
+            }
+        }catch(SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar " +
+                    "a Categoria. \n" + err.getMessage());
+
+            return null;
         }
     }
 }
