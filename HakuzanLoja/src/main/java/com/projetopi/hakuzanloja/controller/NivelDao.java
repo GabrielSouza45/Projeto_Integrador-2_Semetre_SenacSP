@@ -56,7 +56,7 @@ public class NivelDao extends ConectarDao implements CrudDao<Nivel> {
 
     }
 
-    //@Override
+    @Override
     public List<Nivel> listarTodos() {
         String sql = "SELECT * FROM TB_NIVEL";
 
