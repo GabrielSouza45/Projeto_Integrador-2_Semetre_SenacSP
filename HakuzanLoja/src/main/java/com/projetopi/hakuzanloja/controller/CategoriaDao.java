@@ -2,21 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projetopi.hakuzanloja.controler;
+package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.Categoria;
 import com.projetopi.hakuzanloja.model.Produto;
+import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriaDao extends ConectarDao{
+public class CategoriaDao extends ConectarDao implements CrudDao<Categoria> {
 
 
     /*Criação de tabela para caso o db atual dê problema*/
+    @Override
     public void criarTabela() {
         String sql = "CREATE TABLE TB_CATEGORIA("
                 + "PK_ID INT NOT NULL AUTO_INCREMENT,"
@@ -52,7 +55,8 @@ public class CategoriaDao extends ConectarDao{
 
     }
 
-    public void cadastrarCategoria(Categoria categoria){
+    @Override
+    public void cadastrar(Categoria categoria){
 
         Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
         if (cat != null) {
@@ -75,7 +79,8 @@ public class CategoriaDao extends ConectarDao{
         }
     }
 
-    public void editarCategoria(Categoria categoria) {
+    @Override
+    public void editar(Categoria categoria) {
 
         Categoria cat = this.verificarSeCategoriaExiste(categoria.getCategoria());
         if (cat != null) {
@@ -129,8 +134,8 @@ public class CategoriaDao extends ConectarDao{
         }
     }
 
-
-    public void excluirCategoria(Categoria categoria) {
+    @Override
+    public void excluir(Categoria categoria) {
 
         List<Produto> produtos = new ProdutoDao().buscarProdutosPorCategoria(categoria);
         if (!produtos.isEmpty()) {
@@ -166,6 +171,91 @@ public class CategoriaDao extends ConectarDao{
 
         } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir Categoria. \n" +  err.getMessage());
+        }
+    }
+
+    @Override
+    public List<Categoria> listarTodos() {
+        String sql = "SELECT * FROM TB_CATEGORIA";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            List<Categoria> categorias = new ArrayList<>();
+
+            while (res.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(res.getLong("PK_ID"));
+                categoria.setCategoria(res.getString("DS_TIPO"));
+
+                categorias.add(categoria);
+            }
+
+            return categorias;
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
+    }
+
+    public Categoria buscarCategoriaPorId(Long id) {
+        String sql = "SELECT * FROM TB_CATEGORIA WHERE PK_ID = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, id);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(res.getLong("PK_ID"));
+                categoria.setCategoria(res.getString("DS_TIPO"));
+                return categoria;
+            } else {
+                JOptionPane.showMessageDialog(null, "Categoria não localizada!");
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar a Categoria. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public Categoria buscaCategoriaPorCategoria (String categoria){
+        String sql = "SELECT * FROM TB_CATEGORIA WHERE DS_TIPO = ?";
+
+        try {
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, categoria);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()){
+                Categoria categorias = new Categoria();
+                categorias.setCategoria(res.getString("DS_TIPO"));
+                categorias.setId(res.getLong("PK_ID"));
+                return categorias;
+            }else {
+                JOptionPane.showMessageDialog(null, "Categoria não localizada!");
+                return null;
+            }
+        }catch(SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar " +
+                    "a Categoria. \n" + err.getMessage());
+
+            return null;
         }
     }
 }

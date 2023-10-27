@@ -8,12 +8,12 @@ package com.projetopi.hakuzanloja.view;
  *
  * @author snubd
  */
-public class TelaInicial extends javax.swing.JFrame {
+public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
-    public TelaInicial() {
+    public TelaInicialParaAdmin() {
         initComponents();
     }
 
@@ -32,10 +32,11 @@ public class TelaInicial extends javax.swing.JFrame {
         btnCriarTodasTabelas = new javax.swing.JButton();
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoClientes = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuProduto = new javax.swing.JMenuItem();
         mnuArquivoUsuarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuArquivoTrocarUsuario = new javax.swing.JMenuItem();
@@ -83,14 +84,20 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home Administrador ");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        mnuArquivo.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\file.png")); // NOI18N
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         mnuArquivo.setText("Arquivo");
 
         mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoClientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\user.png")); // NOI18N
         mnuArquivoClientes.setText("Clientes");
         mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,17 +106,23 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuArquivo.add(mnuArquivoClientes);
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\products.png")); // NOI18N
-        jMenuItem2.setText("Produtos");
-        mnuArquivo.add(jMenuItem2);
+        menuProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menuProduto.setText("Produtos");
+        menuProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuProdutoMousePressed(evt);
+            }
+        });
+        mnuArquivo.add(menuProduto);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoUsuarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\users.png")); // NOI18N
         mnuArquivoUsuarios.setText("Uusuarios");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnuArquivoUsuariosMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuArquivoUsuariosMousePressed(evt);
             }
         });
         mnuArquivoUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -121,32 +134,26 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuArquivo.add(jSeparator1);
 
         mnuArquivoTrocarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoTrocarUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Change.png")); // NOI18N
         mnuArquivoTrocarUsuario.setText("Trocar Usuario");
         mnuArquivo.add(mnuArquivoTrocarUsuario);
 
         mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\out.png")); // NOI18N
         mnuArquivoSair.setText("Sair");
         mnuArquivo.add(mnuArquivoSair);
 
         jMenuBar1.add(mnuArquivo);
 
-        mnuMovimento.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\bag.png")); // NOI18N
         mnuMovimento.setText("Movimento");
 
         mnuMovimentoRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuMovimentoRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Report.png")); // NOI18N
         mnuMovimentoRelatorio.setText("Relatorio de Vendas");
         mnuMovimento.add(mnuMovimentoRelatorio);
 
         jMenuBar1.add(mnuMovimento);
 
-        mnuAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\help.png")); // NOI18N
         mnuAjuda.setText("Ajuda");
 
         mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaSobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\About.png")); // NOI18N
         mnuAjudaSobre.setText("Sobre");
         mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +163,6 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuAjuda.add(mnuAjudaSobre);
 
         mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon("C:\\Users\\everton.lcsousa\\Desktop\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\icons\\Help2.png")); // NOI18N
         mnuAjudaAjuda.setText("Ajuda");
         mnuAjuda.add(mnuAjudaAjuda);
 
@@ -168,14 +174,18 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 690, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 329, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(779, 382));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,7 +198,7 @@ public class TelaInicial extends javax.swing.JFrame {
 //       this.setVisible(false);
 //       tlc.setVisible(true);
 
-        TelaCadastroAPartirLoginTESTES tlc = new TelaCadastroAPartirLoginTESTES();
+        TelaAutoCadastroCliente tlc = new TelaAutoCadastroCliente();
         this.setVisible(false);
         tlc.setVisible(true);
     }//GEN-LAST:event_btnCadastroProdutoMouseClicked
@@ -206,17 +216,27 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuAjudaSobreActionPerformed
 
     private void mnuArquivoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMouseClicked
-        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
-        this.setVisible(false);
-        tlL.setVisible(true);
+       
 // TODO add your handling code here:
     }//GEN-LAST:event_mnuArquivoUsuariosMouseClicked
 
     private void mnuArquivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosActionPerformed
-        TelaCadastroAPartirLoginTESTES tlL = new TelaCadastroAPartirLoginTESTES();
+        TelaEdicaoTESTE tet = new TelaEdicaoTESTE();
         dispose();
-        tlL.setVisible(true);
+        tet.setVisible(true);
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
+
+    private void menuProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMousePressed
+
+    }//GEN-LAST:event_menuProdutoMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuArquivoUsuariosMousePressed
 
     /**
      * @param args the command line arguments
@@ -235,20 +255,21 @@ public class TelaInicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialParaAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicial().setVisible(true);
+                new TelaInicialParaAdmin().setVisible(true);
             }
         });
     }
@@ -256,13 +277,14 @@ public class TelaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem menuProduto;
     private javax.swing.JMenu mnuAjuda;
     private javax.swing.JMenuItem mnuAjudaAjuda;
     private javax.swing.JMenuItem mnuAjudaSobre;
