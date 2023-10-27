@@ -32,7 +32,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         btnCriarTodasTabelas = new javax.swing.JButton();
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        deskADM = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoClientes = new javax.swing.JMenuItem();
@@ -88,17 +88,33 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        deskADM.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout deskADMLayout = new javax.swing.GroupLayout(deskADM);
+        deskADM.setLayout(deskADMLayout);
+        deskADMLayout.setHorizontalGroup(
+            deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 883, Short.MAX_VALUE)
+        );
+        deskADMLayout.setVerticalGroup(
+            deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 498, Short.MAX_VALUE)
+        );
+
+        mnuArquivo.setText("Arquivo");
+        mnuArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuArquivoMouseClicked(evt);
             }
         });
 
-        mnuArquivo.setText("Arquivo");
-
         mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mnuArquivoClientes.setText("Clientes");
+        mnuArquivoClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuArquivoClientesMouseClicked(evt);
+            }
+        });
         mnuArquivoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuArquivoClientesActionPerformed(evt);
@@ -174,18 +190,14 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 690, Short.MAX_VALUE)
-                .addComponent(jButton1))
+            .addComponent(deskADM)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 329, Short.MAX_VALUE))
+            .addComponent(deskADM)
         );
 
-        setSize(new java.awt.Dimension(779, 382));
+        setSize(new java.awt.Dimension(899, 529));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,11 +216,13 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroProdutoMouseClicked
 
     private void btnCriarTodasTabelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTodasTabelasActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnCriarTodasTabelasActionPerformed
 
     private void mnuArquivoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoClientesActionPerformed
-        // TODO add your handling code here:
+        CadastroUsuarioTESTE CadUs = new CadastroUsuarioTESTE();
+        deskADM.add(CadUs);
+        CadUs.setVisible(true);
     }//GEN-LAST:event_mnuArquivoClientesActionPerformed
 
     private void mnuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaSobreActionPerformed
@@ -230,13 +244,17 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuProdutoMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuArquivoUsuariosMousePressed
+
+    private void mnuArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoMouseClicked
+        
+    }//GEN-LAST:event_mnuArquivoMouseClicked
+
+    private void mnuArquivoClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoClientesMouseClicked
+
+    }//GEN-LAST:event_mnuArquivoClientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,7 +295,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JDesktopPane deskADM;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
