@@ -4,8 +4,10 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.EnderecoAPI;
 import com.projetopi.hakuzanloja.controller.NivelDao;
 import com.projetopi.hakuzanloja.controller.UsuarioDao;
+import com.projetopi.hakuzanloja.model.Endereco;
 import com.projetopi.hakuzanloja.model.Nivel;
 import com.projetopi.hakuzanloja.model.Usuario;
 
@@ -217,6 +219,12 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Cidade");
+
+        txtCEP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCEPMouseExited(evt);
+            }
+        });
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("CEP");
@@ -460,9 +468,9 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
 
-        setSize(new java.awt.Dimension(768, 470));
+        setSize(new java.awt.Dimension(768, 471));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -544,12 +552,6 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
 
     private void btnListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarMouseClicked
 
-        UsuarioDao dao = new UsuarioDao();
-        List<Usuario> users = dao.listarTodos();
-
-        for (Usuario us : users){ // Botar numa tabela
-            System.out.println(us.getId()+"\n " + us.getNome()+"\n " + us.getEmail()+"\n " + (us.getNivel() != null ? us.getNivel().getDescNiveis() : ""));
-        }
 
     }//GEN-LAST:event_btnListarMouseClicked
 
@@ -565,23 +567,17 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailBuscarMouseClicked
 
-    private void btnBuscarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmailMouseClicked
+    private void txtCEPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCEPMouseExited
+        EnderecoAPI enderecoAPI = new EnderecoAPI();
+        Endereco endereco = enderecoAPI.buscaCep(txtCEP.getText());
 
-        this.usuarioEditar = new UsuarioDao().buscarUsuarioPorEmail(txtEmailBuscar.getText());
-        txtLogin.setText(usuarioEditar.getLogin());
-        txtPassword.setText(usuarioEditar.getSenha());
-        txtNome.setText(usuarioEditar.getNome());
-        txtTelefone.setText(usuarioEditar.getTelefone());
-        txtEmail.setText(usuarioEditar.getEmail());
-        txtCPF.setText(usuarioEditar.getDocumento());
-        txtRuaBairro.setText(usuarioEditar.getLogradouro());
-        txtBairro.setText(usuarioEditar.getBairro());
-        txtCidade.setText(usuarioEditar.getCidade());
-        txtCEP.setText(usuarioEditar.getCep());
-        txtNumero.setText(usuarioEditar.getNumero());
-        txtEstado.setText(usuarioEditar.getUf());
-
-    }//GEN-LAST:event_btnBuscarEmailMouseClicked
+        if (endereco != null) {
+            txtBairro.setText(endereco.getBairro() != null ? endereco.getBairro() : "");
+            txtRuaBairro.setText(endereco.getLogradouro() != null ? endereco.getLogradouro() : "");
+            txtEstado.setText(endereco.getUf() != null ? endereco.getUf() : "");
+            txtCidade.setText(endereco.getLocalidade() != null ? endereco.getLocalidade() : "");
+        }
+    }//GEN-LAST:event_txtCEPMouseExited
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
 
@@ -607,8 +603,24 @@ public class TelaEdicaoTESTE extends javax.swing.JFrame {
         dao.editar(this.usuarioEditar);
 
         limparCampos(this.getContentPane());
-
     }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnBuscarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmailMouseClicked
+
+        this.usuarioEditar = new UsuarioDao().buscarUsuarioPorEmail(txtEmailBuscar.getText());
+        txtLogin.setText(usuarioEditar.getLogin());
+        txtPassword.setText(usuarioEditar.getSenha());
+        txtNome.setText(usuarioEditar.getNome());
+        txtTelefone.setText(usuarioEditar.getTelefone());
+        txtEmail.setText(usuarioEditar.getEmail());
+        txtCPF.setText(usuarioEditar.getDocumento());
+        txtRuaBairro.setText(usuarioEditar.getLogradouro());
+        txtBairro.setText(usuarioEditar.getBairro());
+        txtCidade.setText(usuarioEditar.getCidade());
+        txtCEP.setText(usuarioEditar.getCep());
+        txtNumero.setText(usuarioEditar.getNumero());
+        txtEstado.setText(usuarioEditar.getUf());
+    }//GEN-LAST:event_btnBuscarEmailMouseClicked
 
     private void btnCadastraUserMousePressed(java.awt.event.MouseEvent evt) {                                             
 

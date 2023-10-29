@@ -227,6 +227,43 @@ public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
             return null;
         }
     }
+    
+     public Usuario buscarUsuarioPorCPF(String CPF){
+        String sql = "SELECT * FROM TB_USUARIO WHERE NR_CPFCNPJ = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, CPF);
+
+            ResultSet res = ps.executeQuery();
+
+            Usuario user = new Usuario();
+            while(res.next()) {
+                user.setId(res.getLong("PK_ID"));
+                user.setNome(res.getString("DS_NOME"));
+                user.setEmail(res.getString("DS_EMAIL"));
+                user.setLogin(res.getString("DS_LOGIN"));
+                user.setSenha(res.getString("DS_SENHA"));
+                user.setTelefone(res.getString("NR_TELEFONE"));
+                user.setCep(res.getString("DS_CEP"));
+                user.setUf(res.getString("DS_UF"));
+                user.setCidade(res.getString("DS_CIDADE"));
+                user.setBairro(res.getString("DS_BAIRRO"));
+                user.setLogradouro(res.getString("DS_LOGRADOURO"));
+                user.setNumero(res.getString("NR_LOGRADOURO"));
+                user.setDocumento(res.getString("NR_CPFCNPJ"));
+                user.setNivel(new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
+            }
+            return user;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário. \n" + err.getMessage());
+            return null;
+        }
+    }
 
     public List<Usuario> buscarUsuarioPorNivel(Nivel nivel){
         String sql = "SELECT * FROM TB_USUARIO WHERE FK_NIVEL = ?";
@@ -270,7 +307,7 @@ public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
         }
     }
 
-    public List<Usuario> listarTodos(){
+    public ResultSet listarTodos(){
         String sql = "SELECT * FROM TB_USUARIO ORDER BY DS_NOME ASC";
 
         try {
@@ -280,30 +317,7 @@ public class UsuarioDao extends ConectarDao implements CrudDao<Usuario> {
 
             ResultSet res = ps.executeQuery();
 
-            List<Usuario> users = new ArrayList<>();
-
-            while(res.next()){
-
-                Usuario user = new Usuario();
-                user.setId(res.getLong("PK_ID"));
-                user.setNome(res.getString("DS_NOME"));
-                user.setEmail (res.getString("DS_EMAIL"));
-                user.setLogin (res.getString("DS_LOGIN"));
-                user.setSenha (res.getString("DS_SENHA"));
-                user.setTelefone (res.getString("NR_TELEFONE"));
-                user.setCep(res.getString("DS_CEP"));
-                user.setUf (res.getString("DS_UF"));
-                user.setCidade (res.getString("DS_CIDADE"));
-                user.setBairro (res.getString("DS_BAIRRO"));
-                user.setLogradouro (res.getString("DS_LOGRADOURO"));
-                user.setNumero(res.getString("NR_LOGRADOURO"));
-                user.setDocumento (res.getString("NR_CPFCNPJ"));
-                user.setNivel (new NivelDao().buscarNivelPorId(res.getLong("FK_NIVEL")));
-
-                users.add(user);
-            }
-
-            return users;
+           return res;
 
         }catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar usuários. \n" + err.getMessage());

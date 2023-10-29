@@ -13,7 +13,18 @@ public class Produto {
     private String descricao;
     private double valor;
     private Categoria categoria;
+    private String urlImagemProduto;
     private double valorCompra;
+    
+    
+    public String getUrlImagemProduto() {
+        return urlImagemProduto;
+    }
+
+    public void setUrlImagemProduto(String urlImagemProduto) {
+        this.urlImagemProduto = urlImagemProduto;
+    }
+   
 
     public double getValorCompra() {
         return valorCompra;

@@ -32,7 +32,6 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         btnCriarTodasTabelas = new javax.swing.JButton();
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoClientes = new javax.swing.JMenuItem();
@@ -88,13 +87,6 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         mnuArquivo.setText("Arquivo");
 
         mnuArquivoClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -116,7 +108,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         mnuArquivo.add(menuProduto);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoUsuarios.setText("Uusuarios");
+        mnuArquivoUsuarios.setText("Usuarios");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnuArquivoUsuariosMouseClicked(evt);
@@ -139,6 +131,11 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
         mnuArquivoSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         mnuArquivoSair.setText("Sair");
+        mnuArquivoSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mnuArquivoSairMousePressed(evt);
+            }
+        });
         mnuArquivo.add(mnuArquivoSair);
 
         jMenuBar1.add(mnuArquivo);
@@ -174,15 +171,11 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 690, Short.MAX_VALUE)
-                .addComponent(jButton1))
+            .addGap(0, 765, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 329, Short.MAX_VALUE))
+            .addGap(0, 352, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(779, 382));
@@ -230,13 +223,13 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuProdutoMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuArquivoUsuariosMousePressed
+
+    private void mnuArquivoSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoSairMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_mnuArquivoSairMousePressed
 
     /**
      * @param args the command line arguments
@@ -277,7 +270,6 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
