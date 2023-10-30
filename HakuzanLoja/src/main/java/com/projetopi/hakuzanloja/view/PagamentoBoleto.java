@@ -53,7 +53,7 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
 
         jLabel4.setText("de barras. Para pagar em qualquer banco, caixa eletrônico ou lotérica, por favor, ");
 
-        jLabel5.setText("imprima o boleto");
+        jLabel5.setText("imprima o boleto.");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Se o pagamento é feito de segunda a sexta, é creditado no dia seguinte. Se");
@@ -68,7 +68,7 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
 
         jButton1.setText("Imprimir Boleto");
 
-        jButton2.setText("Copirar linha digitável");
+        jButton2.setText("Copiar linha digitável");
 
         jButton3.setText("Ver em minhas compras");
 

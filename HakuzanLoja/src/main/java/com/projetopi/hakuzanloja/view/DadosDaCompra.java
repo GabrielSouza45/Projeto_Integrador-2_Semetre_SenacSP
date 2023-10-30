@@ -101,7 +101,7 @@ public class DadosDaCompra extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Parcelas");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Á VISTA", "2X", "3X", "4X", "5X", "6X", "7X", "8X", "9X", "10X", "11X", "12X" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Á VISTA", "02x", "03x", "04x", "05x", "06x", "07x", "08x", "09x", "10X", "11X", "12X" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -117,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="imprima o boleto"/>
+        <Property name="text" type="java.lang.String" value="imprima o boleto."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -158,7 +158,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Copirar linha digit&#xe1;vel"/>
+        <Property name="text" type="java.lang.String" value="Copiar linha digit&#xe1;vel"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
