@@ -220,9 +220,8 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCriarTodasTabelasActionPerformed
 
     private void mnuArquivoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoClientesActionPerformed
-        CadastroUsuarioTESTE CadUs = new CadastroUsuarioTESTE();
-        deskADM.add(CadUs);
-        CadUs.setVisible(true);
+
+
     }//GEN-LAST:event_mnuArquivoClientesActionPerformed
 
     private void mnuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaSobreActionPerformed
