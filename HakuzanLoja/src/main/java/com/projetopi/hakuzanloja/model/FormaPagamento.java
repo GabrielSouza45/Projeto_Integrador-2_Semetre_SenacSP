@@ -8,6 +8,8 @@ public class FormaPagamento {
 
     // Atributos da Entidade
     private String tipo;
+    private String descCartao;
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -23,5 +25,21 @@ public class FormaPagamento {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getDescCartao() {
+        return descCartao;
+    }
+
+    public void setDescCartao(String descCartao) {
+        this.descCartao = descCartao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

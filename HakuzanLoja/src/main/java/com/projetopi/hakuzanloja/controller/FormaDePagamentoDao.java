@@ -23,10 +23,14 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
     /*Criação de tabela para caso o db atual dê problema*/
     @Override
     public void criarTabela() {
-        String sql = "CREATE TABLE TB_FORMAPAGAMENTO("
-                + "PK_ID INT NOT NULL AUTO_INCREMENT,"
-                + "DS_TIPO INT,"
-                + "PRIMARY KEY(PK_ID)";
+        String sql = "CREATE TABLE `TB_FORMAPAGAMENTO` ( " +
+                "  `PK_ID` int NOT NULL AUTO_INCREMENT, "+
+                "  `FK_USUARIO` int DEFAULT NULL, " +
+                "  `DS_CARTAO` varchar(50) DEFAULT NULL, " +
+                "  `DS_TIPO` varchar(50) DEFAULT NULL, " +
+                "  PRIMARY KEY (`PK_ID`), " +
+                "  KEY `FK_USUARIO` (`FK_USUARIO`), " +
+                "  CONSTRAINT `TB_FORMAPAGAMENTO_ibfk_1` FOREIGN KEY (`FK_USUARIO`) REFERENCES `TB_USUARIO` (`PK_ID`) ";
 
         PreparedStatement ps = null;
 
@@ -43,11 +47,13 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
     @Override
     public void cadastrar(FormaPagamento pagamento){
 
-        String sql = "INSERT INTO TB_FORMAPAGAMENTO (DS_TIPO) VALUES (?);";
+        String sql = "INSERT INTO TB_FORMAPAGAMENTO (DS_TIPO, DS_CARTAO, FK_USUARIO) VALUES (?, ?, ?);";
         try{
 
             PreparedStatement ps = (PreparedStatement) getConexao().prepareStatement(sql);
             ps.setString(1, pagamento.getTipo());
+            ps.setString(2, pagamento.getDescCartao());
+            ps.setLong(3, pagamento.getUsuario().getId());
 
             ps.execute();
 
@@ -64,13 +70,15 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
     public void editar(FormaPagamento pagamento){
 
         String sql = "UPDATE TB_FORMAPAGAMENTO SET " +
-                " DS_TIPO = ? " +
+                " DS_TIPO = ?,  DS_CARTAO=?, FK_USUARIO=?" +
                 " WHERE PK_ID = ? ";
         try{
 
             PreparedStatement ps = (PreparedStatement) getConexao().prepareStatement(sql);
             ps.setString(1, pagamento.getTipo());
-            ps.setLong(2, pagamento.getId());
+            ps.setString(2, pagamento.getDescCartao());
+            ps.setLong(3, pagamento.getUsuario().getId());
+            ps.setLong(4, pagamento.getId());
 
             ps.executeUpdate();
 
@@ -124,6 +132,8 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
                 FormaPagamento formaPagamento = new FormaPagamento();
                 formaPagamento.setId(res.getLong("PK_ID"));
                 formaPagamento.setTipo(res.getString("DS_TIPO"));
+                formaPagamento.setDescCartao(res.getString("DS_CARTAO"));
+                formaPagamento.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
 
                 formaPagamentos.add(formaPagamento);
             }
@@ -136,7 +146,7 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
         }
     }
 
-    public List<FormaPagamento> buscarPorId(FormaPagamento formaPagamento) {
+    public FormaPagamento buscarPorId(Long id) {
         String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE PK_ID = ?";
 
         try {
@@ -144,22 +154,21 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
             PreparedStatement ps = (PreparedStatement)
                     getConexao().prepareStatement(sql);
 
-            ps.setLong(1, formaPagamento.getId());
+            ps.setLong(1, id);
 
             ResultSet res = ps.executeQuery();
 
-            List<FormaPagamento> formaPagamentos = new ArrayList<>();
+            FormaPagamento pagamento = new FormaPagamento();
 
-            while (res.next()) {
-                FormaPagamento formaPagamento1 = new FormaPagamento();
-                formaPagamento1.setId(res.getLong("PK_ID"));
-                formaPagamento1.setTipo(res.getString("DS_TIPO"));
-
-                formaPagamentos.add(formaPagamento1);
+            if (res.next()) {
+                pagamento.setId(res.getLong("PK_ID"));
+                pagamento.setTipo(res.getString("DS_TIPO"));
+                pagamento.setDescCartao(res.getString("DS_CARTAO"));
+                pagamento.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+                return pagamento;
             }
 
-            return formaPagamentos;
-
+            return null;
         } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar Usuario. \n" + err.getMessage());
             return null;
@@ -183,6 +192,8 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
                 FormaPagamento formaPagamento = new FormaPagamento();
                 formaPagamento.setId(res.getLong("PK_ID"));
                 formaPagamento.setTipo(res.getString("DS_TIPO"));
+                formaPagamento.setDescCartao(res.getString("DS_CARTAO"));
+                formaPagamento.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
 
                 formaPagamentos.add(formaPagamento);
             }

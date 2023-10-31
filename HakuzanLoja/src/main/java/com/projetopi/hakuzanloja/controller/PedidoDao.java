@@ -21,13 +21,18 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
     /*Criação de tabela para caso o db atual dê problema*/
     @Override
     public void criarTabela() {
-        String sql = "CREATE TABLE TB_PEDIDO("
-                + "PK_ID INT NOT NULL AUTO_INCREMENT,"
-                + "VL_TOTAL DECIMAL(14,2),"
-                + "DT_PEDIDO DATE,TG_STATUS VARCHAR(1),"
-                + "FK_USUARIO INT,"
-                + "PRIMARY KEY(PK_ID),"
-                + "FOREIGN KEY(FK_USUARIO)REFERENCES TB_USUARIO(PK_ID));";
+        String sql = "CREATE TABLE `TB_PEDIDO` ( " +
+                "  `PK_ID` int NOT NULL AUTO_INCREMENT, " +
+                "  `VL_TOTAL` decimal(14,2) DEFAULT NULL, " +
+                "  `DT_PEDIDO` date DEFAULT NULL, " +
+                "  `TG_STATUS` varchar(1) DEFAULT NULL, " +
+                "  `FK_USUARIO` int DEFAULT NULL, " +
+                "  `FK_FORMAPAGAMENTO` int DEFAULT NULL, " +
+                "  PRIMARY KEY (`PK_ID`), " +
+                "  KEY `FK_USUARIO` (`FK_USUARIO`), " +
+                "  KEY `FK_TB_PEDIDO_TB_FORMAPAGAMENTO` (`FK_FORMAPAGAMENTO`), " +
+                "  CONSTRAINT `FK_TB_PEDIDO_TB_FORMAPAGAMENTO` FOREIGN KEY (`FK_FORMAPAGAMENTO`) REFERENCES `TB_FORMAPAGAMENTO` (`PK_ID`), " +
+                "  CONSTRAINT `TB_PEDIDO_ibfk_1` FOREIGN KEY (`FK_USUARIO`) REFERENCES `TB_USUARIO` (`PK_ID`) ";
 
 
         PreparedStatement ps = null;
@@ -45,13 +50,15 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
     @Override
     public void cadastrar(Pedido pedido) {
 
-        String sql = "INSERT INTO TB_PEDIDO (DT_PEDIDO, VL_TOTAL , FK_USUARIO)"
-                + "VALUES (?, ?, ?);";
+        String sql = "INSERT INTO TB_PEDIDO (DT_PEDIDO, VL_TOTAL , FK_USUARIO, TG_STATUS, FK_FORMAPAGAMENTO)"
+                + "VALUES (?, ?, ?, ?, ?);";
         try {
             PreparedStatement ps = getConexao().prepareStatement(sql);
             ps.setDate(1, (Date) pedido.getData());
             ps.setDouble(2, pedido.getValorTotal());
             ps.setLong(3, pedido.getUsuario().getId());
+            ps.setString(4, pedido.getStatus());
+            ps.setLong(5, pedido.getPagamento().getId());
 
             ps.execute();
             ps.close();
@@ -92,6 +99,8 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
                 pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
                 pedido.setData(res.getDate("DT_PEDIDO"));
                 pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
 
                 pedidos.add(pedido);
             }
@@ -103,14 +112,14 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
         }
     }
 
-    public Pedido buscarUsuario(Long id){
+    public Pedido buscarUsuario(Long userId){
         String sql = "SELECT * FROM TB_USUARIO WHERE FK_USUARIO = ?";
 
         try {
             PreparedStatement ps = (PreparedStatement)
                     getConexao().prepareStatement(sql);
 
-            ps.setLong(1, id);
+            ps.setLong(1, userId);
 
             ResultSet res = ps.executeQuery();
 
@@ -120,6 +129,9 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
                 pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
                 pedido.setData(res.getDate("DT_PEDIDO"));
                 pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
+
                 return pedido;
             }else {
                 JOptionPane.showMessageDialog(null, "Usuário não localizado!");
@@ -148,6 +160,9 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
                 pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
                 pedido.setData(res.getDate("DT_PEDIDO"));
                 pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
+
                 return pedido;
             }else {
                 JOptionPane.showMessageDialog(null, "ID não localizado!");
@@ -176,6 +191,9 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
                 pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
                 pedido.setData(res.getDate("DT_PEDIDO"));
                 pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
+
                 return pedido;
             }else {
                 JOptionPane.showMessageDialog(null, "Data não localizada!");
