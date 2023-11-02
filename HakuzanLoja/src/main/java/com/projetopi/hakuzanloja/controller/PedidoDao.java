@@ -70,15 +70,83 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
         }
     }
 
+    private Pedido verificarExistenciaPedidoPorId(Pedido peds){
+        String sql = "SELECT * FROM TB_PEDIDO " +
+                "WHERE PK_ID LIKE (?) ";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            Long id = peds.getId();
+            ps.setLong(1, id);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setId(res.getLong("PK_ID"));
+                return pedido;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao verificar existencia do pedido. \n" + err.getMessage());
+            return null;
+        }
+    }
+
     @Override
     public void editar(Pedido objeto) {
+        Pedido pedido = this.verificarExistenciaPedidoPorId(objeto);
+        if (pedido != null){
+            if (!objeto.getId().equals(objeto.getId())){
+                JOptionPane.showMessageDialog(null, "Pedido já realizado!");
+                return;
+            }
+        }
 
+        String sql = "UPDATE TB_PEDIDO SET PK_ID = ?, VL-TOTAL = ?, DT_PEDIDO = ?, " +
+                "TG_STATUS = ?, FK_USUARIO = ?, FK_FORMAPAGAMENTO = ?";
+
+        try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
+            ps.setLong(1,objeto.getId());
+            ps.setDouble(2, objeto.getValorTotal());
+            ps.setDate(3, (Date) objeto.getData());
+            ps.setString(4, objeto.getStatus());
+            ps.setString(5, String.valueOf(objeto.getUsuario()));
+            ps.setDouble(6, objeto.getPagamento().getId());
+
+
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Pedido atualizado com sucesso!");
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar pedido. \n" + err.getMessage());
+        }
     }
 
     @Override
     public void excluir(Pedido objeto) {
+        String sql = "DELETE FROM TB_PEDIDO WHERE PK_ID = ?";
 
-    }
+        try (PreparedStatement ps = getConexao().prepareStatement(sql)) {
+
+            ps.setLong(1, objeto.getId());
+            int rowCount = ps.executeUpdate();
+
+            if (rowCount > 0) {
+                JOptionPane.showMessageDialog(null, "pedido excluido com sucesso!");
+            } else{
+            JOptionPane.showMessageDialog(null, "Nenhum pedido encontrado com o ID fornecido");
+        }}
+        catch (SQLException err){
+                JOptionPane.showMessageDialog(null, "Erro ao excluir pedido." + err.getMessage());
+            }
+        }
+
 
     @Override
     public List<Pedido> listarTodos(){
