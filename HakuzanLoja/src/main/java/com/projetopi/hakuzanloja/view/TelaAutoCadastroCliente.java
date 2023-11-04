@@ -79,9 +79,9 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        btnCadastraUser = new javax.swing.JButton();
         Numero = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        btnCadastroAbrir = new com.k33ptoo.components.KButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -104,8 +104,8 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -295,29 +295,24 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(51, 153, 255));
         jLabel16.setText("Estado");
 
-        btnCadastraUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCadastraUser.setText("Cadastrar");
-        btnCadastraUser.setBorder(null);
-        btnCadastraUser.setFocusable(false);
-        btnCadastraUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCadastraUserMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCadastraUserMousePressed(evt);
-            }
-        });
-        btnCadastraUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastraUserActionPerformed(evt);
-            }
-        });
-
         Numero.setForeground(new java.awt.Color(51, 153, 255));
         Numero.setText("Numeo");
 
         jLabel10.setForeground(new java.awt.Color(51, 153, 255));
         jLabel10.setText("Bairro");
+
+        btnCadastroAbrir.setText("CONTINUAR");
+        btnCadastroAbrir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCadastroAbrir.setkEndColor(new java.awt.Color(0, 51, 255));
+        btnCadastroAbrir.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnCadastroAbrir.setkHoverForeGround(new java.awt.Color(102, 102, 102));
+        btnCadastroAbrir.setkHoverStartColor(new java.awt.Color(0, 102, 255));
+        btnCadastroAbrir.setkStartColor(new java.awt.Color(0, 0, 0));
+        btnCadastroAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastroAbrirMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -325,28 +320,25 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtRuaBairro)
-                        .addComponent(txtCEP)
-                        .addComponent(txtEstado)
-                        .addComponent(txtCidade)
-                        .addComponent(txtBairro)
-                        .addComponent(txtNumero)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel16)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel14))
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel12)
-                                .addComponent(Numero))
-                            .addGap(240, 240, 240))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                            .addComponent(btnCadastraUser, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27))))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRuaBairro)
+                    .addComponent(txtCEP)
+                    .addComponent(txtEstado)
+                    .addComponent(txtCidade)
+                    .addComponent(txtBairro)
+                    .addComponent(txtNumero)
+                    .addComponent(btnCadastroAbrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel16)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel14))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel12)
+                            .addComponent(Numero))
+                        .addGap(240, 240, 240)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -379,8 +371,8 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCadastraUser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(btnCadastroAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -497,7 +489,11 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addGap(69, 69, 69))
         );
 
+        btnFecharTela.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnFecharTela.setForeground(new java.awt.Color(255, 255, 255));
         btnFecharTela.setText("X");
+        btnFecharTela.setBorder(null);
+        btnFecharTela.setOpaque(false);
         btnFecharTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharTelaActionPerformed(evt);
@@ -524,11 +520,19 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("A NOSSA INSPIRAÇÃO.");
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Contate-nos");
-
         jLabel33.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\MeninoTelaCadastro.png")); // NOI18N
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Contate-nos");
+        jButton1.setBorder(null);
+        jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
@@ -539,10 +543,13 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1181, Short.MAX_VALUE))
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -554,27 +561,27 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel33)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                .addGap(0, 1288, Short.MAX_VALUE)
-                .addComponent(btnFecharTela))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnFecharTela, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addComponent(btnFecharTela)
-                .addGap(26, 26, 26)
+                .addComponent(btnFecharTela, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1))))
                 .addGap(17, 17, 17)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
@@ -649,8 +656,20 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         tLogin.setVisible(true);
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
-    private void btnCadastraUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastraUserMouseClicked
+    private void txtPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassword1ActionPerformed
 
+    private void txtEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmail1ActionPerformed
+
+    private void btnCadastroAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastroAbrirMouseClicked
+        TelaAutoCadastroCliente tacc = new TelaAutoCadastroCliente();
+        dispose();
+        tacc.setVisible(true);
+
+        //codigo botão tela de cadastro btnCadastraUser
         ArrayList<String> verificacaoNull = new ArrayList<>();
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
@@ -695,23 +714,11 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 break;
             }
         }
-    }//GEN-LAST:event_btnCadastraUserMouseClicked
+    }//GEN-LAST:event_btnCadastroAbrirMouseClicked
 
-    private void btnCadastraUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastraUserMousePressed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastraUserMousePressed
-
-    private void btnCadastraUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraUserActionPerformed
-
-    }//GEN-LAST:event_btnCadastraUserActionPerformed
-
-    private void txtPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassword1ActionPerformed
-
-    private void txtEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmail1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void limparCampos(Container container) {
         for (Component component : container.getComponents()) {
@@ -775,8 +782,9 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Numero;
-    private javax.swing.JButton btnCadastraUser;
+    private com.k33ptoo.components.KButton btnCadastroAbrir;
     private javax.swing.JButton btnFecharTela;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -798,7 +806,6 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
