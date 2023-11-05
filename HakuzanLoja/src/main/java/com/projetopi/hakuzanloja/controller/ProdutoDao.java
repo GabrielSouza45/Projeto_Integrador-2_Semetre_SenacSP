@@ -159,4 +159,106 @@ public class ProdutoDao extends ConectarDao implements CrudDao<Produto> {
 
     }
 
+    @Override
+    public List<Produto> listarTodos(){
+        String sql = "SELECT * FROM TB_PRODUTO";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            List<Produto> produtoList = new ArrayList<>();
+
+            while(res.next()){
+                Produto produto = new Produto();
+                produto.setId(res.getLong("PK_ID"));
+                produto.setProduto(res.getString("DS_NOME"));
+                produto.setDescricao(res.getString("DS_DESCRICAO"));
+                produto.setValor(res.getDouble("VL_COMPRA"));
+                produto.setValorCompra(res.getDouble("VL_VENDA"));
+                produto.setCategoria(new CategoriaDao().buscarCategoriaPorId(res.getLong("FK_CATEGORIA")));
+
+                produtoList.add(produto);
+            }
+
+            return produtoList;
+
+        }catch (SQLException err){
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
+    }
+
+
+
+    public List<Produto> buscarProdutoPorNome(Produto produto){
+        String sql = "SELECT * FROM TB_PRODUTO WHERE DS_NOME = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, produto.getProduto());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Produto> produtos = new ArrayList<>();
+
+            while(res.next()){
+                Produto produto1 = new Produto();
+                produto1.setId(res.getLong("PK_ID"));
+                produto1.setProduto(res.getString("DS_NOME"));
+                produto1.setDescricao(res.getString("DS_DESCRICAO"));
+                produto1.setValor(res.getDouble("VL_COMPRA"));
+                produto1.setValorCompra(res.getDouble("VL_VENDA"));
+                produto1.setCategoria(new CategoriaDao().buscarCategoriaPorId(res.getLong("FK_CATEGORIA")));
+
+                produtos.add(produto1);
+            }
+
+            return produtos;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Produto. \n" + err.getMessage());
+            return null;
+        }
+    }
+
+    public List<Produto> buscarProdutoPorDescricao(Produto produto){
+        String sql = "SELECT * FROM TB_PRODUTO WHERE DS_DESCRICAO = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setString(1, produto.getDescricao());
+
+            ResultSet res = ps.executeQuery();
+
+            List<Produto> produtos = new ArrayList<>();
+
+            while(res.next()){
+                Produto produto1 = new Produto();
+                produto1.setId(res.getLong("PK_ID"));
+                produto1.setProduto(res.getString("DS_NOME"));
+                produto1.setDescricao(res.getString("DS_DESCRICAO"));
+                produto1.setValor(res.getDouble("VL_COMPRA"));
+                produto1.setValorCompra(res.getDouble("VL_VENDA"));
+                produto1.setCategoria(new CategoriaDao().buscarCategoriaPorId(res.getLong("FK_CATEGORIA")));
+
+                produtos.add(produto1);
+            }
+
+            return produtos;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar a Descricao. \n" + err.getMessage());
+            return null;
+        }
+    }
 }

@@ -8,6 +8,7 @@ import java.util.Date;
 public class Pedido {
     // Atributos Padrão
     private Long id;
+    private String status;
 
     // Atributos da Entidade
     private FormaPagamento pagamento;
@@ -65,5 +66,13 @@ public class Pedido {
 
     public void setPagamento(FormaPagamento pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

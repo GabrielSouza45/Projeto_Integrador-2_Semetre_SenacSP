@@ -5,13 +5,11 @@ package com.projetopi.hakuzanloja.model;
 public class FormaPagamento {
     // Atributos Padrão
     private Long id;
-    private int inativo;
 
     // Atributos da Entidade
+    private String tipo;
+    private String descCartao;
     private Usuario usuario;
-    private String Cartao;
-    private String Pix;
-    private String boleto;
 
     public Long getId() {
         return id;
@@ -21,12 +19,20 @@ public class FormaPagamento {
         this.id = id;
     }
 
-    public int getInativo() {
-        return inativo;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setInativo(int inativo) {
-        this.inativo = inativo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDescCartao() {
+        return descCartao;
+    }
+
+    public void setDescCartao(String descCartao) {
+        this.descCartao = descCartao;
     }
 
     public Usuario getUsuario() {
@@ -35,29 +41,5 @@ public class FormaPagamento {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public String getCartao() {
-        return Cartao;
-    }
-
-    public void setCartao(String cartao) {
-        Cartao = cartao;
-    }
-
-    public String getPix() {
-        return Pix;
-    }
-
-    public void setPix(String pix) {
-        Pix = pix;
-    }
-
-    public String getBoleto() {
-        return boleto;
-    }
-
-    public void setBoleto(String boleto) {
-        this.boleto = boleto;
     }
 }
