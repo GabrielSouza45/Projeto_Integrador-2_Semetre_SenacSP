@@ -218,8 +218,9 @@ public class TelaLogin extends javax.swing.JFrame {
         try {
 
             ResultSet reslt = u.validarLogin(login, senha);
+            
+            
             if (reslt.next()){
-
                 // COLOCAR TELA QUE IRA SER ABERTA
                 TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");

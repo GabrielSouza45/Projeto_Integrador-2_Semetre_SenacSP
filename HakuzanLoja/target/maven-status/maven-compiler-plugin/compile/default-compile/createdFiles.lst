@@ -20,7 +20,7 @@ com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$7.class
 com\projetopi\hakuzanloja\view\EditarDadosPessoais.class
 com\projetopi\hakuzanloja\model\Produto.class
 com\projetopi\hakuzanloja\view\TelaInicialCliente.class
-com\projetopi\hakuzanloja\view\EditarEndereço.class
+com\projetopi\hakuzanloja\view\EditarEndereÃ§o.class
 com\projetopi\hakuzanloja\model\FormaPagamento.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$10.class
 com\projetopi\hakuzanloja\view\MeuPerfilCliente$3.class

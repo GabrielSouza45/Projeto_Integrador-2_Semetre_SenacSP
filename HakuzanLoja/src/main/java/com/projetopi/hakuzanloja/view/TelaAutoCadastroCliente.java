@@ -35,7 +35,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
     
     private  Nivel setNivelCliente(){
         NivelDao NivelCliente = new NivelDao();
-        return  NivelCliente.buscarNivelPorId((long)1);
+        return  NivelCliente.buscarNivelPorId((long)2);
     }
 
 
@@ -674,12 +674,12 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         Usuario usuario = new Usuario();
         UsuarioDao dao = new UsuarioDao();
 
-        verificacaoNull.add(txtNome.getText());
-        verificacaoNull.add(txtCPF.getText());
-        verificacaoNull.add(txtTelefone.getText());
-        verificacaoNull.add(txtEmail.getText());
-        verificacaoNull.add(txtLogin.getText());
-        verificacaoNull.add(txtPassword.getText());
+        verificacaoNull.add(txtNome1.getText());
+        verificacaoNull.add(txtCPF1.getText());
+        verificacaoNull.add(txtTelefone1.getText());
+        verificacaoNull.add(txtEmail1.getText());
+        verificacaoNull.add(txtLogin1.getText());
+        verificacaoNull.add(txtPassword1.getText());
         verificacaoNull.add(txtRuaBairro.getText());
         verificacaoNull.add(txtBairro.getText());
         verificacaoNull.add(txtCidade.getText());
@@ -689,18 +689,17 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
 
         for(String index : verificacaoNull){
             if(index.equals("")){
-
                 JOptionPane.showMessageDialog(null, "Cadastro Incompleto, falta campos");
                 break;
 
             }
-            else if(!index.equals("")){
-                usuario.setNome(txtNome.getText());
-                usuario.setDocumento(txtCPF.getText());
-                usuario.setTelefone(txtTelefone.getText());
-                usuario.setEmail(txtEmail.getText());
-                usuario.setLogin(txtLogin.getText());
-                usuario.setSenha(txtPassword.getText());
+            else {
+                usuario.setNome(txtNome1.getText());
+                usuario.setDocumento(txtCPF1.getText());
+                usuario.setTelefone(txtTelefone1.getText());
+                usuario.setEmail(txtEmail1.getText());
+                usuario.setLogin(txtLogin1.getText());
+                usuario.setSenha(txtPassword1.getText());
                 usuario.setLogradouro(txtRuaBairro.getText());
                 usuario.setBairro(txtBairro.getText());
                 usuario.setCidade(txtCidade.getText());
@@ -708,7 +707,6 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 usuario.setUf(txtEstado.getText());
                 usuario.setNumero(txtNumero.getText());
                 usuario.setNivel(setNivelCliente());
-
                 limparCampos(this.getContentPane());
                 dao.cadastrar(usuario);
                 break;
