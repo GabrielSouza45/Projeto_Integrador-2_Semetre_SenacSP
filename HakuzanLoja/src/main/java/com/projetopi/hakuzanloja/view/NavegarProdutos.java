@@ -77,6 +77,7 @@ public class NavegarProdutos extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jSpinner1 = new javax.swing.JSpinner();
 
+        setClosable(true);
         setTitle("HAKUZAN NAVEGAR PELOS PRODUTOS E SACOLA");
 
         jTable11.setModel(new javax.swing.table.DefaultTableModel(
@@ -185,7 +186,7 @@ public class NavegarProdutos extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel9))
-                        .addGap(0, 54, Short.MAX_VALUE))
+                        .addGap(0, 65, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)

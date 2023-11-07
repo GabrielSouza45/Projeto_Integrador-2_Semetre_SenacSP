@@ -6,6 +6,7 @@ package com.projetopi.hakuzanloja.view;
 
 
 import com.projetopi.hakuzanloja.controller.UsuarioDao;
+import com.projetopi.hakuzanloja.model.UsuarioAtual;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -56,14 +57,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         txtLogin.setBackground(new java.awt.Color(237, 237, 237));
         txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txtLogin.setOpaque(false);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha");
 
         txtSenha.setBackground(new java.awt.Color(237, 237, 237));
         txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txtSenha.setOpaque(false);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -78,7 +77,6 @@ public class TelaLogin extends javax.swing.JFrame {
         btnFecharTela.setDefaultCapable(false);
         btnFecharTela.setFocusPainted(false);
         btnFecharTela.setFocusable(false);
-        btnFecharTela.setOpaque(false);
         btnFecharTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharTelaActionPerformed(evt);
@@ -86,6 +84,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         btnValidaLogin.setText("Entrar");
+        btnValidaLogin.setBorderPainted(false);
         btnValidaLogin.setkBorderRadius(40);
         btnValidaLogin.setkEndColor(new java.awt.Color(0, 0, 0));
         btnValidaLogin.setkFillButton(false);
@@ -105,13 +104,13 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel4.setText("OU");
 
         btnValidaLogin2.setText("Cadastrar");
+        btnValidaLogin2.setBorderPainted(false);
         btnValidaLogin2.setkBorderRadius(40);
         btnValidaLogin2.setkEndColor(new java.awt.Color(204, 204, 204));
         btnValidaLogin2.setkHoverEndColor(new java.awt.Color(0, 0, 0));
         btnValidaLogin2.setkHoverForeGround(new java.awt.Color(102, 102, 102));
         btnValidaLogin2.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         btnValidaLogin2.setkStartColor(new java.awt.Color(0, 0, 0));
-        btnValidaLogin2.setOpaque(false);
         btnValidaLogin2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnValidaLogin2MouseClicked(evt);
@@ -126,13 +125,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Lojas");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\TelaLogin.png")); // NOI18N
-
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Esqueceu sua senha?");
         jButton1.setBorder(null);
-        jButton1.setOpaque(false);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -221,11 +217,25 @@ public class TelaLogin extends javax.swing.JFrame {
             
             
             if (reslt.next()){
-                // COLOCAR TELA QUE IRA SER ABERTA
-                TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
                 JOptionPane.showMessageDialog(null, "Logado com sucesso");
-                this.setVisible(false);
-                telaIni.setVisible(true);
+                 this.setVisible(false);
+                // COLOCAR TELA QUE IRA SER ABERTA
+                if(reslt.getLong("PK_ID")  == (long)1){
+                    
+                    TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
+                    telaIni.setVisible(true);
+                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
+                    
+                }else{
+                    
+                    TelaInicialCliente tic = new TelaInicialCliente();
+                    tic.setVisible(true);
+                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
+                
+                }
+                   
+                    
+                
 
             } else {
                 JOptionPane.showMessageDialog(

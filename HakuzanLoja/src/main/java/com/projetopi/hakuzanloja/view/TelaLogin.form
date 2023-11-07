@@ -191,6 +191,7 @@
         <Component class="com.k33ptoo.components.KButton" name="btnValidaLogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="kBorderRadius" type="int" value="40"/>
             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -228,6 +229,7 @@
         <Component class="com.k33ptoo.components.KButton" name="btnValidaLogin2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="kBorderRadius" type="int" value="40"/>
             <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>

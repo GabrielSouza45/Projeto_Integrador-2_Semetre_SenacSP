@@ -4,6 +4,12 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.EnderecoAPI;
+import com.projetopi.hakuzanloja.model.Endereco;
+import com.projetopi.hakuzanloja.model.UsuarioAtual;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  *
  * @author Lucas
@@ -15,6 +21,27 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
      */
     public MeuPerfilCliente() {
         initComponents();
+        
+        String enderecoSingleString = "";
+        
+           
+            
+            
+        enderecoSingleString += UsuarioAtual.getUserAtual().getLogradouro() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getNumero() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getBairro() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getCidade() + " / ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getUf();
+            
+            
+        
+        txtNome.setText(UsuarioAtual.getUserAtual().getNome());
+        txtCPF.setText(UsuarioAtual.getUserAtual().getDocumento());
+        txtEndereco.setText(enderecoSingleString);
+        txtEmail.setText(UsuarioAtual.getUserAtual().getEmail());
+        txtTelefone.setText(UsuarioAtual.getUserAtual().getTelefone());
+        txtLogin.setText(UsuarioAtual.getUserAtual().getLogin());
+        txtSenha.setText(UsuarioAtual.getUserAtual().getSenha());
     }
 
     /**
@@ -26,29 +53,34 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         btnEditarDadosPessoais = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         btnEditarEndereço = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         btnEditarInfos = new javax.swing.JButton();
         DeskMeuPerfil = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
+
+        jTextField1.setText("jTextField1");
+
+        setClosable(true);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Dados Pessoais");
@@ -56,10 +88,6 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
         jLabel6.setText("Nome Completo ");
 
         jLabel25.setText("CPF");
-
-        jLabel16.setText("Hugo Chaves de Castro");
-
-        jLabel26.setText("7787-868-868-00");
 
         btnEditarDadosPessoais.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarDadosPessoais.setText("Editar dados pessoais");
@@ -72,8 +100,6 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setText("Endereço de Cobrança ou Envio ");
-
-        jLabel24.setText("Rua Dos Muchachos - São Paulo - SP - Vila Comuna ");
 
         btnEditarEndereço.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarEndereço.setText("Editar Endereço");
@@ -91,10 +117,6 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
 
         jLabel21.setText("Numero de Telefone ou Celular");
 
-        jLabel20.setText("EL_Sir.HugoChavitos@gmail.com");
-
-        jLabel22.setText("55 (11)4002-8922");
-
         btnEditarInfos.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarInfos.setText("Editar informações da conta");
         btnEditarInfos.setBorder(null);
@@ -108,20 +130,75 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
         DeskMeuPerfil.setLayout(DeskMeuPerfilLayout);
         DeskMeuPerfilLayout.setHorizontalGroup(
             DeskMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGap(0, 604, Short.MAX_VALUE)
         );
         DeskMeuPerfilLayout.setVerticalGroup(
             DeskMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 224, Short.MAX_VALUE)
+            .addGap(0, 236, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Login");
 
-        jLabel2.setText("HugoMuichoLoco");
-
         jLabel3.setText("Senha");
 
-        jLabel4.setText("*************************");
+        txtNome.setEditable(false);
+        txtNome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtNome.setText("nome");
+        txtNome.setBorder(null);
+        txtNome.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                txtNomeAncestorRemoved(evt);
+            }
+        });
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
+        txtCPF.setEditable(false);
+        txtCPF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtCPF.setText("cpf");
+        txtCPF.setBorder(null);
+
+        txtEndereco.setEditable(false);
+        txtEndereco.setText("Endereço");
+        txtEndereco.setBorder(null);
+        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnderecoActionPerformed(evt);
+            }
+        });
+
+        txtEmail.setEditable(false);
+        txtEmail.setText("email");
+        txtEmail.setBorder(null);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtTelefone.setEditable(false);
+        txtTelefone.setText("telefone");
+        txtTelefone.setBorder(null);
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
+
+        txtLogin.setEditable(false);
+        txtLogin.setText("login");
+        txtLogin.setBorder(null);
+
+        txtSenha.setEditable(false);
+        txtSenha.setText("senha");
+        txtSenha.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,12 +212,7 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
-                        .addGap(422, 445, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(422, 450, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -148,31 +220,34 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel25))
                                 .addGap(114, 114, 114)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnEditarDadosPessoais))))
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel17)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNome)
+                                    .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditarDadosPessoais))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEditarEndereço))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel17))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
                                     .addComponent(jLabel19)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addGap(41, 41, 41)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jLabel22)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEditarInfos))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEditarEndereço)))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtTelefone)
+                                    .addComponent(txtLogin)
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(btnEditarInfos)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,42 +258,42 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel16)
-                    .addComponent(btnEditarDadosPessoais))
+                    .addComponent(btnEditarDadosPessoais)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel26))
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(btnEditarEndereço))
-                .addGap(18, 18, 18)
+                    .addComponent(btnEditarEndereço)
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(btnEditarInfos))
-                .addGap(22, 22, 22)
+                    .addComponent(btnEditarInfos)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jLabel22))
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(24, 24, 24)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(DeskMeuPerfil)
                 .addContainerGap())
         );
@@ -244,7 +319,7 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarDadosPessoaisActionPerformed
 
     private void btnEditarEndereçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEndereçoActionPerformed
-        EditarEndereço editEnd = new EditarEndereço();
+        EditarEndereco editEnd = new EditarEndereco();
         DeskMeuPerfil.add(editEnd);
         editEnd.setVisible(true);
     }//GEN-LAST:event_btnEditarEndereçoActionPerformed
@@ -255,6 +330,26 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
         editaInfosCon.setVisible(true);
     }//GEN-LAST:event_btnEditarInfosActionPerformed
 
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtNomeAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeAncestorRemoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeAncestorRemoved
+
+    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnderecoActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefoneActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DeskMeuPerfil;
@@ -262,23 +357,24 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditarEndereço;
     private javax.swing.JButton btnEditarInfos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

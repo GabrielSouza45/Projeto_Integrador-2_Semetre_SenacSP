@@ -60,6 +60,7 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         Title = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        DesktopApareceTelas = new javax.swing.JDesktopPane();
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,8 +318,6 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         btn_Ajudar.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 110, 30));
 
         Coluna.add(btn_Ajudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 225, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\LuffyHomePageCliente.png")); // NOI18N
         Coluna.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 560, 240, 310));
 
         Geral.add(Coluna, java.awt.BorderLayout.LINE_START);
@@ -357,6 +356,19 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         );
 
         Geral.add(Title, java.awt.BorderLayout.PAGE_START);
+
+        javax.swing.GroupLayout DesktopApareceTelasLayout = new javax.swing.GroupLayout(DesktopApareceTelas);
+        DesktopApareceTelas.setLayout(DesktopApareceTelasLayout);
+        DesktopApareceTelasLayout.setHorizontalGroup(
+            DesktopApareceTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1114, Short.MAX_VALUE)
+        );
+        DesktopApareceTelasLayout.setVerticalGroup(
+            DesktopApareceTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+        );
+
+        Geral.add(DesktopApareceTelas, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(Geral, java.awt.BorderLayout.CENTER);
 
@@ -411,6 +423,11 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         ind_MeuPerfil.setOpaque(true);
         ind_TrocarUsuario.setOpaque(false);
         ind_Ajuda.setOpaque(false);
+        
+        MeuPerfilCliente mpc = new MeuPerfilCliente();
+        DesktopApareceTelas.add(mpc);
+        mpc.setVisible(true);
+        
     }//GEN-LAST:event_btn_MeuPerfilMousePressed
 
     private void btn_MeusPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MeusPedidosMousePressed
@@ -457,6 +474,10 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         ind_MeuPerfil.setOpaque(false);
         ind_TrocarUsuario.setOpaque(false);
         ind_Ajuda.setOpaque(false);
+        
+        
+        
+        
 
     }//GEN-LAST:event_btn_NavegarMousePressed
 
@@ -513,6 +534,7 @@ public class TelaInicialCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Coluna;
+    private javax.swing.JDesktopPane DesktopApareceTelas;
     private javax.swing.JPanel Geral;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JPanel Title;

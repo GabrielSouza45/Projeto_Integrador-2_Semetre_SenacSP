@@ -37,6 +37,8 @@ public class EditarInfoConta extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setText("Email:");
 
         jLabel2.setText("Numero de Telefone ou Celular");
