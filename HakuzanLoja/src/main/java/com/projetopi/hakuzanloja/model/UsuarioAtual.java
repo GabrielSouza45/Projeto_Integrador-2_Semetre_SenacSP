@@ -11,6 +11,7 @@ package com.projetopi.hakuzanloja.model;
 public class UsuarioAtual {
     
     private static Usuario userAtual;
+    
 
     public static Usuario getUserAtual() {
         return userAtual;

@@ -425,8 +425,10 @@ public class TelaInicialCliente extends javax.swing.JFrame {
         ind_Ajuda.setOpaque(false);
         
         MeuPerfilCliente mpc = new MeuPerfilCliente();
+        DesktopApareceTelas.removeAll();
         DesktopApareceTelas.add(mpc);
         mpc.setVisible(true);
+        
         
     }//GEN-LAST:event_btn_MeuPerfilMousePressed
 

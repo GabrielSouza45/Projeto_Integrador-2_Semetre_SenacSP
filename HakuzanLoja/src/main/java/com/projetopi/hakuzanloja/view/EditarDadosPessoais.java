@@ -119,14 +119,14 @@ public class EditarDadosPessoais extends javax.swing.JInternalFrame {
         UsuarioDao u = new UsuarioDao();
         
         
-        if((txtCPF.getText().length() == 11) && txtNome.getText().equals("")){
+        if((txtCPF.getText().length() == 11) && ! txtNome.getText().equals("")){
             UsuarioAtual.getUserAtual().setNome(txtNome.getText());
             UsuarioAtual.getUserAtual().setDocumento(txtCPF.getText());
             u.editar(UsuarioAtual.getUserAtual());
             txtNome.setText("");
             txtCPF.setText("");
         }else{
-        JOptionPane.showConfirmDialog(null, "CPF Inválido");
+        JOptionPane.showMessageDialog(null, "CPF Inválido");
             }
         
     }//GEN-LAST:event_jButton2MousePressed

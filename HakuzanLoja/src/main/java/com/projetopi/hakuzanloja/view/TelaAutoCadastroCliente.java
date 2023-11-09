@@ -37,6 +37,23 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         NivelDao NivelCliente = new NivelDao();
         return  NivelCliente.buscarNivelPorId((long)2);
     }
+    
+     private void limparCampos(Container container) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof JTextField) {
+                JTextField field = (JTextField) component;
+                field.setText(""); // Limpa o conteúdo do JTextField
+            } else if (component instanceof JComboBox) {
+                JComboBox<?> comboBox = (JComboBox<?>) component;
+                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
+            } else if (component instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) component;
+                checkBox.setSelected(false); // Desmarca a caixa de seleção
+            } else if (component instanceof Container) {
+                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
+            }
+        }
+    }
 
 
 
@@ -709,6 +726,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 usuario.setNivel(setNivelCliente());
                 limparCampos(this.getContentPane());
                 dao.cadastrar(usuario);
+              
                 break;
             }
         }
@@ -718,22 +736,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void limparCampos(Container container) {
-        for (Component component : container.getComponents()) {
-            if (component instanceof JTextField) {
-                JTextField field = (JTextField) component;
-                field.setText(""); // Limpa o conteúdo do JTextField
-            } else if (component instanceof JComboBox) {
-                JComboBox<?> comboBox = (JComboBox<?>) component;
-                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
-            } else if (component instanceof JCheckBox) {
-                JCheckBox checkBox = (JCheckBox) component;
-                checkBox.setSelected(false); // Desmarca a caixa de seleção
-            } else if (component instanceof Container) {
-                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
-            }
-        }
-    }
+   
 
 
     /**

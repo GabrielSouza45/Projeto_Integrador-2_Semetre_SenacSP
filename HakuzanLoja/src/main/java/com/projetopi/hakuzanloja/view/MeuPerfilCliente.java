@@ -5,10 +5,12 @@
 package com.projetopi.hakuzanloja.view;
 
 import com.projetopi.hakuzanloja.controller.EnderecoAPI;
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.model.Endereco;
 import com.projetopi.hakuzanloja.model.UsuarioAtual;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,6 +70,7 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
         jLabel21 = new javax.swing.JLabel();
         btnEditarInfos = new javax.swing.JButton();
         DeskMeuPerfil = new javax.swing.JDesktopPane();
+        btnExcluirConta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -126,15 +129,30 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        btnExcluirConta.setText("Excluir Conta");
+        btnExcluirConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnExcluirContaMousePressed(evt);
+            }
+        });
+
+        DeskMeuPerfil.setLayer(btnExcluirConta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout DeskMeuPerfilLayout = new javax.swing.GroupLayout(DeskMeuPerfil);
         DeskMeuPerfil.setLayout(DeskMeuPerfilLayout);
         DeskMeuPerfilLayout.setHorizontalGroup(
             DeskMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 604, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMeuPerfilLayout.createSequentialGroup()
+                .addContainerGap(453, Short.MAX_VALUE)
+                .addComponent(btnExcluirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         DeskMeuPerfilLayout.setVerticalGroup(
             DeskMeuPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskMeuPerfilLayout.createSequentialGroup()
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addComponent(btnExcluirConta)
+                .addGap(74, 74, 74))
         );
 
         jLabel1.setText("Login");
@@ -212,7 +230,7 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
-                        .addGap(422, 450, Short.MAX_VALUE))
+                        .addGap(422, 453, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -350,12 +368,26 @@ public class MeuPerfilCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
+    private void btnExcluirContaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirContaMousePressed
+ UsuarioDao u =  new UsuarioDao();
+        if(JOptionPane.showInputDialog("Digite EXCLUIR para apagar sua conta: ").equals("EXCLUIR")){
+            u.excluir(UsuarioAtual.getUserAtual());
+            System.exit(0);         
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Texto Incorreto, tente novamente");
+            
+        }
+        
+    }//GEN-LAST:event_btnExcluirContaMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DeskMeuPerfil;
     private javax.swing.JButton btnEditarDadosPessoais;
     private javax.swing.JButton btnEditarEndereço;
     private javax.swing.JButton btnEditarInfos;
+    private javax.swing.JButton btnExcluirConta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
