@@ -7,10 +7,10 @@ package com.projetopi.hakuzanloja.view;
 
 import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.model.UsuarioAtual;
-
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -18,9 +18,13 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form telaLogin
      */
-    public TelaLogin() {
+    public TelaLogin(){
         initComponents();
+                    
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +48,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblOvo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -130,6 +135,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton1.setText("Esqueceu sua senha?");
         jButton1.setBorder(null);
 
+        lblOvo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TelaLogin.png"))); // NOI18N
+        lblOvo.setText("jLabel3");
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -139,8 +147,13 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(lblOvo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -172,7 +185,9 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel1Layout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addComponent(jLabel27)))
+                            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel27)
+                                .addComponent(lblOvo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel26))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,10 +204,10 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addComponent(jButton1)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
-        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 580));
+        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 560, 580));
 
         setSize(new java.awt.Dimension(559, 554));
         setLocationRelativeTo(null);
@@ -314,6 +329,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JLabel lblOvo;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables

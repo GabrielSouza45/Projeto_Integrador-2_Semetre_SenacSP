@@ -1,3 +1,4 @@
+com\projetopi\hakuzanloja\view\EditarInfoConta$2.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$4.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$5.class
 com\projetopi\hakuzanloja\controller\ItensPedidoDao.class
@@ -41,6 +42,7 @@ com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$6.class
 com\projetopi\hakuzanloja\view\PagamentoPix.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$14.class
 com\projetopi\hakuzanloja\view\PagamentoViaCartao$3.class
+com\projetopi\hakuzanloja\view\MeuPerfilCliente$9.class
 com\projetopi\hakuzanloja\view\MeuPerfilCliente$2.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$7.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$15.class
