@@ -1,7 +1,7 @@
 
 package com.projetopi.hakuzanloja.model;
 
-import com.projetopi.hakuzanloja.model.Categoria;
+
 
 public class Produto {
 
@@ -12,9 +12,19 @@ public class Produto {
     private String produto;
     private String descricao;
     private double valor;
+    private String urlImagemProduto;
     private Categoria categoria;
     private double valorCompra;
 
+    public String getUrlImagemProduto() {
+        return urlImagemProduto;
+    }
+
+    public void setUrlImagemProduto(String urlImagemProduto) {
+        this.urlImagemProduto = urlImagemProduto;
+    }
+
+    
     public double getValorCompra() {
         return valorCompra;
     }
