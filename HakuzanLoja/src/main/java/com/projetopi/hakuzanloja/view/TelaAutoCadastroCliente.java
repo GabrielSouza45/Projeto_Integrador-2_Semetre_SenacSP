@@ -110,11 +110,11 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         txtTelefone1 = new javax.swing.JTextField();
         txtLogin1 = new javax.swing.JTextField();
-        txtPassword1 = new javax.swing.JTextField();
         txtEmail1 = new javax.swing.JTextField();
         txtCPF1 = new javax.swing.JTextField();
         txtNome1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        pswfieldSenha = new javax.swing.JPasswordField();
         btnFecharTela = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -337,25 +337,25 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtRuaBairro)
-                    .addComponent(txtCEP)
-                    .addComponent(txtEstado)
-                    .addComponent(txtCidade)
-                    .addComponent(txtBairro)
-                    .addComponent(txtNumero)
-                    .addComponent(btnCadastroAbrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel16)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel14))
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12)
-                            .addComponent(Numero))
-                        .addGap(240, 240, 240)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtRuaBairro)
+                        .addComponent(txtCEP)
+                        .addComponent(txtEstado)
+                        .addComponent(txtCidade)
+                        .addComponent(txtBairro)
+                        .addComponent(txtNumero)
+                        .addComponent(btnCadastroAbrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel12)
+                                .addComponent(Numero))
+                            .addGap(240, 240, 240))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -389,7 +389,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastroAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -424,13 +424,6 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
 
         txtLogin1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
 
-        txtPassword1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
-        txtPassword1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassword1ActionPerformed(evt);
-            }
-        });
-
         txtEmail1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
         txtEmail1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,6 +434,8 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         txtCPF1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
 
         txtNome1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
+
+        pswfieldSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 153, 255)));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -460,13 +455,13 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jLabel24)
                             .addComponent(jLabel19)
                             .addComponent(jLabel23)
-                            .addComponent(txtNome1)
+                            .addComponent(txtNome1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                             .addComponent(txtCPF1)
                             .addComponent(txtEmail1)
                             .addComponent(txtTelefone1)
                             .addComponent(txtLogin1)
-                            .addComponent(txtPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(jLabel22))))
+                            .addComponent(jLabel22)
+                            .addComponent(pswfieldSenha))))
                 .addContainerGap(47, Short.MAX_VALUE))
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -501,11 +496,12 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addComponent(txtLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel22)
-                .addGap(2, 2, 2)
-                .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pswfieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
 
+        btnFecharTela.setBackground(new java.awt.Color(102, 102, 102));
         btnFecharTela.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnFecharTela.setForeground(new java.awt.Color(255, 255, 255));
         btnFecharTela.setText("X");
@@ -539,6 +535,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MeninoTelaCadastro.png"))); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Contate-nos");
@@ -559,12 +556,9 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -576,7 +570,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(jLabel33)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -584,7 +578,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnFecharTela, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -609,10 +603,10 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFecharTela, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(83, 83, 83))
         );
 
@@ -620,9 +614,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(kGradientPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,10 +669,6 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         tLogin.setVisible(true);
     }//GEN-LAST:event_btnFecharTelaActionPerformed
 
-    private void txtPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassword1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassword1ActionPerformed
-
     private void txtEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmail1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmail1ActionPerformed
@@ -700,7 +688,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
         verificacaoNull.add(txtTelefone1.getText());
         verificacaoNull.add(txtEmail1.getText());
         verificacaoNull.add(txtLogin1.getText());
-        verificacaoNull.add(txtPassword1.getText());
+        verificacaoNull.add(pswfieldSenha.getText());
         verificacaoNull.add(txtRuaBairro.getText());
         verificacaoNull.add(txtBairro.getText());
         verificacaoNull.add(txtCidade.getText());
@@ -720,7 +708,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
                 usuario.setTelefone(txtTelefone1.getText());
                 usuario.setEmail(txtEmail1.getText());
                 usuario.setLogin(txtLogin1.getText());
-                usuario.setSenha(txtPassword1.getText());
+                usuario.setSenha(pswfieldSenha.getText());
                 usuario.setLogradouro(txtRuaBairro.getText());
                 usuario.setBairro(txtBairro.getText());
                 usuario.setCidade(txtCidade.getText());
@@ -825,6 +813,7 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JPasswordField pswfieldSenha;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCPF;
@@ -839,7 +828,6 @@ public class TelaAutoCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome1;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtPassword1;
     private javax.swing.JTextField txtRuaBairro;
     private javax.swing.JTextField txtTelefone;
     private javax.swing.JTextField txtTelefone1;
