@@ -91,9 +91,11 @@ public class HomeCliente extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 102));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Fale Conosco");
         jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
         jButton5.setOpaque(false);
 
         jButton6.setBackground(new java.awt.Color(51, 51, 51));

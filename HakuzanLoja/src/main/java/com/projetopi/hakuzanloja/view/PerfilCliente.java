@@ -125,6 +125,7 @@ public class PerfilCliente extends javax.swing.JInternalFrame {
         btnEditarEndereço.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarEndereço.setText("Editar endereço");
         btnEditarEndereço.setBorder(null);
+        btnEditarEndereço.setBorderPainted(false);
         btnEditarEndereço.setOpaque(false);
         btnEditarEndereço.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +136,7 @@ public class PerfilCliente extends javax.swing.JInternalFrame {
         btnEditarDadosPessoais.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarDadosPessoais.setText("Editar dados pessoais");
         btnEditarDadosPessoais.setBorder(null);
+        btnEditarDadosPessoais.setBorderPainted(false);
         btnEditarDadosPessoais.setOpaque(false);
         btnEditarDadosPessoais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +162,7 @@ public class PerfilCliente extends javax.swing.JInternalFrame {
         btnEditarInfos.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarInfos.setText("Editar informações da conta");
         btnEditarInfos.setBorder(null);
+        btnEditarInfos.setBorderPainted(false);
         btnEditarInfos.setOpaque(false);
         btnEditarInfos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +189,7 @@ public class PerfilCliente extends javax.swing.JInternalFrame {
         btnEditarLoginSenha.setForeground(new java.awt.Color(51, 153, 255));
         btnEditarLoginSenha.setText("Editar login ou senha");
         btnEditarLoginSenha.setBorder(null);
+        btnEditarLoginSenha.setBorderPainted(false);
         btnEditarLoginSenha.setOpaque(false);
         btnEditarLoginSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

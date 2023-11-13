@@ -61,7 +61,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         txtLogin.setBackground(new java.awt.Color(237, 237, 237));
         txtLogin.setForeground(new java.awt.Color(255, 255, 255));
-        txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtLogin.setOpaque(false);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,7 +69,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         txtSenha.setBackground(new java.awt.Color(237, 237, 237));
         txtSenha.setForeground(new java.awt.Color(255, 255, 255));
-        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtSenha.setOpaque(false);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
