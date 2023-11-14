@@ -5,6 +5,7 @@
 package com.projetopi.hakuzanloja;
 
 
+import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.view.*;
 
 public class HakuzanLoja {
@@ -12,5 +13,6 @@ public class HakuzanLoja {
     public static void main(String[] args) {
        TelaLogin tll = new TelaLogin();
        tll.setVisible(true);
+      
     }
 }

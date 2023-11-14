@@ -7,9 +7,9 @@ package com.projetopi.hakuzanloja.controller;
 import java.sql.*;
 
 public class ConectarDao {
-    private final static String url = "jdbc:mysql://root:h5pkT1OsE1LU224ALtoV@containers-us-west-91.railway.app:7667/railway";
-    private final static String usuario = "root";
-    private final static String senha = "h5pkT1OsE1LU224ALtoV";
+    private final static String url = "jdbc:mysql://hakuzanlojal.mysql.database.azure.com:3306/projetopi?useSSL=true";
+    private final static String usuario = "hakuzanloja";
+    private final static String senha = "Ineedsugar203040@";
     private static Connection conexao;
 
 

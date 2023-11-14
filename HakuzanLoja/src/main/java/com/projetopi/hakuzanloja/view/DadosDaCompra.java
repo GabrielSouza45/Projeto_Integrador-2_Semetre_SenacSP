@@ -60,6 +60,7 @@ public class DadosDaCompra extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
         setTitle("HAKUZAN SELCIONAR DADOS DA COMPRA");
 
         jLabel1.setText("PASSOS FINAIS ");

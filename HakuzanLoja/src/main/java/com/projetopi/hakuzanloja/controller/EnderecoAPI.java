@@ -32,11 +32,11 @@ public class EnderecoAPI {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             String json = response.body();
-            System.out.println(json);
+          
 
             return gson.fromJson(json, Endereco.class);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           
             return null;
         }
     }
