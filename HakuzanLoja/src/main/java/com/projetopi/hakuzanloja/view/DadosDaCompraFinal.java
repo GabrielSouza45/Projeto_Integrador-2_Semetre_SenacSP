@@ -339,11 +339,18 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
         PagamentoCartao pag = new PagamentoCartao();
+        PagamentoPix pagPix = new PagamentoPix();
+        PagamentoBoleto pagBol = new PagamentoBoleto();
         if(rdBtnCartao.isSelected()){
             deskDadosPag.add(pag);
             pag.setVisible(true);
+        }else if(rdBtnPix.isSelected()){
+            deskDadosPag.add(pagPix);
+            pagPix.setVisible(true);
+        }else if(rdBtnBoleto.isSelected()){
+            deskDadosPag.add(pagBol);
+            pagBol.setVisible(true);  
         };
-        
     }//GEN-LAST:event_kButton2ActionPerformed
 
 
