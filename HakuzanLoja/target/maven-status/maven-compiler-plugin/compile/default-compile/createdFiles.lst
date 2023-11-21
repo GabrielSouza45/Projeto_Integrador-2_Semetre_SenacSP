@@ -71,6 +71,7 @@ com\projetopi\hakuzanloja\view\HomeCliente$7.class
 com\projetopi\hakuzanloja\controller\CategoriaDao.class
 com\projetopi\hakuzanloja\view\TelaProdutosCliente.class
 com\projetopi\hakuzanloja\HakuzanLoja.class
+com\projetopi\hakuzanloja\view\Sacola.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$8.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$8.class
 com\projetopi\hakuzanloja\controller\UsuarioDao.class
