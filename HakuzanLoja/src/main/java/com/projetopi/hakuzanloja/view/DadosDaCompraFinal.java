@@ -31,7 +31,8 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        deskDadosPag = new javax.swing.JDesktopPane();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
@@ -43,11 +44,11 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rdBtnCartao = new javax.swing.JRadioButton();
         jSeparator5 = new javax.swing.JSeparator();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdBtnBoleto = new javax.swing.JRadioButton();
         jSeparator6 = new javax.swing.JSeparator();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rdBtnPix = new javax.swing.JRadioButton();
         jSeparator7 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -65,7 +66,7 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0));
+        deskDadosPag.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setText("PASSOS FINAIS ");
 
@@ -82,11 +83,14 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
 
         jLabel4.setText("FORMA DE PAGAMENTO");
 
-        jRadioButton4.setText("CARTÃO DE CREDITO");
+        buttonGroup1.add(rdBtnCartao);
+        rdBtnCartao.setText("CARTÃO DE CREDITO");
 
-        jRadioButton2.setText("BOLETO");
+        buttonGroup1.add(rdBtnBoleto);
+        rdBtnBoleto.setText("BOLETO");
 
-        jRadioButton3.setText("PIX");
+        buttonGroup1.add(rdBtnPix);
+        rdBtnPix.setText("PIX");
 
         jButton2.setForeground(new java.awt.Color(0, 102, 255));
         jButton2.setText("Editar ou adicionar outro cartão");
@@ -114,6 +118,11 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         kButton2.setkBorderRadius(25);
         kButton2.setkEndColor(new java.awt.Color(255, 51, 51));
         kButton2.setkStartColor(new java.awt.Color(255, 51, 51));
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,10 +161,10 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                                 .addGap(9, 9, 9)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton3)
+                                    .addComponent(rdBtnBoleto)
+                                    .addComponent(rdBtnPix)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton4)
+                                        .addComponent(rdBtnCartao)
                                         .addGap(180, 180, 180)
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,17 +196,17 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
+                    .addComponent(rdBtnCartao)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jRadioButton2)
+                .addComponent(rdBtnBoleto)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rdBtnPix)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -240,38 +249,38 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("AVENIDA MONTEIRO ROBERTO, 2397, GALPÃO 06, VILA MIRIANO - GUARULHOS/SP | CEP 07260-000");
 
-        jDesktopPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskDadosPag.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout deskDadosPagLayout = new javax.swing.GroupLayout(deskDadosPag);
+        deskDadosPag.setLayout(deskDadosPagLayout);
+        deskDadosPagLayout.setHorizontalGroup(
+            deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator2)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(deskDadosPagLayout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(82, 82, 82))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deskDadosPagLayout.createSequentialGroup()
                 .addGap(148, 148, 148)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskDadosPagLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
@@ -282,32 +291,32 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11))
                 .addGap(186, 186, 186))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        deskDadosPagLayout.setVerticalGroup(
+            deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deskDadosPagLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskDadosPagLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(deskDadosPagLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskDadosPagLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(deskDadosPagLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel15)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(deskDadosPagLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel17)))
@@ -318,22 +327,32 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskDadosPag)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskDadosPag)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        PagamentoCartao pag = new PagamentoCartao();
+        if(rdBtnCartao.isSelected()){
+            deskDadosPag.add(pag);
+            pag.setVisible(true);
+        };
+        
+    }//GEN-LAST:event_kButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JDesktopPane deskDadosPag;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -348,9 +367,6 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -363,5 +379,8 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton2;
     private com.k33ptoo.components.KButton kButton3;
+    private javax.swing.JRadioButton rdBtnBoleto;
+    private javax.swing.JRadioButton rdBtnCartao;
+    private javax.swing.JRadioButton rdBtnPix;
     // End of variables declaration//GEN-END:variables
 }
