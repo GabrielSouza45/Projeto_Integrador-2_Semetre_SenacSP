@@ -87,7 +87,7 @@ public class PagamentoCartao extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\resources\\CartaoDeCreditoPagamentoCartao.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CartaoDeCreditoPagamentoCartao.png"))); // NOI18N
 
         jLabel6.setText("Validade");
 
@@ -104,7 +104,7 @@ public class PagamentoCartao extends javax.swing.JInternalFrame {
 
         jLabel8.setText("CV");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\resources\\CvCataoDeCredito.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CvCataoDeCredito.png"))); // NOI18N
 
         jLabel7.setText("CPF");
 
@@ -225,7 +225,7 @@ public class PagamentoCartao extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30))
         );
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\resources\\MeninaCatao.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MeninaCatao.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
