@@ -94,11 +94,11 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         deskADM.setLayout(deskADMLayout);
         deskADMLayout.setHorizontalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 883, Short.MAX_VALUE)
+            .addGap(0, 1353, Short.MAX_VALUE)
         );
         deskADMLayout.setVerticalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 786, Short.MAX_VALUE)
         );
 
         mnuArquivo.setText("Arquivo");
@@ -197,7 +197,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
             .addComponent(deskADM)
         );
 
-        setSize(new java.awt.Dimension(899, 529));
+        setSize(new java.awt.Dimension(1369, 845));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -240,7 +240,9 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
 
     private void menuProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMousePressed
-
+        CadastroDeProdutos cadPro = new CadastroDeProdutos();
+        deskADM.add(cadPro);
+        cadPro.setVisible(true);
     }//GEN-LAST:event_menuProdutoMousePressed
 
     private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
