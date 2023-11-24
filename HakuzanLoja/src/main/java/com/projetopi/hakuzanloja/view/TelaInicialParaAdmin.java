@@ -4,18 +4,76 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.CategoriaDao;
+import com.projetopi.hakuzanloja.controller.ProdutoDao;
+import com.projetopi.hakuzanloja.model.Categoria;
+import com.projetopi.hakuzanloja.model.Nivel;
+import com.projetopi.hakuzanloja.model.Produto;
+import java.awt.Component;
+import java.awt.Container;
+import java.util.List;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author snubd
  */
 public class TelaInicialParaAdmin extends javax.swing.JFrame {
+    
+    private List<Categoria> categoria = new CategoriaDao().listarTodos();
 
     /**
      * Creates new form TelaInicial
      */
     public TelaInicialParaAdmin() {
         initComponents();
+        carregaComboNivel();
+        
     }
+    
+    private void limparCampos(Container container) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof JTextField) {
+                JTextField field = (JTextField) component;
+                field.setText(""); // Limpa o conteúdo do JTextField
+            } else if (component instanceof JComboBox) {
+                JComboBox<?> comboBox = (JComboBox<?>) component;
+                comboBox.setSelectedIndex(0); // Define a seleção para o primeiro item (ou -1 para nenhum item selecionado)
+            } else if (component instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) component;
+                checkBox.setSelected(false); // Desmarca a caixa de seleção
+            } else if (component instanceof Container) {
+                limparCampos((Container) component); // Recursivamente, limpa os campos dentro de outros contêineres (painéis, etc.)
+            }
+        }
+    }
+    
+     private void carregaComboNivel() {
+        cbxCategoriaProduto.removeAllItems(); // inicia combo vazio para evitar repetições
+
+        for (Categoria cateogoriaIndex: this.categoria) {
+            cbxCategoriaProduto.addItem(cateogoriaIndex);
+            
+        }
+
+        cbxCategoriaProduto.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Categoria) {
+                    Categoria categoria = (Categoria) value;
+                    setText(categoria.getId() + ". " + categoria.getCategoria()); // Exibir a descrição do nível
+                }
+                return this;
+            }
+        });
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +90,22 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         btnCriarTodasTabelas = new javax.swing.JButton();
         btnCadastroProduto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         deskADM = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
+        internalCadastroProduto = new javax.swing.JInternalFrame();
+        jLabel1 = new javax.swing.JLabel();
+        txtNomeProduto = new javax.swing.JTextField();
+        cbxCategoriaProduto = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        txtValorVenda = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDescProduto = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtValorCompra = new javax.swing.JTextField();
+        btnCriarProduto = new javax.swing.JToggleButton();
+        btnLimpar = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoClientes = new javax.swing.JMenuItem();
@@ -82,6 +155,8 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
             .addGap(0, 416, Short.MAX_VALUE)
         );
 
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home Administrador ");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -90,15 +165,155 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
         deskADM.setBackground(new java.awt.Color(153, 153, 153));
 
+        internalCadastroProduto.setClosable(true);
+        internalCadastroProduto.setVisible(false);
+        internalCadastroProduto.addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                internalCadastroProdutoInternalFrameOpened(evt);
+            }
+        });
+
+        jLabel1.setText("Nome ");
+
+        txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeProdutoActionPerformed(evt);
+            }
+        });
+
+        cbxCategoriaProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Valor Venda");
+
+        jLabel4.setText("Descrição");
+
+        jLabel5.setText("Valor Compra");
+
+        btnCriarProduto.setText("Criar Produto");
+        btnCriarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCriarProdutoMousePressed(evt);
+            }
+        });
+
+        btnLimpar.setText("Limpar");
+
+        javax.swing.GroupLayout internalCadastroProdutoLayout = new javax.swing.GroupLayout(internalCadastroProduto.getContentPane());
+        internalCadastroProduto.getContentPane().setLayout(internalCadastroProdutoLayout);
+        internalCadastroProdutoLayout.setHorizontalGroup(
+            internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(15, 15, 15)))
+                .addGap(14, 14, 14)
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                    .addComponent(txtNomeProduto))
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescProduto))
+                    .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(194, 194, 194)
+                .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, internalCadastroProdutoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCriarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+        );
+        internalCadastroProdutoLayout.setVerticalGroup(
+            internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDescProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCriarProduto)
+                    .addComponent(btnLimpar))
+                .addGap(58, 58, 58))
+        );
+
+        jDesktopPane2.setLayer(internalCadastroProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
+        jDesktopPane2.setLayout(jDesktopPane2Layout);
+        jDesktopPane2Layout.setHorizontalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(internalCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDesktopPane2Layout.setVerticalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(internalCadastroProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+
+        jDesktopPane1.setLayer(jDesktopPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane2)
+                .addGap(19, 19, 19))
+        );
+
+        deskADM.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout deskADMLayout = new javax.swing.GroupLayout(deskADM);
         deskADM.setLayout(deskADMLayout);
         deskADMLayout.setHorizontalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 883, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         deskADMLayout.setVerticalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         mnuArquivo.setText("Arquivo");
@@ -129,10 +344,15 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
                 menuProdutoMousePressed(evt);
             }
         });
+        menuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdutoActionPerformed(evt);
+            }
+        });
         mnuArquivo.add(menuProduto);
 
         mnuArquivoUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        mnuArquivoUsuarios.setText("Uusuarios");
+        mnuArquivoUsuarios.setText("Usuários");
         mnuArquivoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mnuArquivoUsuariosMouseClicked(evt);
@@ -255,6 +475,40 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnuArquivoClientesMouseClicked
 
+    private void internalCadastroProdutoInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_internalCadastroProdutoInternalFrameOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_internalCadastroProdutoInternalFrameOpened
+
+    private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
+        // TODO add your handling code here:
+       internalCadastroProduto.setVisible(true);
+    }//GEN-LAST:event_menuProdutoActionPerformed
+
+    private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeProdutoActionPerformed
+
+    private void btnCriarProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarProdutoMousePressed
+        Produto p = new Produto();
+        ProdutoDao pdao = new ProdutoDao();
+        
+        p.setProduto(txtNomeProduto.getText());
+        p.setDescricao(txtDescProduto.getText());
+        p.setValorCompra(Double.parseDouble(txtValorCompra.getText()));
+        p.setValorCompra(Double.parseDouble(txtValorVenda.getText()));
+       
+         try {
+            p.setCategoria( (Categoria)cbxCategoriaProduto.getSelectedItem());
+            pdao.cadastrar(p);
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(null, "Erro ao definir nivel ao usuario. \n" + err.getMessage());
+        }
+         
+              
+        
+        
+    }//GEN-LAST:event_btnCriarProdutoMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -293,8 +547,19 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroProduto;
+    private javax.swing.JToggleButton btnCriarProduto;
     private javax.swing.JButton btnCriarTodasTabelas;
+    private javax.swing.JToggleButton btnLimpar;
+    private javax.swing.JComboBox<Object> cbxCategoriaProduto;
     private javax.swing.JDesktopPane deskADM;
+    public javax.swing.JInternalFrame internalCadastroProduto;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -312,5 +577,9 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuArquivoUsuarios;
     private javax.swing.JMenu mnuMovimento;
     private javax.swing.JMenuItem mnuMovimentoRelatorio;
+    private javax.swing.JTextField txtDescProduto;
+    private javax.swing.JTextField txtNomeProduto;
+    private javax.swing.JTextField txtValorCompra;
+    private javax.swing.JTextField txtValorVenda;
     // End of variables declaration//GEN-END:variables
 }
