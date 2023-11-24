@@ -5,7 +5,6 @@
 package com.projetopi.hakuzanloja;
 
 
-import com.projetopi.hakuzanloja.controller.UsuarioDao;
 import com.projetopi.hakuzanloja.view.*;
 
 public class HakuzanLoja {

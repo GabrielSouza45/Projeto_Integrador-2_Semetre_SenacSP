@@ -68,9 +68,9 @@ public class ProdutoDao extends ConectarDao implements CrudDao<Produto> {
             PreparedStatement ps = getConexao().prepareStatement(sql);
             ps.setString(1, produto.getProduto());
             ps.setString(2, produto.getDescricao());
-            ps.setDouble(1, produto.getValorCompra());
-            ps.setDouble(1, produto.getValor());
-            ps.setLong(1, produto.getCategoria().getId());
+            ps.setDouble(3, produto.getValorCompra());
+            ps.setDouble(4, produto.getValor());
+            ps.setLong(5, produto.getCategoria().getId());
             ps.execute();
             ps.close();
 
