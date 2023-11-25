@@ -92,8 +92,6 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         deskADM = new javax.swing.JDesktopPane();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
         internalCadastroProduto = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         txtNomeProduto = new javax.swing.JTextField();
@@ -163,7 +161,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(765, 416));
         setResizable(false);
 
-        deskADM.setBackground(new java.awt.Color(153, 153, 153));
+        deskADM.setBackground(new java.awt.Color(0, 0, 0));
 
         internalCadastroProduto.setClosable(true);
         internalCadastroProduto.setVisible(false);
@@ -221,11 +219,10 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(15, 15, 15)))
-                .addGap(14, 14, 14)
+                        .addComponent(jLabel3)))
+                .addGap(29, 29, 29)
                 .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                    .addComponent(txtValorVenda)
                     .addComponent(txtNomeProduto))
                 .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(internalCadastroProdutoLayout.createSequentialGroup()
@@ -264,56 +261,30 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
                     .addComponent(txtValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(internalCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCriarProduto)
                     .addComponent(btnLimpar))
                 .addGap(58, 58, 58))
         );
 
-        jDesktopPane2.setLayer(internalCadastroProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(internalCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(internalCadastroProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-
-        jDesktopPane1.setLayer(jDesktopPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane2)
-                .addGap(19, 19, 19))
-        );
-
-        deskADM.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskADM.setLayer(internalCadastroProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout deskADMLayout = new javax.swing.GroupLayout(deskADM);
         deskADM.setLayout(deskADMLayout);
         deskADMLayout.setHorizontalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(deskADMLayout.createSequentialGroup()
+                .addGap(611, 611, 611)
+                .addComponent(internalCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(612, 612, 612))
         );
         deskADMLayout.setVerticalGroup(
             deskADMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(deskADMLayout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addComponent(internalCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(371, 371, 371))
         );
 
         mnuArquivo.setText("Arquivo");
@@ -417,7 +388,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
             .addComponent(deskADM)
         );
 
-        setSize(new java.awt.Dimension(899, 529));
+        setSize(new java.awt.Dimension(1376, 812));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -460,7 +431,9 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuArquivoUsuariosActionPerformed
 
     private void menuProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMousePressed
-
+        CadastroDeProdutos cadpro = new CadastroDeProdutos();
+        deskADM.add(cadpro);
+        cadpro.setVisible(true);
     }//GEN-LAST:event_menuProdutoMousePressed
 
     private void mnuArquivoUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuArquivoUsuariosMousePressed
@@ -475,39 +448,35 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnuArquivoClientesMouseClicked
 
+    private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
+
+    }//GEN-LAST:event_menuProdutoActionPerformed
+
     private void internalCadastroProdutoInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_internalCadastroProdutoInternalFrameOpened
         // TODO add your handling code here:
     }//GEN-LAST:event_internalCadastroProdutoInternalFrameOpened
 
-    private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
-        // TODO add your handling code here:
-       internalCadastroProduto.setVisible(true);
-    }//GEN-LAST:event_menuProdutoActionPerformed
-
-    private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeProdutoActionPerformed
-
     private void btnCriarProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarProdutoMousePressed
         Produto p = new Produto();
         ProdutoDao pdao = new ProdutoDao();
-        
+
         p.setProduto(txtNomeProduto.getText());
         p.setDescricao(txtDescProduto.getText());
         p.setValorCompra(Double.parseDouble(txtValorCompra.getText()));
         p.setValorCompra(Double.parseDouble(txtValorVenda.getText()));
-       
-         try {
+
+        try {
             p.setCategoria( (Categoria)cbxCategoriaProduto.getSelectedItem());
             pdao.cadastrar(p);
         } catch (Exception err) {
             JOptionPane.showMessageDialog(null, "Erro ao definir nivel ao usuario. \n" + err.getMessage());
         }
-         
-              
-        
-        
+
     }//GEN-LAST:event_btnCriarProdutoMousePressed
+
+    private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,7 +489,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -552,9 +521,7 @@ public class TelaInicialParaAdmin extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnLimpar;
     private javax.swing.JComboBox<Object> cbxCategoriaProduto;
     private javax.swing.JDesktopPane deskADM;
-    public javax.swing.JInternalFrame internalCadastroProduto;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JInternalFrame internalCadastroProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
