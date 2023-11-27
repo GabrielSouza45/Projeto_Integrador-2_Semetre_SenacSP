@@ -60,9 +60,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario");
 
-        txtLogin.setBackground(new java.awt.Color(237, 237, 237));
+        txtLogin.setBackground(new java.awt.Color(153, 153, 153));
         txtLogin.setForeground(new java.awt.Color(255, 255, 255));
         txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtLogin.setOpaque(false);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha");
@@ -70,6 +71,7 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha.setBackground(new java.awt.Color(237, 237, 237));
         txtSenha.setForeground(new java.awt.Color(255, 255, 255));
         txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtSenha.setOpaque(false);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -84,6 +86,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btnFecharTela.setDefaultCapable(false);
         btnFecharTela.setFocusPainted(false);
         btnFecharTela.setFocusable(false);
+        btnFecharTela.setOpaque(false);
         btnFecharTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharTelaActionPerformed(evt);
@@ -135,6 +138,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Esqueceu sua senha?");
         jButton2.setBorder(null);
+        jButton2.setOpaque(false);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TelaLogin.png"))); // NOI18N
         jLabel6.setText("jLabel6");
@@ -148,9 +152,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +179,7 @@ public class TelaLogin extends javax.swing.JFrame {
                             .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGap(0, 70, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +193,8 @@ public class TelaLogin extends javax.swing.JFrame {
                             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel27)))))
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel6)))))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jLabel3)))
@@ -211,24 +215,21 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(36, 36, 36)
                 .addComponent(jButton2)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(496, 528));
+        setSize(new java.awt.Dimension(496, 505));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

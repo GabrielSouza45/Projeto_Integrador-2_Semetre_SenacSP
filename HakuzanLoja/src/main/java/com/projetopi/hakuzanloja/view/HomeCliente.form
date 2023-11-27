@@ -166,6 +166,8 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtonNavegarProdutosMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtonNavegarProdutosMouseEntered"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNavegarProdutosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
@@ -191,7 +193,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Lucas\Desktop\PI\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\Imagens\Pesquisar.png"/>
+              <Image iconType="3" name="/Pesquisar.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -254,7 +256,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Lucas\Desktop\PI\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\Imagens\user.png"/>
+              <Image iconType="3" name="/user.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -272,7 +274,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Lucas\Desktop\PI\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\Imagens\Sacola.png"/>
+              <Image iconType="3" name="/Sacola.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -387,7 +389,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Lucas\Desktop\PI\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\resources\Plano de Fundo Tela inicial.jpg"/>
+              <Image iconType="3" name="/Plano de Fundo Tela inicial.jpg"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

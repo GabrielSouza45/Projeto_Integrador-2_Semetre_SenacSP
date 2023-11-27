@@ -71,6 +71,14 @@ public class HomeCliente extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ButtonNavegarProdutosMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ButtonNavegarProdutosMouseEntered(evt);
+            }
+        });
+        ButtonNavegarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNavegarProdutosActionPerformed(evt);
+            }
         });
 
         jTextField1.setBackground(new java.awt.Color(51, 51, 51));
@@ -82,7 +90,7 @@ public class HomeCliente extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\Pesquisar.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pesquisar.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +119,7 @@ public class HomeCliente extends javax.swing.JFrame {
         jButton7.setOpaque(false);
 
         BtnMeuPerfil.setBackground(new java.awt.Color(51, 51, 51));
-        BtnMeuPerfil.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\user.png")); // NOI18N
+        BtnMeuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
         BtnMeuPerfil.setBorder(null);
         BtnMeuPerfil.setOpaque(false);
         BtnMeuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,7 +134,7 @@ public class HomeCliente extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(51, 51, 51));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\java\\com\\projetopi\\hakuzanloja\\view\\Imagens\\Sacola.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sacola.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +231,7 @@ public class HomeCliente extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Navegue e encontre tesouros inspirados nos seus animes favoritos");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lucas\\Desktop\\PI\\Projeto_Integrador-2_Semetre_SenacSP\\HakuzanLoja\\src\\main\\resources\\Plano de Fundo Tela inicial.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Plano de Fundo Tela inicial.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -299,9 +307,9 @@ public class HomeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonNavegarProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonNavegarProdutosMouseClicked
-        TelaProdutosCliente telaPro = new TelaProdutosCliente();
-        DesktopTelaInicialCliente.add(telaPro);
-        telaPro.setVisible(true);
+        TelaProdutosCliente telapro = new TelaProdutosCliente();
+        DesktopTelaInicialCliente.add(telapro);
+        telapro.setVisible(true);
 
     }//GEN-LAST:event_ButtonNavegarProdutosMouseClicked
 
@@ -334,6 +342,14 @@ public class HomeCliente extends javax.swing.JFrame {
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jButton8MouseClicked
+
+    private void ButtonNavegarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNavegarProdutosActionPerformed
+
+    }//GEN-LAST:event_ButtonNavegarProdutosActionPerformed
+
+    private void ButtonNavegarProdutosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonNavegarProdutosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonNavegarProdutosMouseEntered
 
     /**
      * @param args the command line arguments
