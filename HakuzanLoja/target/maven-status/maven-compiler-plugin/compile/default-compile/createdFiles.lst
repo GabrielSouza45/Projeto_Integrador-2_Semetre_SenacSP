@@ -20,6 +20,8 @@ com\projetopi\hakuzanloja\repository\CrudDao.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$7.class
 com\projetopi\hakuzanloja\view\EditarDadosPessoais.class
 com\projetopi\hakuzanloja\model\Produto.class
+com\projetopi\hakuzanloja\view\HomeCliente$10.class
+com\projetopi\hakuzanloja\model\ProdutosAtual.class
 com\projetopi\hakuzanloja\view\PerfilCliente.class
 com\projetopi\hakuzanloja\model\FormaPagamento.class
 com\projetopi\hakuzanloja\view\PagamentoCartao$3.class
@@ -58,6 +60,7 @@ com\projetopi\hakuzanloja\model\Usuario.class
 com\projetopi\hakuzanloja\view\PagamentoCartao$2.class
 com\projetopi\hakuzanloja\view\TelaProdutosCliente$1.class
 com\projetopi\hakuzanloja\view\HomeCliente.class
+com\projetopi\hakuzanloja\view\ListaProdutos.class
 com\projetopi\hakuzanloja\view\PagamentoBoleto.class
 com\projetopi\hakuzanloja\view\HomeCliente$8.class
 com\projetopi\hakuzanloja\view\TelaLogin$1.class
