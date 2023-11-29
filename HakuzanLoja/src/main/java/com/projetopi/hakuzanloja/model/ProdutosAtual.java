@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class ProdutosAtual {
     private static List<Produto> listaProd;
+   
+
 
     public static List<Produto> getListaProd() {
         return listaProd;
@@ -22,6 +24,8 @@ public class ProdutosAtual {
     public static void setListaProd(List<Produto> listaProd) {
         ProdutosAtual.listaProd = listaProd;
     }
+    
+    
     
     
     

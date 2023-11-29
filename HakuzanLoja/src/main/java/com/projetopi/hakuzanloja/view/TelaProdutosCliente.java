@@ -4,13 +4,11 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.model.ProdutosAtual;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,40 +29,46 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
     
     
         //Personalizar Cabeçalho da tabela.
-        TabelaDeProdutos.getTableHeader().setFont(new Font("Sagoe UI", Font.BOLD, 14));//Mudar a fonte
-        TabelaDeProdutos.getTableHeader().setOpaque(false);//Deixar o fundo transparente ou não
-        TabelaDeProdutos.getTableHeader().setForeground(Color.WHITE);//Cor da fonte
-        TabelaDeProdutos.getTableHeader().setBackground(new Color(51,51,51));//Cor de Fundo
+        tbProdutos.getTableHeader().setFont(new Font("Sagoe UI", Font.BOLD, 14));//Mudar a fonte
+        tbProdutos.getTableHeader().setOpaque(false);//Deixar o fundo transparente ou não
+        tbProdutos.getTableHeader().setForeground(Color.WHITE);//Cor da fonte
+        tbProdutos.getTableHeader().setBackground(new Color(51,51,51));//Cor de Fundo
         
         //Personalizar ComboBox
-        ComboBoxCategoria.setBackground(new Color(255,255,255));//Deixar fundo branco
-        ComboBoxCategoria.setOpaque(false);
+    
         
         // Remover a borda padrão do JComboBox
-        ComboBoxCategoria.setBorder(BorderFactory.createEmptyBorder());
+       
         
         // Adicionar uma borda inferior a todo o componente
-        ComboBoxCategoria.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(51,51,51)));
+        
         
          // Personalizar a aparência do botão da seta
-        ComboBoxCategoria.setUI(new BasicComboBoxUI(){
-            @Override
-            protected JButton createArrowButton() {
-                JButton button = super.createArrowButton();
-                button.setContentAreaFilled(false); // Tornar o botão da seta transparente
-                button.setBorder(new EmptyBorder(5, 5, 5, 5)); // Borda inferior
-                button.setBackground(new Color(255,255,255));// Cor de fundo do botão
-                button.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5)); // Espaçamento interno
-                Color arrowColor = new Color(51,255,255);
-                button.setForeground(arrowColor);
-                return button;
-                }
-            });
+    
+        
+            
+            addLinhaJtable();
         
         
     
     }
     
+     private void addLinhaJtable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tbProdutos.getModel();
+        
+        Object linhaData[] = new Object[3];
+        
+        for(int i= 0; i< ProdutosAtual.getListaProd().size();i++){
+            
+            linhaData[0] = ProdutosAtual.getListaProd().get(i).getProduto();
+            linhaData[1] = ProdutosAtual.getListaProd().get(i).getDescricao();
+            linhaData[2] = ProdutosAtual.getListaProd().get(i).getValor();
+            model.addRow(linhaData);
+            
+        }
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,34 +82,14 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaDeProdutos = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        tbProdutos = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        ComboBoxCategoria = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        SliderPreco = new javax.swing.JSlider();
-        jLabel7 = new javax.swing.JLabel();
-        LabelPrecoMaximo = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnAdionaSacola = new com.k33ptoo.components.KButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
+        lblNomeProd = new javax.swing.JLabel();
+        lblPreco = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        kButton2 = new com.k33ptoo.components.KButton();
+        lblDescProduto = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -122,214 +106,98 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        TabelaDeProdutos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
-        TabelaDeProdutos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        TabelaDeProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tbProdutos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
+        tbProdutos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"CAMISETA HARRY POTTER ANIME", "79,90"},
-                {"", ""},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Nome", "Preço"
+                "Nome", "Descrição", "Valor"
             }
-        ));
-        TabelaDeProdutos.setShowHorizontalLines(false);
-        jScrollPane1.setViewportView(TabelaDeProdutos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel3.setText("Filtros");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbProdutosMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbProdutos);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setText("Produtos");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Catergorias");
-
-        ComboBoxCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        ComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Camiseta", "Calça", "Chaveiro" }));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Preço Máximo");
-
-        SliderPreco.setMaximum(79900);
-        SliderPreco.setMinimum(4900);
-        SliderPreco.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                SliderPrecoStateChanged(evt);
+        btnAdionaSacola.setText("Adicionar à Sacola");
+        btnAdionaSacola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAdionaSacola.setkBorderRadius(35);
+        btnAdionaSacola.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnAdionaSacola.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnAdionaSacola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAdionaSacolaMousePressed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("R$");
+        lblNomeProd.setText("CAMISETA HARRY POTTER ANIME");
 
-        LabelPrecoMaximo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelPrecoMaximo.setText("49,00");
-
-        kButton1.setText("Adicionar à Sacola");
-        kButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton1.setkBorderRadius(35);
-        kButton1.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton1.setkStartColor(new java.awt.Color(255, 51, 51));
-
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("Harry Potter");
-
-        jLabel21.setText("CAMISETA HARRY POTTER ANIME");
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel22.setText("R$ 79,90");
-
-        jLabel23.setText("12x de");
-
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel24.setText("6,65");
-
-        jLabel25.setText("sem juros");
-
-        jLabel26.setText("Tamanho");
-
-        jRadioButton6.setText("PP");
-
-        jRadioButton7.setText("P");
-
-        jRadioButton8.setText("M");
-
-        jRadioButton9.setText("G");
-
-        jRadioButton10.setText("GG");
+        lblPreco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPreco.setText("R$ 79,90");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel27.setText("DESCRIÇÃO DO PRODUTO");
 
-        jLabel28.setText("A camiseta Harry Potter anime edição limitada é um poduto original");
-
-        jLabel29.setText("A T-shir classica foi confeccionada em 100% algodão");
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ExemploProdutoCamisetaHarryPotter.png"))); // NOI18N
-
-        kButton2.setText("Buscar");
-        kButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton2.setkBorderRadius(35);
-        kButton2.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton2.setkStartColor(new java.awt.Color(255, 51, 51));
+        lblDescProduto.setText("A camiseta Harry Potter anime edição limitada é um poduto original");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LabelPrecoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(kButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SliderPreco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComboBoxCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(30, 30, 30))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(371, 371, 371))
             .addComponent(jSeparator2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel20)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel24)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel25))
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel26)
+                        .addGap(376, 376, 376)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdionaSacola, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPreco)
+                            .addComponent(lblNomeProd)
+                            .addComponent(lblDescProduto)
+                            .addComponent(jLabel27)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton10)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SliderPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(LabelPrecoMaximo))
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton6)
-                            .addComponent(jRadioButton7)
-                            .addComponent(jRadioButton8)
-                            .addComponent(jRadioButton9)
-                            .addComponent(jRadioButton10))
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(lblNomeProd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPreco)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDescProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAdionaSacola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -367,9 +235,9 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -396,16 +264,20 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(30, 30, 30)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(30, 30, 30))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,19 +315,20 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SliderPrecoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderPrecoStateChanged
-        int valorAtual = SliderPreco.getValue();
-        float valorReal = (float) valorAtual / 100.0f;
-        String textoFormatado = String.format("%.2f", valorReal);
-        LabelPrecoMaximo.setText(textoFormatado);
-    }//GEN-LAST:event_SliderPrecoStateChanged
+    private void tbProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProdutosMousePressed
+        lblNomeProd.setText(ProdutosAtual.getListaProd().get(tbProdutos.getSelectedRow()).getProduto());
+        lblDescProduto.setText(ProdutosAtual.getListaProd().get(tbProdutos.getSelectedRow()).getDescricao());
+        lblPreco.setText(String.valueOf(ProdutosAtual.getListaProd().get(tbProdutos.getSelectedRow()).getValor()));
+        
+    }//GEN-LAST:event_tbProdutosMousePressed
+
+    private void btnAdionaSacolaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdionaSacolaMousePressed
+        
+    }//GEN-LAST:event_btnAdionaSacolaMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxCategoria;
-    private javax.swing.JLabel LabelPrecoMaximo;
-    private javax.swing.JSlider SliderPreco;
-    private javax.swing.JTable TabelaDeProdutos;
+    private com.k33ptoo.components.KButton btnAdionaSacola;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -465,34 +338,17 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
+    private javax.swing.JLabel lblDescProduto;
+    private javax.swing.JLabel lblNomeProd;
+    private javax.swing.JLabel lblPreco;
+    private javax.swing.JTable tbProdutos;
     // End of variables declaration//GEN-END:variables
 }
