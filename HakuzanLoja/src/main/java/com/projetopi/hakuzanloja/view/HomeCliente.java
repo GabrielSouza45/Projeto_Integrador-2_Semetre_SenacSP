@@ -4,19 +4,28 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.ProdutoDao;
+import com.projetopi.hakuzanloja.model.ProdutosAtual;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lucas
  */
 public class HomeCliente extends javax.swing.JFrame {
 
+    ProdutoDao pdao = new ProdutoDao();
     /**
      * Creates new form HomeCliente
      */
     public HomeCliente() {
         initComponents();
+        ProdutosAtual.setListaProd(pdao.listarTodos());
+        
     }
 
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,8 +39,8 @@ public class HomeCliente extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         ButtonNavegarProdutos = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtBusca = new javax.swing.JTextField();
+        btnLupaBuscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -66,7 +75,6 @@ public class HomeCliente extends javax.swing.JFrame {
         ButtonNavegarProdutos.setForeground(new java.awt.Color(255, 255, 255));
         ButtonNavegarProdutos.setText("Produtos");
         ButtonNavegarProdutos.setBorder(null);
-        ButtonNavegarProdutos.setOpaque(false);
         ButtonNavegarProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ButtonNavegarProdutosMouseClicked(evt);
@@ -81,21 +89,25 @@ public class HomeCliente extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtBusca.setBackground(new java.awt.Color(51, 51, 51));
+        txtBusca.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtBuscaActionPerformed(evt);
+            }
+        });
+        txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscaKeyPressed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pesquisar.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setOpaque(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLupaBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnLupaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pesquisar.png"))); // NOI18N
+        btnLupaBuscar.setBorder(null);
+        btnLupaBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLupaBuscarActionPerformed(evt);
             }
         });
 
@@ -104,24 +116,20 @@ public class HomeCliente extends javax.swing.JFrame {
         jButton5.setText("Fale Conosco");
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
-        jButton5.setOpaque(false);
 
         jButton6.setBackground(new java.awt.Color(51, 51, 51));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Meus Pedidos");
         jButton6.setBorder(null);
-        jButton6.setOpaque(false);
 
         jButton7.setBackground(new java.awt.Color(51, 51, 51));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Trocar de usuario");
         jButton7.setBorder(null);
-        jButton7.setOpaque(false);
 
         BtnMeuPerfil.setBackground(new java.awt.Color(51, 51, 51));
         BtnMeuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
         BtnMeuPerfil.setBorder(null);
-        BtnMeuPerfil.setOpaque(false);
         BtnMeuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnMeuPerfilMouseClicked(evt);
@@ -136,7 +144,6 @@ public class HomeCliente extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(51, 51, 51));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sacola.png"))); // NOI18N
         jButton4.setBorder(null);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -148,7 +155,6 @@ public class HomeCliente extends javax.swing.JFrame {
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("X");
         jButton8.setBorder(null);
-        jButton8.setOpaque(false);
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton8MouseClicked(evt);
@@ -185,9 +191,9 @@ public class HomeCliente extends javax.swing.JFrame {
                         .addComponent(jLabel28)
                         .addComponent(jLabel27))
                     .addGap(39, 39, 39)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLupaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(421, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,8 +223,8 @@ public class HomeCliente extends javax.swing.JFrame {
                             .addGap(10, 10, 10)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnLupaBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel27))))
                     .addContainerGap(37, Short.MAX_VALUE)))
         );
@@ -307,19 +313,21 @@ public class HomeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonNavegarProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonNavegarProdutosMouseClicked
+       
         TelaProdutosCliente telapro = new TelaProdutosCliente();
         DesktopTelaInicialCliente.add(telapro);
         telapro.setVisible(true);
+        
 
     }//GEN-LAST:event_ButtonNavegarProdutosMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLupaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLupaBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLupaBuscarActionPerformed
 
     private void BtnMeuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMeuPerfilMouseClicked
         PerfilCliente perfCli = new PerfilCliente();
@@ -350,6 +358,12 @@ public class HomeCliente extends javax.swing.JFrame {
     private void ButtonNavegarProdutosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonNavegarProdutosMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonNavegarProdutosMouseEntered
+
+    private void txtBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyPressed
+        ListaProdutos prodL = new ListaProdutos();
+        DesktopTelaInicialCliente.add(prodL);
+        prodL.setVisible(true);
+    }//GEN-LAST:event_txtBuscaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -390,7 +404,7 @@ public class HomeCliente extends javax.swing.JFrame {
     private javax.swing.JButton BtnMeuPerfil;
     private javax.swing.JButton ButtonNavegarProdutos;
     private javax.swing.JDesktopPane DesktopTelaInicialCliente;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLupaBuscar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -407,6 +421,6 @@ public class HomeCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }
