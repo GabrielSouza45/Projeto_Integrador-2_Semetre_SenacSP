@@ -39,13 +39,13 @@ public class HomeCliente extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         ButtonNavegarProdutos = new javax.swing.JButton();
-        btnLupaBuscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         BtnMeuPerfil = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        btnLupaBuscar = new javax.swing.JButton();
         DesktopTelaInicialCliente = new javax.swing.JDesktopPane();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
@@ -85,20 +85,6 @@ public class HomeCliente extends javax.swing.JFrame {
         ButtonNavegarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonNavegarProdutosActionPerformed(evt);
-            }
-        });
-
-        btnLupaBuscar.setBackground(new java.awt.Color(51, 51, 51));
-        btnLupaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pesquisar.png"))); // NOI18N
-        btnLupaBuscar.setBorder(null);
-        btnLupaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnLupaBuscarMousePressed(evt);
-            }
-        });
-        btnLupaBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLupaBuscarActionPerformed(evt);
             }
         });
 
@@ -152,6 +138,20 @@ public class HomeCliente extends javax.swing.JFrame {
             }
         });
 
+        btnLupaBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnLupaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pesquisar.png"))); // NOI18N
+        btnLupaBuscar.setBorder(null);
+        btnLupaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnLupaBuscarMousePressed(evt);
+            }
+        });
+        btnLupaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLupaBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,7 +169,9 @@ public class HomeCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
                         .addComponent(ButtonNavegarProdutos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 935, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 905, Short.MAX_VALUE)
+                        .addComponent(btnLupaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnMeuPerfil)
@@ -181,9 +183,7 @@ public class HomeCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel28)
                         .addComponent(jLabel27))
-                    .addGap(545, 545, 545)
-                    .addComponent(btnLupaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(421, Short.MAX_VALUE)))
+                    .addContainerGap(992, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,10 +198,11 @@ public class HomeCliente extends javax.swing.JFrame {
                             .addComponent(jButton7)
                             .addComponent(jButton6)
                             .addComponent(jButton5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnMeuPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(BtnMeuPerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLupaBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -210,9 +211,7 @@ public class HomeCliente extends javax.swing.JFrame {
                         .addComponent(jLabel28)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnLupaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel27))))
+                            .addComponent(jLabel27)))
                     .addContainerGap(37, Short.MAX_VALUE)))
         );
 
@@ -260,9 +259,6 @@ public class HomeCliente extends javax.swing.JFrame {
                         .addComponent(jSeparator2)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1440, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(DesktopTelaInicialClienteLayout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(jLabel6))
-                    .addGroup(DesktopTelaInicialClienteLayout.createSequentialGroup()
                         .addGap(314, 314, 314)
                         .addGroup(DesktopTelaInicialClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -270,11 +266,15 @@ public class HomeCliente extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(DesktopTelaInicialClienteLayout.createSequentialGroup()
+                .addGap(330, 330, 330)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DesktopTelaInicialClienteLayout.setVerticalGroup(
             DesktopTelaInicialClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DesktopTelaInicialClienteLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +290,7 @@ public class HomeCliente extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         getContentPane().add(DesktopTelaInicialCliente, java.awt.BorderLayout.CENTER);

@@ -113,7 +113,7 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
     }
 
     public Pedido buscarUsuario(Long userId){
-        String sql = "SELECT * FROM TB_USUARIO WHERE FK_USUARIO = ?";
+        String sql = "SELECT * FROM TB_PEDIDO WHERE FK_USUARIO = ?";
 
         try {
             PreparedStatement ps = (PreparedStatement)
@@ -144,7 +144,7 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
     }
 
     public Pedido buscarPorId(Long id){
-        String sql = "SELECT * FROM TB_USUARIO WHERE PK_ID = ?";
+        String sql = "SELECT * FROM TB_PEDIDO WHERE PK_ID = ?";
 
         try {
             PreparedStatement ps = (PreparedStatement)
@@ -173,9 +173,39 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
             return null;
         }
     }
+    
+    
+    public Pedido buscarUltimoPedido(){
+        String sql = "SELECT * FROM TB_PEDIDO ORDER BY PK_ID DESC LIMIT 1;";
+
+        try {
+            PreparedStatement ps = (PreparedStatement)
+            getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()){
+                Pedido pedido = new Pedido();
+                pedido.setId(res.getLong("PK_ID"));
+                pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+                pedido.setData(res.getDate("DT_PEDIDO"));
+                pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
+
+                return pedido;
+            }else {
+                JOptionPane.showMessageDialog(null, "ID não localizado!");
+                return null;
+            }
+        }catch (SQLException err){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar o ID. \n" + err.getMessage());
+            return null;
+        }
+    }
 
     public Pedido buscarData (Date data){
-        String sql = "SELECT * FROM TB_USUARIO WHERE DT_PEDIDO = ?";
+        String sql = "SELECT * FROM TB_PEDIDO WHERE DT_PEDIDO = ?";
 
         try {
             PreparedStatement ps = (PreparedStatement)

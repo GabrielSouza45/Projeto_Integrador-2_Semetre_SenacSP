@@ -113,6 +113,32 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
         }
 
     }
+    
+    
+    public FormaPagamento buscarUltimoPagamento(){
+        String sql = "SELECT PK_ID FROM TB_FORMAPAGAMENTO ORDER BY PK_ID DESC LIMIT 1;";
+
+        try {
+            PreparedStatement ps = (PreparedStatement)
+            getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            if (res.next()){
+                FormaPagamento fg = new FormaPagamento();
+                fg.setId(res.getLong("PK_ID"));
+                     
+
+                return fg;
+            }else {
+                JOptionPane.showMessageDialog(null, "ID não localizado!");
+                return null;
+            }
+        }catch (SQLException err){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar o ID. \n" + err.getMessage());
+            return null;
+        }
+    }
 
     public List<FormaPagamento> buscarPorUsuario(Usuario usuario){
         String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE FK_USUARIO = ?";
@@ -145,6 +171,40 @@ public class FormaDePagamentoDao extends ConectarDao implements CrudDao<FormaPag
             return null;
         }
     }
+    
+    
+    public FormaPagamento buscarPorUsuarioUnico(Usuario usuario){
+        String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE FK_USUARIO = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+
+            ps.setLong(1, usuario.getId());
+
+            ResultSet res = ps.executeQuery();
+
+            
+
+        
+                FormaPagamento formaPagamento = new FormaPagamento();
+                formaPagamento.setId(res.getLong("PK_ID"));
+                formaPagamento.setTipo(res.getString("DS_TIPO"));
+                formaPagamento.setDescCartao(res.getString("DS_CARTAO"));
+                formaPagamento.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+
+         
+  
+
+            return formaPagamento;
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Forma de Pagamento. \n" + err.getMessage());
+            return null;
+        }
+    }
+    
 
     public FormaPagamento buscarPorId(Long id) {
         String sql = "SELECT * FROM TB_FORMAPAGAMENTO WHERE PK_ID = ?";
