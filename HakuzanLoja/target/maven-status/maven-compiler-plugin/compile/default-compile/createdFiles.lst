@@ -1,6 +1,7 @@
 com\projetopi\hakuzanloja\view\HomeCliente$6.class
 com\projetopi\hakuzanloja\view\PerfilCliente$1.class
 com\projetopi\hakuzanloja\view\EditarEndereco$4.class
+com\projetopi\hakuzanloja\view\VisulizarPedido$1.class
 com\projetopi\hakuzanloja\view\EditarInfoConta$2.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$4.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$5.class
@@ -26,6 +27,7 @@ com\projetopi\hakuzanloja\repository\CrudDao.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$7.class
 com\projetopi\hakuzanloja\view\EditarDadosPessoais.class
 com\projetopi\hakuzanloja\model\Produto.class
+com\projetopi\hakuzanloja\view\HomeCliente$10.class
 com\projetopi\hakuzanloja\model\ProdutosAtual.class
 com\projetopi\hakuzanloja\view\CadastroDeProdutos$6.class
 com\projetopi\hakuzanloja\view\PerfilCliente.class
@@ -49,6 +51,7 @@ com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$14.class
 com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente$2.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$6.class
 com\projetopi\hakuzanloja\view\PagamentoPix.class
+com\projetopi\hakuzanloja\view\VisulizarPedido$3.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$14.class
 com\projetopi\hakuzanloja\view\PerfilCliente$6.class
 com\projetopi\hakuzanloja\view\HomeCliente$1.class
@@ -58,6 +61,7 @@ com\projetopi\hakuzanloja\view\Sacola$2.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$7.class
 com\projetopi\hakuzanloja\view\TelaProdutosCliente$2.class
 com\projetopi\hakuzanloja\view\PagamentoCartao$1.class
+com\projetopi\hakuzanloja\view\VisulizarPedido$2.class
 com\projetopi\hakuzanloja\view\TelaEdicaoTESTE$15.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$15.class
 com\projetopi\hakuzanloja\view\DadosDaCompraFinal$1.class
@@ -74,6 +78,7 @@ com\projetopi\hakuzanloja\view\TelaProdutosCliente$1.class
 com\projetopi\hakuzanloja\view\HomeCliente.class
 com\projetopi\hakuzanloja\view\PagamentoBoleto.class
 com\projetopi\hakuzanloja\view\HomeCliente$8.class
+com\projetopi\hakuzanloja\view\HomeCliente$11.class
 com\projetopi\hakuzanloja\view\TelaLogin$1.class
 com\projetopi\hakuzanloja\view\CadastroDeProdutos$5.class
 com\projetopi\hakuzanloja\view\TelaInicialParaAdmin$12.class

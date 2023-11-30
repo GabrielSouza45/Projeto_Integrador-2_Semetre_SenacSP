@@ -5,6 +5,7 @@
 package com.projetopi.hakuzanloja.controller;
 
 import com.projetopi.hakuzanloja.model.Pedido;
+import com.projetopi.hakuzanloja.model.Usuario;
 import com.projetopi.hakuzanloja.repository.CrudDao;
 
 import javax.swing.*;
@@ -88,6 +89,41 @@ public class PedidoDao extends ConectarDao implements CrudDao<Pedido> {
 
             PreparedStatement ps = (PreparedStatement)
                     getConexao().prepareStatement(sql);
+
+            ResultSet res = ps.executeQuery();
+
+            List<Pedido> pedidos = new ArrayList<>();
+
+            while (res.next()){
+                Pedido pedido = new Pedido();
+                pedido.setId(res.getLong("PK_ID"));
+                pedido.setUsuario(new UsuarioDao().buscarUsuarioPorId(res.getLong("FK_USUARIO")));
+                pedido.setData(res.getDate("DT_PEDIDO"));
+                pedido.setValorTotal(res.getDouble("VL_TOTAL"));
+                pedido.setStatus(res.getString("TG_STATUS"));
+                pedido.setPagamento(new FormaDePagamentoDao().buscarPorId(res.getLong("FK_FORMAPAGAMENTO")));
+
+                pedidos.add(pedido);
+            }
+
+            return pedidos;
+        }catch (SQLException err){
+            JOptionPane.showMessageDialog(null, err.getMessage());
+            return null;
+        }
+    }
+    
+    
+    
+    
+    public List<Pedido> listarTodosPedidoUser(Usuario user){
+        String sql = "SELECT * FROM TB_PEDIDO WHERE FK_USUARIO = ?";
+
+        try {
+
+            PreparedStatement ps = (PreparedStatement)
+                    getConexao().prepareStatement(sql);
+            ps.setLong(1, user.getId());
 
             ResultSet res = ps.executeQuery();
 

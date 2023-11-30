@@ -7,6 +7,7 @@ package com.projetopi.hakuzanloja.view;
 import com.projetopi.hakuzanloja.model.ProdutosAtual;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -350,11 +351,12 @@ public class Sacola extends javax.swing.JInternalFrame {
 
     private void btnFinalizaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizaCompraActionPerformed
         
-        if(Double.parseDouble(lblTotalFina.getText()) > 0){
+        if(Double.parseDouble(lblTotalFina.getText())-10 > 0){
             DadosDaCompraFinal dadosfin = new DadosDaCompraFinal();
             deskSacola.add(dadosfin);
-            dadosfin.setVisible(true);
-            
+            dadosfin.setVisible(true); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Pedido sem valor");
         }
     }//GEN-LAST:event_btnFinalizaCompraActionPerformed
 

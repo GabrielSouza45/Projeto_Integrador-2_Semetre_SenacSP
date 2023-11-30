@@ -40,8 +40,8 @@ public class HomeCliente extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         ButtonNavegarProdutos = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnPedidos = new javax.swing.JButton();
+        btnTrocaUser = new javax.swing.JButton();
         BtnMeuPerfil = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -94,15 +94,25 @@ public class HomeCliente extends javax.swing.JFrame {
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
 
-        jButton6.setBackground(new java.awt.Color(51, 51, 51));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Meus Pedidos");
-        jButton6.setBorder(null);
+        btnPedidos.setBackground(new java.awt.Color(51, 51, 51));
+        btnPedidos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPedidos.setText("Meus Pedidos");
+        btnPedidos.setBorder(null);
+        btnPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnPedidosMousePressed(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(51, 51, 51));
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Trocar de usuario");
-        jButton7.setBorder(null);
+        btnTrocaUser.setBackground(new java.awt.Color(51, 51, 51));
+        btnTrocaUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnTrocaUser.setText("Trocar de usuario");
+        btnTrocaUser.setBorder(null);
+        btnTrocaUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnTrocaUserMousePressed(evt);
+            }
+        });
 
         BtnMeuPerfil.setBackground(new java.awt.Color(51, 51, 51));
         BtnMeuPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
@@ -162,9 +172,9 @@ public class HomeCliente extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)
+                        .addComponent(btnPedidos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)
+                        .addComponent(btnTrocaUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
@@ -195,8 +205,8 @@ public class HomeCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton8)
-                            .addComponent(jButton7)
-                            .addComponent(jButton6)
+                            .addComponent(btnTrocaUser)
+                            .addComponent(btnPedidos)
                             .addComponent(jButton5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,6 +358,20 @@ public class HomeCliente extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_btnLupaBuscarMousePressed
 
+    private void btnTrocaUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrocaUserMousePressed
+       TelaLogin tl = new TelaLogin();
+       tl.setVisible(true);
+       dispose();
+      
+    }//GEN-LAST:event_btnTrocaUserMousePressed
+
+    private void btnPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPedidosMousePressed
+       
+        VisulizarPedido pedido = new VisulizarPedido();
+       DesktopTelaInicialCliente.add(pedido);
+        pedido.setVisible(true);
+    }//GEN-LAST:event_btnPedidosMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -388,10 +412,10 @@ public class HomeCliente extends javax.swing.JFrame {
     private javax.swing.JButton ButtonNavegarProdutos;
     private javax.swing.JDesktopPane DesktopTelaInicialCliente;
     private javax.swing.JButton btnLupaBuscar;
+    private javax.swing.JButton btnPedidos;
+    private javax.swing.JButton btnTrocaUser;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
