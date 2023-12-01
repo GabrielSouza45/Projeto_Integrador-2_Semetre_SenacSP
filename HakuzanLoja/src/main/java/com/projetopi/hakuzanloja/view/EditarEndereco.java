@@ -73,6 +73,16 @@ public class EditarEndereco extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        jPanel1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanel1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         jLabel1.setText("CEP");
 
         jLabel2.setText("Logradouro");
@@ -238,6 +248,10 @@ public class EditarEndereco extends javax.swing.JInternalFrame {
     private void btnLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMousePressed
         limparCampos(this.getContentPane());
     }//GEN-LAST:event_btnLimparMousePressed
+
+    private void jPanel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel1AncestorAdded
+        
+    }//GEN-LAST:event_jPanel1AncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

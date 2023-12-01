@@ -63,15 +63,13 @@ public class TelaLogin extends javax.swing.JFrame {
         txtLogin.setBackground(new java.awt.Color(153, 153, 153));
         txtLogin.setForeground(new java.awt.Color(255, 255, 255));
         txtLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txtLogin.setOpaque(false);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha");
 
-        txtSenha.setBackground(new java.awt.Color(237, 237, 237));
+        txtSenha.setBackground(new java.awt.Color(153, 153, 153));
         txtSenha.setForeground(new java.awt.Color(255, 255, 255));
         txtSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txtSenha.setOpaque(false);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -86,7 +84,6 @@ public class TelaLogin extends javax.swing.JFrame {
         btnFecharTela.setDefaultCapable(false);
         btnFecharTela.setFocusPainted(false);
         btnFecharTela.setFocusable(false);
-        btnFecharTela.setOpaque(false);
         btnFecharTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharTelaActionPerformed(evt);
@@ -105,6 +102,9 @@ public class TelaLogin extends javax.swing.JFrame {
         btnValidaLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnValidaLoginMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnValidaLoginMousePressed(evt);
             }
         });
 
@@ -138,7 +138,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Esqueceu sua senha?");
         jButton2.setBorder(null);
-        jButton2.setOpaque(false);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TelaLogin.png"))); // NOI18N
         jLabel6.setText("jLabel6");
@@ -242,47 +241,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btnValidaLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidaLoginMouseClicked
-        String login = txtLogin.getText();
-        String senha = String.valueOf(txtSenha.getPassword());
-
-        UsuarioDao u = new UsuarioDao();
-        try {
-
-            ResultSet reslt = u.validarLogin(login, senha);
-            
-            
-            if (reslt.next()){
-                JOptionPane.showMessageDialog(null, "Logado com sucesso");
-                 this.setVisible(false);
-                // COLOCAR TELA QUE IRA SER ABERTA
-                if(reslt.getLong("PK_ID")  == (long)1){
-                    
-                    TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
-                    telaIni.setVisible(true);
-                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
-                    
-                }else{
-                    
-                    HomeCliente homeCli = new HomeCliente();
-                    homeCli.setVisible(true);
-                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
-                
-                }
-                   
-                    
-                
-
-            } else {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Usuário ou senha inválidos",
-                        "Erro de operação",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-
-        }catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, err.getMessage());
-        }
+       
     }//GEN-LAST:event_btnValidaLoginMouseClicked
 
     private void btnValidaLogin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidaLogin2MouseClicked
@@ -290,6 +249,46 @@ public class TelaLogin extends javax.swing.JFrame {
         dispose();
         tacc.setVisible(true);
     }//GEN-LAST:event_btnValidaLogin2MouseClicked
+
+    private void btnValidaLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidaLoginMousePressed
+        String login = txtLogin.getText();
+        String senha = String.valueOf(txtSenha.getPassword());
+
+        UsuarioDao u = new UsuarioDao();
+        try {
+
+            ResultSet reslt = u.validarLogin(login, senha);
+
+            if (reslt.next()){
+                JOptionPane.showMessageDialog(null, "Logado com sucesso");
+                this.setVisible(false);
+                // COLOCAR TELA QUE IRA SER ABERTA
+                if(reslt.getLong("PK_ID")  == (long)1){
+
+                    TelaInicialParaAdmin telaIni = new TelaInicialParaAdmin();
+                    telaIni.setVisible(true);
+                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
+
+                }else{
+
+                    HomeCliente homeCli = new HomeCliente();
+                    homeCli.setVisible(true);
+                    UsuarioAtual.setUserAtual(u.buscarUsuarioPorEmail(reslt.getString("DS_EMAIL")));
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Usuário ou senha inválidos",
+                    "Erro de operação",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+
+        }catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+        }
+    }//GEN-LAST:event_btnValidaLoginMousePressed
 
 
 

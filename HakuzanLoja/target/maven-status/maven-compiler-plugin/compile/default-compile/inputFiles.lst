@@ -8,11 +8,14 @@ C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\H
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\HomeCliente.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\model\Produto.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\Sacola.java
+C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\CadastroDeProdutos.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\PagamentoCartao.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\controller\NivelDao.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\model\ItemPedido.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\controller\ConectarDao.java
+C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\model\ProdutosAtual.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\TelaAutoCadastroCliente.java
+C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\ListaProdutos.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\TelaEdicaoTESTE.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\model\Nivel.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\TelaLogin.java
@@ -30,6 +33,7 @@ C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\H
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\DadosDaCompraFinal.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\controller\CategoriaDao.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\repository\CrudDao.java
+C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\NewJFrame.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\TelaProdutosCliente.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\model\Categoria.java
 C:\Users\snubd\OneDrive\Área de Trabalho\Projeto_Integrador-2_Semetre_SenacSP\HakuzanLoja\src\main\java\com\projetopi\hakuzanloja\view\PagamentoPix.java
