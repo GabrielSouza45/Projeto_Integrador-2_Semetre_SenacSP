@@ -4,6 +4,16 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.FormaDePagamentoDao;
+import com.projetopi.hakuzanloja.controller.ItensPedidoDao;
+import com.projetopi.hakuzanloja.controller.PedidoDao;
+import com.projetopi.hakuzanloja.model.FormaPagamento;
+import com.projetopi.hakuzanloja.model.ItemPedido;
+import com.projetopi.hakuzanloja.model.Pedido;
+import com.projetopi.hakuzanloja.model.ProdutosAtual;
+import com.projetopi.hakuzanloja.model.UsuarioAtual;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -12,6 +22,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class PagamentoPix extends javax.swing.JInternalFrame {
 
+    double precoTotal = 0;
     /**
      * Creates new form PagamentoPixFinal
      */
@@ -21,7 +32,64 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+        
+        somarTotalPreco();
+        adicionaPedidosDBPix();
     }
+    
+    private void somarTotalPreco(){
+        
+        precoTotal = 0;
+    
+        for(int i = 0; i < ProdutosAtual.getProdSacola().size();i++){
+            precoTotal += ProdutosAtual.getProdSacola().get(i).getValor();
+        }
+        
+        lblValorFinal.setText(String.valueOf(precoTotal));
+        
+    
+    }
+    
+     private void adicionaPedidosDBPix(){
+         
+            ItensPedidoDao itnd = new ItensPedidoDao();
+            FormaDePagamentoDao fdpd = new FormaDePagamentoDao();
+            PedidoDao pdd = new PedidoDao();
+            FormaPagamento fg = new FormaPagamento();
+            Pedido pd = new Pedido();
+            
+    
+            
+            
+            
+            fg.setUsuario(UsuarioAtual.getUserAtual());
+            fg.setTipo("Pix");
+            fg.setDescCartao("Pix pago");
+            fdpd.cadastrar(fg);
+       
+            
+            pd.setData(Date.valueOf(LocalDate.now()));
+            pd.setStatus("T");
+            pd.setUsuario(UsuarioAtual.getUserAtual());
+            pd.setValorTotal(precoTotal);
+            pd.setPagamento(fdpd.buscarUltimoPagamento());
+            pdd.cadastrar(pd);
+            
+            
+            for(int i = 0; i < ProdutosAtual.getProdSacola().size();i++){
+            
+                ItemPedido imp = new ItemPedido();
+                
+                imp.setProduto(ProdutosAtual.getProdSacola().get(i));
+                imp.setQuantidade(1);
+                imp.setValorUnitario(ProdutosAtual.getProdSacola().get(i).getValor());
+                imp.setInativo(0);
+                imp.setPedido(pdd.buscarUltimoPedido());
+                itnd.cadastrar(imp);
+            
+            
+            }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,10 +100,10 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        deskTela = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblValorFinal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -43,7 +111,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnCompras = new com.k33ptoo.components.KButton();
         kButton2 = new com.k33ptoo.components.KButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -58,14 +126,14 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0));
+        deskTela.setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Valor:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("R$ 19,97");
+        lblValorFinal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblValorFinal.setText("R$ 19,97");
 
         jLabel2.setText("Pague até:");
 
@@ -81,11 +149,16 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logopix.png"))); // NOI18N
 
-        kButton1.setText("Ver em minhas compras");
-        kButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton1.setkBorderRadius(25);
-        kButton1.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton1.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnCompras.setText("Ver em minhas compras");
+        btnCompras.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCompras.setkBorderRadius(25);
+        btnCompras.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnCompras.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnCompras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnComprasMousePressed(evt);
+            }
+        });
 
         kButton2.setText("Copiar codigo pix");
         kButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,7 +185,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +207,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
                         .addGap(33, 33, 33)
                         .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -156,7 +229,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblValorFinal)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +243,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
                 .addComponent(jLabel8)
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,49 +273,49 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MeninaCatao.png"))); // NOI18N
 
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jSeparator3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jSeparator4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTela.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout deskTelaLayout = new javax.swing.GroupLayout(deskTela);
+        deskTela.setLayout(deskTelaLayout);
+        deskTelaLayout.setHorizontalGroup(
+            deskTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(deskTelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator4))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(deskTelaLayout.createSequentialGroup()
+                .addGroup(deskTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskTelaLayout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(deskTelaLayout.createSequentialGroup()
                         .addGap(246, 246, 246)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(deskTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel14)
                             .addComponent(jLabel13)
                             .addComponent(jLabel16))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        deskTelaLayout.setVerticalGroup(
+            deskTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deskTelaLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(deskTelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskTelaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(deskTelaLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -262,19 +335,26 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskTela)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskTela)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnComprasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMousePressed
+       Sacola sal = new Sacola();
+       deskTela.add(sal);
+       sal.setVisible(true);
+    }//GEN-LAST:event_btnComprasMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private com.k33ptoo.components.KButton btnCompras;
+    private javax.swing.JDesktopPane deskTela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -285,7 +365,6 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -297,7 +376,7 @@ public class PagamentoPix extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton2;
+    private javax.swing.JLabel lblValorFinal;
     // End of variables declaration//GEN-END:variables
 }

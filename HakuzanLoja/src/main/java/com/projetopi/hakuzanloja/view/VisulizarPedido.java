@@ -4,19 +4,69 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.PedidoDao;
+import com.projetopi.hakuzanloja.model.Pedido;
+import com.projetopi.hakuzanloja.model.UsuarioAtual;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lucas
  */
 public class VisulizarPedido extends javax.swing.JInternalFrame {
-
+   private List<Pedido> listP;
     /**
      * Creates new form PedidoEntregue
      */
     public VisulizarPedido() {
         initComponents();
+        carregarEndereco();
+        carregarTablePedido();
     }
+    
+    
+    private void carregarTablePedido(){
+        DefaultTableModel model = (DefaultTableModel) tbPedidos.getModel();
+        
+        PedidoDao pdao = new PedidoDao();
+        
+        listP = pdao.listarTodosPedidoUser(UsuarioAtual.getUserAtual());
+        
+        
+        Object linhaData[] = new Object[3];
+        
+        for(int i= 0; i< listP.size();i++){
+            
+            linhaData[0] = listP.get(i).getId();
+            linhaData[1] = listP.get(i).getPagamento().getDescCartao();
+            linhaData[2] = listP.get(i).getValorTotal();
+            model.addRow(linhaData);
+            
+        }
+        
+        
+    
+    
+    
+    
+    }
+     private void carregarEndereco(){
+            
+         String enderecoSingleString = "";
 
+        enderecoSingleString += UsuarioAtual.getUserAtual().getLogradouro() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getNumero() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getBairro() + " - ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getCidade() + " / ";
+        enderecoSingleString += UsuarioAtual.getUserAtual().getUf();
+
+        lblEndereco.setText(enderecoSingleString);   
+            
+        }
+     
+     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,86 +81,94 @@ public class VisulizarPedido extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbPedidos = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblEndereco = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblDataPedido = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblIdPedido = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        lblTipoPag = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
+        btnComprarNov = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         setTitle("Visualizar Pedido");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("OBRIGADO POR COMPRAR NA HAKUZAN!");
 
-        jLabel2.setText("Prdutos");
+        jLabel2.setText("Pedidos");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Produto", "Quantidade", "Preço"
+                "Pedido N°", "Forma de Pagamento", "Valor"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbPedidosMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbPedidos);
 
         jLabel3.setForeground(new java.awt.Color(102, 255, 102));
         jLabel3.setText("Em Trânstio");
 
-        jLabel4.setText("Chega até dia 31 de outubro");
-
-        jLabel5.setText("Rua Maluca 55 - São Paulo - SP - Vila do Chaves ");
+        lblEndereco.setText("Rua Maluca 55 - São Paulo - SP - Vila do Chaves ");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Detalhe do Pedido");
 
-        jLabel11.setText("22 de Outubro");
+        lblDataPedido.setText("XXXXXXX");
 
         jLabel12.setText("Pedido Nª:");
 
-        jLabel13.setText("XXXXXXXXXXX");
+        lblIdPedido.setText("XXXXXXXXXXX");
 
         jLabel14.setText("Frete");
 
         jLabel15.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel15.setText("Grátis");
+        jLabel15.setText("10.00");
 
         jLabel16.setText("Pagamento ");
 
-        jLabel17.setText("Cartão");
+        lblTipoPag.setText("XXXX");
 
-        jLabel18.setText("12x de R$ 7,16");
+        btnVoltar.setText("Voltar");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVoltarMousePressed(evt);
+            }
+        });
 
-        jButton1.setText("Voltar");
-
-        jButton2.setText("Comprar Novamente");
-
-        jButton3.setText("Navegar por Categorias");
+        btnComprarNov.setText("Comprar Novamente");
+        btnComprarNov.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnComprarNovMousePressed(evt);
+            }
+        });
 
         jLabel6.setText("Seu pedido foi entregue à transportadora e está a caminho.");
 
         jLabel7.setText("Você receberá em breve um número de rastreamento para acompanhar a entrega.");
-
-        jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,51 +195,40 @@ public class VisulizarPedido extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel3))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5))
+                                .addComponent(lblEndereco))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel6))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(272, 272, 272)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel15)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel16))
+                                        .addComponent(lblDataPedido)
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel17)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel18))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel13)))))
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblIdPedido))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(144, 144, 144)
+                                        .addComponent(lblTipoPag)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnComprarNov, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel14))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,39 +249,28 @@ public class VisulizarPedido extends javax.swing.JInternalFrame {
                 .addComponent(jLabel6)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(lblEndereco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(lblDataPedido)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jButton1))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel18)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jButton3)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(33, 33, 33))
+                    .addComponent(lblIdPedido)
+                    .addComponent(btnVoltar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoPag)
+                    .addComponent(jLabel16)
+                    .addComponent(btnComprarNov))
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,33 +290,46 @@ public class VisulizarPedido extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbPedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPedidosMousePressed
+            
+        lblIdPedido.setText(String.valueOf(listP.get(tbPedidos.getSelectedRow()).getId()));
+        lblDataPedido.setText(String.valueOf(listP.get(tbPedidos.getSelectedRow()).getData()));
+        lblTipoPag.setText(String.valueOf(listP.get(tbPedidos.getSelectedRow()).getPagamento().getDescCartao()));
+        
+        
+    }//GEN-LAST:event_tbPedidosMousePressed
+
+    private void btnVoltarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMousePressed
+        dispose();
+    }//GEN-LAST:event_btnVoltarMousePressed
+
+    private void btnComprarNovMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarNovMousePressed
+        dispose();
+    }//GEN-LAST:event_btnComprarNovMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnComprarNov;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblDataPedido;
+    private javax.swing.JLabel lblEndereco;
+    private javax.swing.JLabel lblIdPedido;
+    private javax.swing.JLabel lblTipoPag;
+    private javax.swing.JTable tbPedidos;
     // End of variables declaration//GEN-END:variables
 }

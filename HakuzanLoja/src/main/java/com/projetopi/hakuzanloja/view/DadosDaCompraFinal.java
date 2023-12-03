@@ -21,6 +21,7 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+        
         String enderecoSingleString = "";
         
            
@@ -59,19 +60,14 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        rdBtnCartao = new javax.swing.JRadioButton();
         jSeparator5 = new javax.swing.JSeparator();
         rdBtnBoleto = new javax.swing.JRadioButton();
         jSeparator6 = new javax.swing.JSeparator();
         rdBtnPix = new javax.swing.JRadioButton();
         jSeparator7 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator8 = new javax.swing.JSeparator();
-        kButton1 = new com.k33ptoo.components.KButton();
-        kButton3 = new com.k33ptoo.components.KButton();
-        kButton2 = new com.k33ptoo.components.KButton();
+        btnCancelar = new com.k33ptoo.components.KButton();
+        btnAvancar = new com.k33ptoo.components.KButton();
         DesktopConfirmaEndCliente = new javax.swing.JDesktopPane();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -108,44 +104,36 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
 
         jLabel4.setText("FORMA DE PAGAMENTO");
 
-        buttonGroup1.add(rdBtnCartao);
-        rdBtnCartao.setText("CARTÃO DE CREDITO");
-
         buttonGroup1.add(rdBtnBoleto);
         rdBtnBoleto.setText("BOLETO");
 
         buttonGroup1.add(rdBtnPix);
         rdBtnPix.setText("PIX");
 
-        jButton2.setForeground(new java.awt.Color(0, 102, 255));
-        jButton2.setText("Editar ou adicionar outro cartão");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCancelar.setkBorderRadius(25);
+        btnCancelar.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnCancelar.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCancelarMousePressed(evt);
+            }
+        });
 
-        jLabel5.setText("Parcelas");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Á VISTA", "02x", "03x", "04x", "05x", "06x", "07x", "08x", "09x", "10X", "11X", "12X" }));
-
-        kButton1.setText("Cancelar");
-        kButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton1.setkBorderRadius(25);
-        kButton1.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton1.setkStartColor(new java.awt.Color(255, 51, 51));
-
-        kButton3.setText("Voltar");
-        kButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton3.setkBorderRadius(25);
-        kButton3.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton3.setkStartColor(new java.awt.Color(255, 51, 51));
-
-        kButton2.setText("Avançar");
-        kButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton2.setkBorderRadius(25);
-        kButton2.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton2.setkStartColor(new java.awt.Color(255, 51, 51));
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAvancar.setText("Avançar");
+        btnAvancar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAvancar.setkBorderRadius(25);
+        btnAvancar.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnAvancar.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnAvancar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAvancarMousePressed(evt);
+            }
+        });
+        btnAvancar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
+                btnAvancarActionPerformed(evt);
             }
         });
 
@@ -170,12 +158,10 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
             .addComponent(jSeparator4)
             .addComponent(jSeparator8)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,19 +171,12 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
                                     .addComponent(rdBtnBoleto)
-                                    .addComponent(rdBtnPix)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(rdBtnCartao)
-                                        .addGap(180, 180, 180)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdBtnPix)))
                             .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel1))
@@ -232,14 +211,9 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                     .addComponent(DesktopConfirmaEndCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdBtnCartao)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(rdBtnBoleto)
@@ -249,18 +223,15 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
                 .addComponent(rdBtnPix)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(48, 48, 48)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -377,24 +348,12 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-        PagamentoCartao pag = new PagamentoCartao();
-        PagamentoPix pagPix = new PagamentoPix();
-        PagamentoBoleto pagBol = new PagamentoBoleto();
-        if(rdBtnCartao.isSelected()){
-            deskDadosPag.add(pag);
-            pag.setVisible(true);
-        }else if(rdBtnPix.isSelected()){
-            deskDadosPag.add(pagPix);
-            pagPix.setVisible(true);
-        }else if(rdBtnBoleto.isSelected()){
-            deskDadosPag.add(pagBol);
-            pagBol.setVisible(true);  
-        }
-    }//GEN-LAST:event_kButton2ActionPerformed
+    private void btnAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancarActionPerformed
+
+    }//GEN-LAST:event_btnAvancarActionPerformed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        
+
         EditarEndereco edt = new EditarEndereco();
         DesktopConfirmaEndCliente.add(edt);
         edt.setVisible(true);
@@ -412,14 +371,36 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
         rdBtnEndereco.setText(enderecoSingleString);
     }//GEN-LAST:event_jPanel2FocusGained
 
+    private void btnCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMousePressed
+       dispose();
+    }//GEN-LAST:event_btnCancelarMousePressed
+
+    private void btnAvancarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvancarMousePressed
+       
+       
+       
+       if(rdBtnEndereco.isSelected()){
+        if(rdBtnBoleto.isSelected()){
+            PagamentoBoleto pagBol = new PagamentoBoleto();
+            deskDadosPag.add(pagBol);
+            pagBol.setVisible(true);
+        }else if(rdBtnPix.isSelected()){
+            PagamentoPix pagPix = new PagamentoPix();
+           deskDadosPag.add(pagPix);
+           pagPix.setVisible(true);
+        }
+       }
+       
+    }//GEN-LAST:event_btnAvancarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopConfirmaEndCliente;
+    private com.k33ptoo.components.KButton btnAvancar;
+    private com.k33ptoo.components.KButton btnCancelar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JDesktopPane deskDadosPag;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -430,7 +411,6 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
@@ -441,11 +421,7 @@ public class DadosDaCompraFinal extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
-    private com.k33ptoo.components.KButton kButton3;
     private javax.swing.JRadioButton rdBtnBoleto;
-    private javax.swing.JRadioButton rdBtnCartao;
     private javax.swing.JRadioButton rdBtnEndereco;
     private javax.swing.JRadioButton rdBtnPix;
     // End of variables declaration//GEN-END:variables

@@ -4,6 +4,17 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.controller.FormaDePagamentoDao;
+import com.projetopi.hakuzanloja.controller.ItensPedidoDao;
+import com.projetopi.hakuzanloja.controller.PedidoDao;
+import com.projetopi.hakuzanloja.model.FormaPagamento;
+import com.projetopi.hakuzanloja.model.ItemPedido;
+import com.projetopi.hakuzanloja.model.Pedido;
+import com.projetopi.hakuzanloja.model.ProdutosAtual;
+import com.projetopi.hakuzanloja.model.UsuarioAtual;
+import java.sql.Date;
+import java.time.LocalDate;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -11,17 +22,81 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Lucas
  */
 public class PagamentoBoleto extends javax.swing.JInternalFrame {
-
+    double precoTotal = 0;
     /**
      * Creates new form PagamentoBoletoFinal
      */
     public PagamentoBoleto() {
+        
+        
         initComponents();
         //remover bordas internalframe
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+        somarTotalPreco();
+        adicionaPedidosDB();
+        
     }
+    
+    private void adicionaPedidosDB(){
+            ItensPedidoDao itnd = new ItensPedidoDao();
+            FormaDePagamentoDao fdpd = new FormaDePagamentoDao();
+            PedidoDao pdd = new PedidoDao();
+            FormaPagamento fg = new FormaPagamento();
+            Pedido pd = new Pedido();
+            
+    
+            
+            
+            
+            fg.setUsuario(UsuarioAtual.getUserAtual());
+            fg.setTipo("Boleto");
+            fg.setDescCartao("Boleto Pago");
+            fdpd.cadastrar(fg);
+       
+            
+            pd.setData(Date.valueOf(LocalDate.now()));
+            pd.setStatus("T");
+            pd.setUsuario(UsuarioAtual.getUserAtual());
+            pd.setValorTotal(precoTotal);
+            pd.setPagamento(fdpd.buscarUltimoPagamento());
+            pdd.cadastrar(pd);
+            
+            
+            for(int i = 0; i < ProdutosAtual.getProdSacola().size();i++){
+            
+                ItemPedido imp = new ItemPedido();
+                
+                imp.setProduto(ProdutosAtual.getProdSacola().get(i));
+                imp.setQuantidade(1);
+                imp.setValorUnitario(ProdutosAtual.getProdSacola().get(i).getValor());
+                imp.setInativo(0);
+                imp.setPedido(pdd.buscarUltimoPedido());
+                itnd.cadastrar(imp);
+            
+            
+            }
+            
+            
+            
+            
+        
+        
+    }
+     private void somarTotalPreco(){
+        
+        precoTotal = 0;
+    
+        for(int i = 0; i < ProdutosAtual.getProdSacola().size();i++){
+            precoTotal += ProdutosAtual.getProdSacola().get(i).getValor();
+        }
+        
+        lblValorFinal.setText("Pague os R$ " + String.valueOf(precoTotal)+ " via boleto para garantir sua compra");
+        
+    
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,9 +107,9 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        deskTelaInicial = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblValorFinal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,7 +121,7 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnVerSacola = new com.k33ptoo.components.KButton();
         kButton2 = new com.k33ptoo.components.KButton();
         kButton3 = new com.k33ptoo.components.KButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -58,12 +133,12 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0));
+        deskTelaInicial.setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Pague os R$ 42,99 via boleto para garantir sua compra");
+        lblValorFinal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblValorFinal.setText("Pague os R$ 42,99 via boleto para garantir sua compra");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Você tem até quinta-feira para pagar");
@@ -89,11 +164,16 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         jLabel11.setText("42297.11504 00064.897317 00995.991726 1 95230000004299");
         jLabel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
 
-        kButton1.setText("Ver em minhas compras");
-        kButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton1.setkBorderRadius(25);
-        kButton1.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton1.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnVerSacola.setText("Ver em minhas compras");
+        btnVerSacola.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVerSacola.setkBorderRadius(25);
+        btnVerSacola.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnVerSacola.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnVerSacola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVerSacolaMousePressed(evt);
+            }
+        });
 
         kButton2.setText("Copiar linha digitavel");
         kButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -135,7 +215,7 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel7))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(lblValorFinal)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,14 +238,14 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerSacola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(lblValorFinal)
                 .addGap(13, 13, 13)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -193,7 +273,7 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnVerSacola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -212,51 +292,51 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("personagens favoritos.");
 
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jSeparator4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jSeparator3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jSeparator4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        deskTelaInicial.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout deskTelaInicialLayout = new javax.swing.GroupLayout(deskTelaInicial);
+        deskTelaInicial.setLayout(deskTelaInicialLayout);
+        deskTelaInicialLayout.setHorizontalGroup(
+            deskTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3)
             .addComponent(jSeparator4)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(deskTelaInicialLayout.createSequentialGroup()
+                .addGroup(deskTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskTelaInicialLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(deskTelaInicialLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(deskTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel13)
                             .addComponent(jLabel12)
                             .addComponent(jLabel15))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        deskTelaInicialLayout.setVerticalGroup(
+            deskTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deskTelaInicialLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(deskTelaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deskTelaInicialLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(deskTelaInicialLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jLabel12)
@@ -273,11 +353,11 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskTelaInicial)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(deskTelaInicial)
         );
 
         pack();
@@ -287,10 +367,16 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_kButton3ActionPerformed
 
+    private void btnVerSacolaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerSacolaMousePressed
+       Sacola sal = new Sacola();
+       deskTelaInicial.add(sal);
+       sal.setVisible(true);
+    }//GEN-LAST:event_btnVerSacolaMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
+    private com.k33ptoo.components.KButton btnVerSacola;
+    private javax.swing.JDesktopPane deskTelaInicial;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -311,8 +397,8 @@ public class PagamentoBoleto extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton2;
     private com.k33ptoo.components.KButton kButton3;
+    private javax.swing.JLabel lblValorFinal;
     // End of variables declaration//GEN-END:variables
 }

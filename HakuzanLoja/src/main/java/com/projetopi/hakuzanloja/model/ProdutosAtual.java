@@ -14,8 +14,22 @@ import java.util.List;
  */
 public class ProdutosAtual {
     private static List<Produto> listaProd;
-   
+    
+    private static List<Produto> prodSacola = new ArrayList<>();
 
+    public static List<Produto> getProdSacola() {
+        return prodSacola;
+    }
+
+    public static void setProdSacola(List<Produto> prodSacola) {
+        ProdutosAtual.prodSacola = prodSacola;
+    }
+   
+    
+    public static void adicionaProdSacola(Produto prod){
+    
+      prodSacola.add(prod);
+    }
 
     public static List<Produto> getListaProd() {
         return listaProd;
@@ -26,7 +40,7 @@ public class ProdutosAtual {
     }
     
     
-    
+   
     
     
     

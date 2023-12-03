@@ -4,9 +4,12 @@
  */
 package com.projetopi.hakuzanloja.view;
 
+import com.projetopi.hakuzanloja.model.ProdutosAtual;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,15 +29,49 @@ public class Sacola extends javax.swing.JInternalFrame {
         
         
         //Personalizar Cabeçalho da tabela.
-        TabelaDeProdutos.getTableHeader().setFont(new Font("Sagoe UI", Font.BOLD, 14));//Mudar a fonte
-        TabelaDeProdutos.getTableHeader().setOpaque(false);//Deixar o fundo transparente ou não
-        TabelaDeProdutos.getTableHeader().setForeground(Color.WHITE);//Cor da fonte
-        TabelaDeProdutos.getTableHeader().setBackground(new Color(51,51,51));//Cor de Fundo
+        tbProdutosSacola.getTableHeader().setFont(new Font("Sagoe UI", Font.BOLD, 14));//Mudar a fonte
+        tbProdutosSacola.getTableHeader().setOpaque(false);//Deixar o fundo transparente ou não
+        tbProdutosSacola.getTableHeader().setForeground(Color.WHITE);//Cor da fonte
+        tbProdutosSacola.getTableHeader().setBackground(new Color(51,51,51));//Cor de Fundo
+        
+        addLinhaJtable();
+        somarTotalPreco();
         
         
         
     }
+    
+    
+    private void somarTotalPreco(){
+        
+        double precoTotal = 0;
+    
+        for(int i = 0; i < tbProdutosSacola.getRowCount();i++){
+            precoTotal += ProdutosAtual.getProdSacola().get(i).getValor();
+        }
+        
+        lblPrecoTotal.setText(String.valueOf(precoTotal));
+        lblTotalFina.setText(String.valueOf(precoTotal + 10));
+    
+    }
 
+    private void addLinhaJtable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tbProdutosSacola.getModel();
+        model.setNumRows(0);
+        
+        Object linhaData[] = new Object[3];
+        
+        for(int i= 0; i< ProdutosAtual.getProdSacola().size();i++){
+            
+            linhaData[0] = ProdutosAtual.getProdSacola().get(i).getProduto();
+            linhaData[1] = ProdutosAtual.getProdSacola().get(i).getDescricao();
+            linhaData[2] = ProdutosAtual.getProdSacola().get(i).getValor();
+            model.addRow(linhaData);
+            
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,18 +96,16 @@ public class Sacola extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
-        TabelaDeProdutos = new javax.swing.JTable();
-        kButton7 = new com.k33ptoo.components.KButton();
-        jSpinner3 = new javax.swing.JSpinner();
-        kButton8 = new com.k33ptoo.components.KButton();
+        tbProdutosSacola = new javax.swing.JTable();
+        btnExcluir = new com.k33ptoo.components.KButton();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        lblTotalFina = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        kButton9 = new com.k33ptoo.components.KButton();
+        lblPrecoTotal = new javax.swing.JLabel();
+        btnFinalizaCompra = new com.k33ptoo.components.KButton();
 
         deskSacola.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -101,30 +136,34 @@ public class Sacola extends javax.swing.JInternalFrame {
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel25.setText("Produtos");
 
-        TabelaDeProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tbProdutosSacola.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nome", "Quantidade", "Preço"
+                "Nome", "Descrição", "Preço"
             }
-        ));
-        jScrollPane3.setViewportView(TabelaDeProdutos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        kButton7.setText("Excluir");
-        kButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        kButton7.setkBorderRadius(25);
-        kButton7.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton7.setkStartColor(new java.awt.Color(255, 51, 51));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tbProdutosSacola);
 
-        kButton8.setText("Alterar");
-        kButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        kButton8.setkBorderRadius(25);
-        kButton8.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton8.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExcluir.setkBorderRadius(25);
+        btnExcluir.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnExcluir.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnExcluirMousePressed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setText("Resumo da compra");
@@ -135,20 +174,20 @@ public class Sacola extends javax.swing.JInternalFrame {
 
         jLabel29.setText("Total");
 
-        jLabel30.setText("232,00");
+        lblTotalFina.setText("232,00");
 
         jLabel31.setText("10.00");
 
-        jLabel32.setText("222,00");
+        lblPrecoTotal.setText("222,00");
 
-        kButton9.setText("Finalizar a compra");
-        kButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        kButton9.setkBorderRadius(25);
-        kButton9.setkEndColor(new java.awt.Color(255, 51, 51));
-        kButton9.setkStartColor(new java.awt.Color(255, 51, 51));
-        kButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnFinalizaCompra.setText("Finalizar a compra");
+        btnFinalizaCompra.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnFinalizaCompra.setkBorderRadius(25);
+        btnFinalizaCompra.setkEndColor(new java.awt.Color(255, 51, 51));
+        btnFinalizaCompra.setkStartColor(new java.awt.Color(255, 51, 51));
+        btnFinalizaCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton9ActionPerformed(evt);
+                btnFinalizaCompraActionPerformed(evt);
             }
         });
 
@@ -161,17 +200,14 @@ public class Sacola extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(kButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(kButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel25)))
+                        .addComponent(jLabel25))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -183,10 +219,10 @@ public class Sacola extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel29))
                                 .addGap(130, 130, 130)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPrecoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTotalFina, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFinalizaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
@@ -207,7 +243,7 @@ public class Sacola extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jLabel32))
+                            .addComponent(lblPrecoTotal))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel31)
@@ -215,21 +251,14 @@ public class Sacola extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29)
-                            .addComponent(jLabel30)))
+                            .addComponent(lblTotalFina)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(kButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(kButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnFinalizaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         deskSacola.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -320,15 +349,27 @@ public class Sacola extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton9ActionPerformed
-        DadosDaCompraFinal dadosfin = new DadosDaCompraFinal();
-        deskSacola.add(dadosfin);
-        dadosfin.setVisible(true);
-    }//GEN-LAST:event_kButton9ActionPerformed
+    private void btnFinalizaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizaCompraActionPerformed
+        
+        if(Double.parseDouble(lblTotalFina.getText())-10 > 0){
+            DadosDaCompraFinal dadosfin = new DadosDaCompraFinal();
+            deskSacola.add(dadosfin);
+            dadosfin.setVisible(true); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Pedido sem valor");
+        }
+    }//GEN-LAST:event_btnFinalizaCompraActionPerformed
+
+    private void btnExcluirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMousePressed
+         ProdutosAtual.getProdSacola().remove(tbProdutosSacola.getSelectedRow());
+         addLinhaJtable();
+         somarTotalPreco();
+    }//GEN-LAST:event_btnExcluirMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelaDeProdutos;
+    private com.k33ptoo.components.KButton btnExcluir;
+    private com.k33ptoo.components.KButton btnFinalizaCompra;
     private javax.swing.JDesktopPane deskSacola;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -343,17 +384,14 @@ public class Sacola extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSpinner jSpinner3;
-    private com.k33ptoo.components.KButton kButton7;
-    private com.k33ptoo.components.KButton kButton8;
-    private com.k33ptoo.components.KButton kButton9;
+    private javax.swing.JLabel lblPrecoTotal;
+    private javax.swing.JLabel lblTotalFina;
+    private javax.swing.JTable tbProdutosSacola;
     // End of variables declaration//GEN-END:variables
 }

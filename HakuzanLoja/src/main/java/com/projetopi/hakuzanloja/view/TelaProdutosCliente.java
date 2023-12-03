@@ -323,7 +323,7 @@ public class TelaProdutosCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbProdutosMousePressed
 
     private void btnAdionaSacolaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdionaSacolaMousePressed
-        
+        ProdutosAtual.adicionaProdSacola(ProdutosAtual.getListaProd().get(tbProdutos.getSelectedRow()));
     }//GEN-LAST:event_btnAdionaSacolaMousePressed
 
 
